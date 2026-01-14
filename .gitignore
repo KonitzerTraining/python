@@ -29,7 +29,17 @@ Thumbs.db
 .ipynb_checkpoints/
 *.ipynb_checkpoints
 
-# Build artifacts
-*.pdf
+# Build artifacts - ignoriere temporäre LaTeX-Dateien, aber behalte PDFs
 *.tex
-!python-grundlagen.pdf
+*.aux
+*.log
+*.out
+*.toc
+*.idx
+*.ind
+*.ilg
+*.fls
+*.fdb_latexmk
+*.xdv
+# Das fertige PDF soll im Repository bleiben
+# *.pdf wird NICHT ignoriert
