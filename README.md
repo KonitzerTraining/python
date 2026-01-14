@@ -4,13 +4,19 @@ Eine deutschsprachige Python-Dokumentation im Jupyter Book Format.
 
 ## 🌐 Online ansehen
 
-### GitHub Pages (empfohlen)
+### 📥 PDF-Download (empfohlen für Offline-Nutzung)
+Die komplette Dokumentation als PDF (87 Seiten, 264 KB):
+```
+https://github.com/KonitzerTraining/python/raw/claude/find-perf-issues-mke0fhv0vosvruk0-KXCkr/python-grundlagen.pdf
+```
+
+### GitHub Pages (empfohlen für Online-Ansicht)
 Nach Aktivierung von GitHub Pages (siehe unten) ist die Dokumentation verfügbar unter:
 ```
 https://konitzertraining.github.io/python/
 ```
 
-### Sofort verfügbar (ohne Setup)
+### Sofort verfügbar im Browser (ohne Setup)
 Die HTML-Dokumentation können Sie direkt ansehen über:
 ```
 https://htmlpreview.github.io/?https://raw.githubusercontent.com/KonitzerTraining/python/claude/find-perf-issues-mke0fhv0vosvruk0-KXCkr/_build/html/index.html
