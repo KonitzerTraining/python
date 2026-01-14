@@ -488,52 +488,6 @@ print(f"Bestanden: {statistik['bestanden']}")
 print(f"Nicht bestanden: {statistik['nicht_bestanden']}")
 ```
 
-### Beispiel 3: Einfacher Passwort-Validator
-
-```python
-def hat_mindestlaenge(passwort, laenge=8):
-    """Prüft Mindestlänge des Passworts."""
-    return len(passwort) >= laenge
-
-def hat_ziffer(passwort):
-    """Prüft, ob Passwort eine Ziffer enthält."""
-    return any(char.isdigit() for char in passwort)
-
-def hat_grossbuchstaben(passwort):
-    """Prüft, ob Passwort einen Großbuchstaben enthält."""
-    return any(char.isupper() for char in passwort)
-
-def hat_kleinbuchstaben(passwort):
-    """Prüft, ob Passwort einen Kleinbuchstaben enthält."""
-    return any(char.islower() for char in passwort)
-
-def ist_passwort_sicher(passwort):
-    """Prüft, ob Passwort alle Sicherheitskriterien erfüllt."""
-    if not hat_mindestlaenge(passwort):
-        return False, "Passwort zu kurz (mindestens 8 Zeichen)"
-    if not hat_ziffer(passwort):
-        return False, "Passwort muss eine Ziffer enthalten"
-    if not hat_grossbuchstaben(passwort):
-        return False, "Passwort muss einen Großbuchstaben enthalten"
-    if not hat_kleinbuchstaben(passwort):
-        return False, "Passwort muss einen Kleinbuchstaben enthalten"
-
-    return True, "Passwort ist sicher"
-
-# Test:
-testpasswoerter = ["test", "Test1234", "password", "Sicher123"]
-
-for pw in testpasswoerter:
-    sicher, meldung = ist_passwort_sicher(pw)
-    print(f"'{pw}': {meldung}")
-
-# Ausgabe:
-# 'test': Passwort zu kurz (mindestens 8 Zeichen)
-# 'Test1234': Passwort ist sicher
-# 'password': Passwort muss eine Ziffer enthalten
-# 'Sicher123': Passwort ist sicher
-```
-
 ## Zusammenfassung
 
 In diesem Kapitel haben Sie gelernt:

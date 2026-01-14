@@ -177,6 +177,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="06_funktionen.html">Funktionen</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Python Standard Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="08_dateioperationen.html">Dateioperationen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_anhang.html">Anhang</a></li>
 </ul>
 
     </div>
@@ -337,12 +338,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wichtige-module-im-uberblick">Wichtige Module im Überblick</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#praktische-beispiele-mit-standard-modulen">Praktische Beispiele mit Standard-Modulen</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-1-datei-backup-mit-zeitstempel">Beispiel 1: Datei-Backup mit Zeitstempel</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-2-system-informationen-anzeigen">Beispiel 2: System-Informationen anzeigen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-3-zufallspasswort-generator">Beispiel 3: Zufallspasswort-Generator</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-4-arbeitszeit-tracker">Beispiel 4: Arbeitszeit-Tracker</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-5-einfacher-wurfelsimulator">Beispiel 5: Einfacher Würfelsimulator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#praktisches-beispiel">Praktisches Beispiel</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datei-backup-mit-zeitstempel">Datei-Backup mit Zeitstempel</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung">Zusammenfassung</a></li>
@@ -641,10 +638,10 @@ document.write(`
 </div>
 </section>
 </section>
-<section id="praktische-beispiele-mit-standard-modulen">
-<h2>Praktische Beispiele mit Standard-Modulen<a class="headerlink" href="#praktische-beispiele-mit-standard-modulen" title="Permalink to this heading">#</a></h2>
-<section id="beispiel-1-datei-backup-mit-zeitstempel">
-<h3>Beispiel 1: Datei-Backup mit Zeitstempel<a class="headerlink" href="#beispiel-1-datei-backup-mit-zeitstempel" title="Permalink to this heading">#</a></h3>
+<section id="praktisches-beispiel">
+<h2>Praktisches Beispiel<a class="headerlink" href="#praktisches-beispiel" title="Permalink to this heading">#</a></h2>
+<section id="datei-backup-mit-zeitstempel">
+<h3>Datei-Backup mit Zeitstempel<a class="headerlink" href="#datei-backup-mit-zeitstempel" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
@@ -671,177 +668,6 @@ document.write(`
 <span class="c1"># Verwendung:</span>
 <span class="c1"># backup_erstellen(&quot;wichtige_datei.txt&quot;)</span>
 <span class="c1"># Erstellt z.B.: wichtige_datei_backup_20260114_153045.txt</span>
-</pre></div>
-</div>
-</section>
-<section id="beispiel-2-system-informationen-anzeigen">
-<h3>Beispiel 2: System-Informationen anzeigen<a class="headerlink" href="#beispiel-2-system-informationen-anzeigen" title="Permalink to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">platform</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">system_info</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Zeigt System-Informationen an.&quot;&quot;&quot;</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== System-Informationen ===</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Betriebssystem: </span><span class="si">{</span><span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Version: </span><span class="si">{</span><span class="n">platform</span><span class="o">.</span><span class="n">version</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Architektur: </span><span class="si">{</span><span class="n">platform</span><span class="o">.</span><span class="n">machine</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Prozessor: </span><span class="si">{</span><span class="n">platform</span><span class="o">.</span><span class="n">processor</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Python-Version: </span><span class="si">{</span><span class="n">platform</span><span class="o">.</span><span class="n">python_version</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Benutzername: </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">getlogin</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Aktuelles Verzeichnis: </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Datum/Zeit: </span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">.%m.%Y %H:%M:%S&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="c1"># Ausgabe:</span>
-<span class="n">system_info</span><span class="p">()</span>
-</pre></div>
-</div>
-</section>
-<section id="beispiel-3-zufallspasswort-generator">
-<h3>Beispiel 3: Zufallspasswort-Generator<a class="headerlink" href="#beispiel-3-zufallspasswort-generator" title="Permalink to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">string</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">generiere_passwort</span><span class="p">(</span><span class="n">laenge</span><span class="o">=</span><span class="mi">12</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generiert ein zufälliges sicheres Passwort.&quot;&quot;&quot;</span>
-    <span class="c1"># Zeichenpool:</span>
-    <span class="n">klein</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span>
-    <span class="n">gross</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_uppercase</span>
-    <span class="n">ziffern</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span>
-    <span class="n">sonderzeichen</span> <span class="o">=</span> <span class="s2">&quot;!@#$%^&amp;*&quot;</span>
-
-    <span class="n">alle_zeichen</span> <span class="o">=</span> <span class="n">klein</span> <span class="o">+</span> <span class="n">gross</span> <span class="o">+</span> <span class="n">ziffern</span> <span class="o">+</span> <span class="n">sonderzeichen</span>
-
-    <span class="c1"># Mindestens ein Zeichen jeder Kategorie:</span>
-    <span class="n">passwort</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">klein</span><span class="p">),</span>
-        <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">gross</span><span class="p">),</span>
-        <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">ziffern</span><span class="p">),</span>
-        <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">sonderzeichen</span><span class="p">)</span>
-    <span class="p">]</span>
-
-    <span class="c1"># Rest auffüllen:</span>
-    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">laenge</span> <span class="o">-</span> <span class="mi">4</span><span class="p">):</span>
-        <span class="n">passwort</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">alle_zeichen</span><span class="p">))</span>
-
-    <span class="c1"># Mischen:</span>
-    <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">passwort</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">passwort</span><span class="p">)</span>
-
-<span class="c1"># Mehrere Passwörter generieren:</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Generierte Passwörter:&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">generiere_passwort</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="c1"># Ausgabe z.B.:</span>
-<span class="c1"># 1. aB3$xYz9@Lm2Kp5</span>
-<span class="c1"># 2. Qw8!rT6#uI4*oP1</span>
-<span class="c1"># ...</span>
-</pre></div>
-</div>
-</section>
-<section id="beispiel-4-arbeitszeit-tracker">
-<h3>Beispiel 4: Arbeitszeit-Tracker<a class="headerlink" href="#beispiel-4-arbeitszeit-tracker" title="Permalink to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">ArbeitszeitTracker</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Einfacher Tracker für Arbeitszeiten.&quot;&quot;&quot;</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">start_zeit</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pausen</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pause_start</span> <span class="o">=</span> <span class="kc">None</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">arbeit_starten</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Startet die Arbeitszeiterfassung.&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">start_zeit</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Arbeit gestartet um </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">start_zeit</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%H:%M:%S&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">pause_starten</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Startet eine Pause.&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pause_start</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">pause_start</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pause gestartet um </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pause_start</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%H:%M:%S&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">pause_beenden</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Beendet eine Pause.&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pause_start</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">pause_ende</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-            <span class="n">pause_dauer</span> <span class="o">=</span> <span class="n">pause_ende</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">pause_start</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">pausen</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pause_dauer</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pause beendet um </span><span class="si">{</span><span class="n">pause_ende</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%H:%M:%S&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pausendauer: </span><span class="si">{</span><span class="n">pause_dauer</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">pause_start</span> <span class="o">=</span> <span class="kc">None</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">arbeit_beenden</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Beendet die Arbeitszeiterfassung und zeigt Statistik.&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_zeit</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Keine Arbeitszeit erfasst!&quot;</span><span class="p">)</span>
-            <span class="k">return</span>
-
-        <span class="n">ende_zeit</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-        <span class="n">gesamt_zeit</span> <span class="o">=</span> <span class="n">ende_zeit</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_zeit</span>
-
-        <span class="n">gesamt_pause</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pausen</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">())</span>
-        <span class="n">arbeits_zeit</span> <span class="o">=</span> <span class="n">gesamt_zeit</span> <span class="o">-</span> <span class="n">gesamt_pause</span>
-
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Arbeitszeit-Übersicht ===&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gesamtzeit: </span><span class="si">{</span><span class="n">gesamt_zeit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pausen: </span><span class="si">{</span><span class="n">gesamt_pause</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Effektive Arbeitszeit: </span><span class="si">{</span><span class="n">arbeits_zeit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="c1"># Verwendung:</span>
-<span class="n">tracker</span> <span class="o">=</span> <span class="n">ArbeitszeitTracker</span><span class="p">()</span>
-<span class="n">tracker</span><span class="o">.</span><span class="n">arbeit_starten</span><span class="p">()</span>
-<span class="c1"># ... arbeiten ...</span>
-<span class="c1"># tracker.pause_starten()</span>
-<span class="c1"># ... pause ...</span>
-<span class="c1"># tracker.pause_beenden()</span>
-<span class="c1"># ... weiter arbeiten ...</span>
-<span class="c1"># tracker.arbeit_beenden()</span>
-</pre></div>
-</div>
-</section>
-<section id="beispiel-5-einfacher-wurfelsimulator">
-<h3>Beispiel 5: Einfacher Würfelsimulator<a class="headerlink" href="#beispiel-5-einfacher-wurfelsimulator" title="Permalink to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">wuerfel_werfen</span><span class="p">(</span><span class="n">anzahl</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">seiten</span><span class="o">=</span><span class="mi">6</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Würfelt und gibt die Ergebnisse zurück.&quot;&quot;&quot;</span>
-    <span class="n">ergebnisse</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">anzahl</span><span class="p">):</span>
-        <span class="n">wurf</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">seiten</span><span class="p">)</span>
-        <span class="n">ergebnisse</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">wurf</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">ergebnisse</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">wuerfel_statistik</span><span class="p">(</span><span class="n">anzahl_wuerfe</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Erstellt eine Statistik über viele Würfelwürfe.&quot;&quot;&quot;</span>
-    <span class="n">ergebnisse</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">anzahl_wuerfe</span><span class="p">):</span>
-        <span class="n">ergebnisse</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">wuerfel_werfen</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>  <span class="c1"># 2 Würfel</span>
-
-    <span class="n">zaehler</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">ergebnisse</span><span class="p">)</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;=== Würfel-Statistik (</span><span class="si">{</span><span class="n">anzahl_wuerfe</span><span class="si">}</span><span class="s2"> Würfe mit 2 Würfeln) ===&quot;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">zahl</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">zaehler</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
-        <span class="n">prozent</span> <span class="o">=</span> <span class="p">(</span><span class="n">zaehler</span><span class="p">[</span><span class="n">zahl</span><span class="p">]</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">ergebnisse</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Zahl </span><span class="si">{</span><span class="n">zahl</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">zaehler</span><span class="p">[</span><span class="n">zahl</span><span class="p">]</span><span class="si">}</span><span class="s2"> Mal (</span><span class="si">{</span><span class="n">prozent</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%)&quot;</span><span class="p">)</span>
-
-<span class="c1"># Einzelne Würfe:</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3 Würfel werfen:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">wuerfel_werfen</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">20-seitigen Würfel werfen:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">wuerfel_werfen</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
-
-<span class="c1"># Statistik:</span>
-<span class="nb">print</span><span class="p">()</span>
-<span class="n">wuerfel_statistik</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -935,12 +761,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wichtige-module-im-uberblick">Wichtige Module im Überblick</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#praktische-beispiele-mit-standard-modulen">Praktische Beispiele mit Standard-Modulen</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-1-datei-backup-mit-zeitstempel">Beispiel 1: Datei-Backup mit Zeitstempel</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-2-system-informationen-anzeigen">Beispiel 2: System-Informationen anzeigen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-3-zufallspasswort-generator">Beispiel 3: Zufallspasswort-Generator</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-4-arbeitszeit-tracker">Beispiel 4: Arbeitszeit-Tracker</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-5-einfacher-wurfelsimulator">Beispiel 5: Einfacher Würfelsimulator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#praktisches-beispiel">Praktisches Beispiel</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datei-backup-mit-zeitstempel">Datei-Backup mit Zeitstempel</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung">Zusammenfassung</a></li>

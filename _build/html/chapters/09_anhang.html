@@ -1,0 +1,1003 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="de" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Anhang &#8212; Python Grundlagen</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/09_anhang';</script>
+    <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
+    <link rel="search" title="Suche" href="../search.html" />
+    <link rel="prev" title="Dateioperationen" href="08_dateioperationen.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="de"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Python Grundlagen</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Python Grundlagen Dokumentation
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_grundlagen.html">Python-Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_input_output.html">Input/Output und Typumwandlung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_verzweigungen.html">Verzweigungen und Bedingungen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_schleifen.html">Schleifen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_datenstrukturen.html">Datenstrukturen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_funktionen.html">Funktionen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_standard_library.html">Python Standard Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_dateioperationen.html">Dateioperationen</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Anhang</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Laden Sie diese Seite herunter">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapters/09_anhang.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Quelldatei herunterladen"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="In PDF drucken"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Vollbildmodus"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Anhang</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Inhalt </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-kommandozeilen-befehle">A. Kommandozeilen-Befehle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-cmd-command-prompt">Windows CMD (Command Prompt)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#navigation-und-verzeichnisse">Navigation und Verzeichnisse</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dateiverwaltung">Dateiverwaltung</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#system-befehle">System-Befehle</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-powershell">Windows PowerShell</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-python-skripte-ausfuhren">B. Python-Skripte ausführen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-skript-erstellen-und-ausfuhren">Python-Skript erstellen und ausführen</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#skript-erstellen">1. Skript erstellen</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#skript-ausfuhren">2. Skript ausführen</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-interactive-shell">Python Interactive Shell</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pip-paketmanager">Pip - Paketmanager</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtuelle-umgebungen">Virtuelle Umgebungen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-skripte-mit-argumenten">Python-Skripte mit Argumenten</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-offizielle-python-dokumentation">C. Offizielle Python-Dokumentation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deutsche-ressourcen">Deutsche Ressourcen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#englische-ressourcen">Englische Ressourcen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zusatzliche-lernressourcen">Zusätzliche Lernressourcen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spezifische-module">Spezifische Module</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#package-index">Package Index</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-nutzliche-tastenkombinationen">D. Nützliche Tastenkombinationen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Python Interactive Shell</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-cmd">Windows CMD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#editoren">Editoren</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#e-haufige-fehler-und-losungen">E. Häufige Fehler und Lösungen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importerror-modulenotfounderror">ImportError / ModuleNotFoundError</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntaxerror-invalid-syntax">SyntaxError: invalid syntax</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indentationerror">IndentationError</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nameerror-name-x-is-not-defined">NameError: name ‘x’ is not defined</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filenotfounderror">FileNotFoundError</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="anhang">
+<h1>Anhang<a class="headerlink" href="#anhang" title="Permalink to this heading">#</a></h1>
+<section id="a-kommandozeilen-befehle">
+<h2>A. Kommandozeilen-Befehle<a class="headerlink" href="#a-kommandozeilen-befehle" title="Permalink to this heading">#</a></h2>
+<section id="windows-cmd-command-prompt">
+<h3>Windows CMD (Command Prompt)<a class="headerlink" href="#windows-cmd-command-prompt" title="Permalink to this heading">#</a></h3>
+<section id="navigation-und-verzeichnisse">
+<h4>Navigation und Verzeichnisse<a class="headerlink" href="#navigation-und-verzeichnisse" title="Permalink to this heading">#</a></h4>
+<div class="highlight-cmd notranslate"><div class="highlight"><pre><span></span># Aktuelles Verzeichnis anzeigen
+cd
+
+# Verzeichnis wechseln
+cd C:\Users\MeinName\Dokumente
+
+# Ein Verzeichnis nach oben
+cd ..
+
+# Zur Root des Laufwerks
+cd \
+
+# Laufwerk wechseln
+D:
+
+# Verzeichnis erstellen
+mkdir mein_projekt
+md mein_projekt
+
+# Verzeichnis löschen
+rmdir mein_projekt
+rd mein_projekt
+
+# Verzeichnis mit Inhalt löschen
+rmdir /s mein_projekt
+</pre></div>
+</div>
+</section>
+<section id="dateiverwaltung">
+<h4>Dateiverwaltung<a class="headerlink" href="#dateiverwaltung" title="Permalink to this heading">#</a></h4>
+<div class="highlight-cmd notranslate"><div class="highlight"><pre><span></span># Dateien und Ordner auflisten
+dir
+
+# Detaillierte Ansicht
+dir /w
+
+# Datei anzeigen
+type datei.txt
+
+# Datei kopieren
+copy quelle.txt ziel.txt
+
+# Datei verschieben
+move quelle.txt neuer_ordner\
+
+# Datei löschen
+del datei.txt
+
+# Mehrere Dateien löschen
+del *.txt
+</pre></div>
+</div>
+</section>
+<section id="system-befehle">
+<h4>System-Befehle<a class="headerlink" href="#system-befehle" title="Permalink to this heading">#</a></h4>
+<div class="highlight-cmd notranslate"><div class="highlight"><pre><span></span># Bildschirm löschen
+cls
+
+# Aktuelles Datum/Zeit
+date
+time
+
+# Umgebungsvariablen anzeigen
+set
+
+# Bestimmte Variable anzeigen
+echo %PATH%
+
+# Hilfe zu einem Befehl
+help dir
+dir /?
+</pre></div>
+</div>
+</section>
+</section>
+<section id="windows-powershell">
+<h3>Windows PowerShell<a class="headerlink" href="#windows-powershell" title="Permalink to this heading">#</a></h3>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># Navigation</span>
+<span class="nb">Set-Location</span> <span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">MeinName</span>
+<span class="nb">cd </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">MeinName</span>
+
+<span class="c"># Dateien auflisten</span>
+<span class="nb">Get-ChildItem</span>
+<span class="nb">ls</span>
+<span class="nb">dir</span>
+
+<span class="c"># Verzeichnis erstellen</span>
+<span class="nb">New-Item</span> <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="n">-Name</span> <span class="s2">&quot;mein_projekt&quot;</span>
+<span class="n">mkdir</span> <span class="n">mein_projekt</span>
+
+<span class="c"># Datei erstellen</span>
+<span class="nb">New-Item</span> <span class="n">-ItemType</span> <span class="n">File</span> <span class="n">-Name</span> <span class="s2">&quot;test.txt&quot;</span>
+
+<span class="c"># Datei löschen</span>
+<span class="nb">Remove-Item</span> <span class="n">test</span><span class="p">.</span><span class="n">txt</span>
+<span class="nb">rm </span><span class="n">test</span><span class="p">.</span><span class="n">txt</span>
+
+<span class="c"># Inhalt anzeigen</span>
+<span class="nb">Get-Content</span> <span class="n">datei</span><span class="p">.</span><span class="n">txt</span>
+<span class="nb">cat </span><span class="n">datei</span><span class="p">.</span><span class="n">txt</span>
+
+<span class="c"># Nach Dateien suchen</span>
+<span class="nb">Get-ChildItem</span> <span class="n">-Recurse</span> <span class="n">-Filter</span> <span class="p">*.</span><span class="n">py</span>
+
+<span class="c"># Bildschirm löschen</span>
+<span class="nb">Clear-Host</span>
+<span class="nb">cls</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="b-python-skripte-ausfuhren">
+<h2>B. Python-Skripte ausführen<a class="headerlink" href="#b-python-skripte-ausfuhren" title="Permalink to this heading">#</a></h2>
+<section id="python-skript-erstellen-und-ausfuhren">
+<h3>Python-Skript erstellen und ausführen<a class="headerlink" href="#python-skript-erstellen-und-ausfuhren" title="Permalink to this heading">#</a></h3>
+<section id="skript-erstellen">
+<h4>1. Skript erstellen<a class="headerlink" href="#skript-erstellen" title="Permalink to this heading">#</a></h4>
+<p>Erstellen Sie eine Datei <code class="docutils literal notranslate"><span class="pre">hallo.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hallo Welt!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="skript-ausfuhren">
+<h4>2. Skript ausführen<a class="headerlink" href="#skript-ausfuhren" title="Permalink to this heading">#</a></h4>
+<p><strong>Windows CMD:</strong></p>
+<div class="highlight-cmd notranslate"><div class="highlight"><pre><span></span># Python-Version prüfen
+python --version
+python3 --version
+
+# Skript ausführen
+python hallo.py
+python3 hallo.py
+
+# Mit vollständigem Pfad
+python C:\Users\MeinName\Projekte\hallo.py
+
+# Im Hintergrund ausführen (keine Ausgabe)
+python hallo.py &gt; nul
+</pre></div>
+</div>
+<p><strong>Windows PowerShell:</strong></p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># Skript ausführen</span>
+<span class="n">python</span> <span class="p">.\</span><span class="n">hallo</span><span class="p">.</span><span class="n">py</span>
+<span class="n">python3</span> <span class="p">.\</span><span class="n">hallo</span><span class="p">.</span><span class="n">py</span>
+
+<span class="c"># Mit Parameter</span>
+<span class="n">python</span> <span class="p">.\</span><span class="n">mein_script</span><span class="p">.</span><span class="n">py</span> <span class="n">argument1</span> <span class="n">argument2</span>
+
+<span class="c"># Ausgabe in Datei umleiten</span>
+<span class="n">python</span> <span class="p">.\</span><span class="n">hallo</span><span class="p">.</span><span class="n">py</span> <span class="p">&gt;</span> <span class="n">ausgabe</span><span class="p">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p><strong>Linux/macOS Terminal:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Skript ausführen</span>
+python3<span class="w"> </span>hallo.py
+
+<span class="c1"># Skript direkt ausführbar machen (Shebang)</span>
+<span class="c1"># Erste Zeile in hallo.py: #!/usr/bin/env python3</span>
+chmod<span class="w"> </span>+x<span class="w"> </span>hallo.py
+./hallo.py
+</pre></div>
+</div>
+</section>
+</section>
+<section id="python-interactive-shell">
+<h3>Python Interactive Shell<a class="headerlink" href="#python-interactive-shell" title="Permalink to this heading">#</a></h3>
+<div class="highlight-cmd notranslate"><div class="highlight"><pre><span></span># Python-Shell starten
+python
+python3
+
+# Python-Shell beenden
+exit()
+Ctrl+Z (Windows) oder Ctrl+D (Linux/macOS)
+
+# IPython starten (falls installiert)
+ipython
+</pre></div>
+</div>
+</section>
+<section id="pip-paketmanager">
+<h3>Pip - Paketmanager<a class="headerlink" href="#pip-paketmanager" title="Permalink to this heading">#</a></h3>
+<div class="highlight-cmd notranslate"><div class="highlight"><pre><span></span># Pip-Version prüfen
+pip --version
+pip3 --version
+
+# Paket installieren
+pip install requests
+pip install pandas numpy
+
+# Paket deinstallieren
+pip uninstall requests
+
+# Installierte Pakete auflisten
+pip list
+pip freeze
+
+# Requirements installieren
+pip install -r requirements.txt
+
+# Requirements-Datei erstellen
+pip freeze &gt; requirements.txt
+
+# Paket upgraden
+pip install --upgrade requests
+</pre></div>
+</div>
+</section>
+<section id="virtuelle-umgebungen">
+<h3>Virtuelle Umgebungen<a class="headerlink" href="#virtuelle-umgebungen" title="Permalink to this heading">#</a></h3>
+<p><strong>Erstellen und Aktivieren:</strong></p>
+<div class="highlight-cmd notranslate"><div class="highlight"><pre><span></span># Windows CMD:
+python -m venv meinenv
+meinenv\Scripts\activate
+
+# Windows PowerShell:
+python -m venv meinenv
+meinenv\Scripts\Activate.ps1
+
+# Linux/macOS:
+python3 -m venv meinenv
+source meinenv/bin/activate
+
+# Deaktivieren (alle Systeme):
+deactivate
+</pre></div>
+</div>
+</section>
+<section id="python-skripte-mit-argumenten">
+<h3>Python-Skripte mit Argumenten<a class="headerlink" href="#python-skripte-mit-argumenten" title="Permalink to this heading">#</a></h3>
+<p><strong>Skript (<a class="reference external" href="http://args.py">args.py</a>):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Script-Name: </span><span class="si">{</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Anzahl Argumente: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">arg</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Argument </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">arg</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Ausführen:</strong></p>
+<div class="highlight-cmd notranslate"><div class="highlight"><pre><span></span>python args.py eins zwei drei
+# Ausgabe:
+# Script-Name: args.py
+# Anzahl Argumente: 3
+# Argument 1: eins
+# Argument 2: zwei
+# Argument 3: drei
+</pre></div>
+</div>
+</section>
+</section>
+<section id="c-offizielle-python-dokumentation">
+<h2>C. Offizielle Python-Dokumentation<a class="headerlink" href="#c-offizielle-python-dokumentation" title="Permalink to this heading">#</a></h2>
+<section id="deutsche-ressourcen">
+<h3>Deutsche Ressourcen<a class="headerlink" href="#deutsche-ressourcen" title="Permalink to this heading">#</a></h3>
+<p><strong>Offizielle Python-Dokumentation (Deutsch):</strong></p>
+<ul class="simple">
+<li><p>Hauptseite: <a class="reference external" href="https://docs.python.org/de/3/">https://docs.python.org/de/3/</a></p></li>
+<li><p>Tutorial: <a class="reference external" href="https://docs.python.org/de/3/tutorial/index.html">https://docs.python.org/de/3/tutorial/index.html</a></p></li>
+<li><p>Standardbibliothek: <a class="reference external" href="https://docs.python.org/de/3/library/index.html">https://docs.python.org/de/3/library/index.html</a></p></li>
+<li><p>Sprachreferenz: <a class="reference external" href="https://docs.python.org/de/3/reference/index.html">https://docs.python.org/de/3/reference/index.html</a></p></li>
+</ul>
+<p><strong>Wichtige Themen:</strong></p>
+<ul class="simple">
+<li><p>Einführung: <a class="reference external" href="https://docs.python.org/de/3/tutorial/introduction.html">https://docs.python.org/de/3/tutorial/introduction.html</a></p></li>
+<li><p>Datenstrukturen: <a class="reference external" href="https://docs.python.org/de/3/tutorial/datastructures.html">https://docs.python.org/de/3/tutorial/datastructures.html</a></p></li>
+<li><p>Module: <a class="reference external" href="https://docs.python.org/de/3/tutorial/modules.html">https://docs.python.org/de/3/tutorial/modules.html</a></p></li>
+<li><p>Ein- und Ausgabe: <a class="reference external" href="https://docs.python.org/de/3/tutorial/inputoutput.html">https://docs.python.org/de/3/tutorial/inputoutput.html</a></p></li>
+<li><p>Fehler und Ausnahmen: <a class="reference external" href="https://docs.python.org/de/3/tutorial/errors.html">https://docs.python.org/de/3/tutorial/errors.html</a></p></li>
+<li><p>Klassen: <a class="reference external" href="https://docs.python.org/de/3/tutorial/classes.html">https://docs.python.org/de/3/tutorial/classes.html</a></p></li>
+</ul>
+</section>
+<section id="englische-ressourcen">
+<h3>Englische Ressourcen<a class="headerlink" href="#englische-ressourcen" title="Permalink to this heading">#</a></h3>
+<p><strong>Offizielle Dokumentation:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://Python.org">Python.org</a>: <a class="reference external" href="https://www.python.org/">https://www.python.org/</a></p></li>
+<li><p>Dokumentation: <a class="reference external" href="https://docs.python.org/3/">https://docs.python.org/3/</a></p></li>
+<li><p>Tutorial: <a class="reference external" href="https://docs.python.org/3/tutorial/">https://docs.python.org/3/tutorial/</a></p></li>
+<li><p>Library Reference: <a class="reference external" href="https://docs.python.org/3/library/">https://docs.python.org/3/library/</a></p></li>
+<li><p>Language Reference: <a class="reference external" href="https://docs.python.org/3/reference/">https://docs.python.org/3/reference/</a></p></li>
+</ul>
+<p><strong>PEP (Python Enhancement Proposals):</strong></p>
+<ul class="simple">
+<li><p>PEP 8 - Style Guide: <a class="reference external" href="https://pep8.org/">https://pep8.org/</a> oder <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">https://www.python.org/dev/peps/pep-0008/</a></p></li>
+<li><p>PEP 20 - The Zen of Python: <a class="reference external" href="https://www.python.org/dev/peps/pep-0020/">https://www.python.org/dev/peps/pep-0020/</a></p></li>
+<li><p>PEP Index: <a class="reference external" href="https://www.python.org/dev/peps/">https://www.python.org/dev/peps/</a></p></li>
+</ul>
+</section>
+<section id="zusatzliche-lernressourcen">
+<h3>Zusätzliche Lernressourcen<a class="headerlink" href="#zusatzliche-lernressourcen" title="Permalink to this heading">#</a></h3>
+<p><strong>Interaktive Tutorials:</strong></p>
+<ul class="simple">
+<li><p>Python Tutor (Code-Visualisierung): <a class="reference external" href="https://pythontutor.com/">https://pythontutor.com/</a></p></li>
+<li><p>Real Python: <a class="reference external" href="https://realpython.com/">https://realpython.com/</a></p></li>
+<li><p>W3Schools Python: <a class="reference external" href="https://www.w3schools.com/python/">https://www.w3schools.com/python/</a></p></li>
+</ul>
+<p><strong>Nachschlagewerke:</strong></p>
+<ul class="simple">
+<li><p>Python Module of the Week: <a class="reference external" href="https://pymotw.com/3/">https://pymotw.com/3/</a></p></li>
+<li><p>Python Cheatsheet: <a class="reference external" href="https://www.pythoncheatsheet.org/">https://www.pythoncheatsheet.org/</a></p></li>
+<li><p>DevDocs (API-Dokumentation): <a class="reference external" href="https://devdocs.io/python~3.11/">https://devdocs.io/python~3.11/</a></p></li>
+</ul>
+<p><strong>Community:</strong></p>
+<ul class="simple">
+<li><p>Stack Overflow (Python): <a class="reference external" href="https://stackoverflow.com/questions/tagged/python">https://stackoverflow.com/questions/tagged/python</a></p></li>
+<li><p>Reddit r/learnpython: <a class="reference external" href="https://www.reddit.com/r/learnpython/">https://www.reddit.com/r/learnpython/</a></p></li>
+<li><p>Python Discord: <a class="reference external" href="https://pythondiscord.com/">https://pythondiscord.com/</a></p></li>
+</ul>
+</section>
+<section id="spezifische-module">
+<h3>Spezifische Module<a class="headerlink" href="#spezifische-module" title="Permalink to this heading">#</a></h3>
+<p><strong>Häufig verwendete Module:</strong></p>
+<ul class="simple">
+<li><p>os: <a class="reference external" href="https://docs.python.org/de/3/library/os.html">https://docs.python.org/de/3/library/os.html</a></p></li>
+<li><p>sys: <a class="reference external" href="https://docs.python.org/de/3/library/sys.html">https://docs.python.org/de/3/library/sys.html</a></p></li>
+<li><p>datetime: <a class="reference external" href="https://docs.python.org/de/3/library/datetime.html">https://docs.python.org/de/3/library/datetime.html</a></p></li>
+<li><p>pathlib: <a class="reference external" href="https://docs.python.org/de/3/library/pathlib.html">https://docs.python.org/de/3/library/pathlib.html</a></p></li>
+<li><p>json: <a class="reference external" href="https://docs.python.org/de/3/library/json.html">https://docs.python.org/de/3/library/json.html</a></p></li>
+<li><p>re (Regular Expressions): <a class="reference external" href="https://docs.python.org/de/3/library/re.html">https://docs.python.org/de/3/library/re.html</a></p></li>
+<li><p>csv: <a class="reference external" href="https://docs.python.org/de/3/library/csv.html">https://docs.python.org/de/3/library/csv.html</a></p></li>
+<li><p>collections: <a class="reference external" href="https://docs.python.org/de/3/library/collections.html">https://docs.python.org/de/3/library/collections.html</a></p></li>
+<li><p>itertools: <a class="reference external" href="https://docs.python.org/de/3/library/itertools.html">https://docs.python.org/de/3/library/itertools.html</a></p></li>
+<li><p>functools: <a class="reference external" href="https://docs.python.org/de/3/library/functools.html">https://docs.python.org/de/3/library/functools.html</a></p></li>
+</ul>
+</section>
+<section id="package-index">
+<h3>Package Index<a class="headerlink" href="#package-index" title="Permalink to this heading">#</a></h3>
+<p><strong>PyPI - Python Package Index:</strong></p>
+<ul class="simple">
+<li><p>Suche nach Paketen: <a class="reference external" href="https://pypi.org/">https://pypi.org/</a></p></li>
+<li><p>Beliebte Pakete: <a class="reference external" href="https://pypi.org/search/?c=Development+Status+%3A%3A+5+-+Production%2FStable">https://pypi.org/search/?c=Development+Status+%3A%3A+5+-+Production%2FStable</a></p></li>
+</ul>
+<p><strong>Beliebte Drittanbieter-Bibliotheken:</strong></p>
+<ul class="simple">
+<li><p>Requests (HTTP): <a class="reference external" href="https://requests.readthedocs.io/">https://requests.readthedocs.io/</a></p></li>
+<li><p>NumPy (Numerik): <a class="reference external" href="https://numpy.org/doc/">https://numpy.org/doc/</a></p></li>
+<li><p>Pandas (Datenanalyse): <a class="reference external" href="https://pandas.pydata.org/docs/">https://pandas.pydata.org/docs/</a></p></li>
+<li><p>Matplotlib (Visualisierung): <a class="reference external" href="https://matplotlib.org/stable/index.html">https://matplotlib.org/stable/index.html</a></p></li>
+<li><p>Flask (Web-Framework): <a class="reference external" href="https://flask.palletsprojects.com/">https://flask.palletsprojects.com/</a></p></li>
+<li><p>Django (Web-Framework): <a class="reference external" href="https://docs.djangoproject.com/">https://docs.djangoproject.com/</a></p></li>
+</ul>
+</section>
+</section>
+<section id="d-nutzliche-tastenkombinationen">
+<h2>D. Nützliche Tastenkombinationen<a class="headerlink" href="#d-nutzliche-tastenkombinationen" title="Permalink to this heading">#</a></h2>
+<section id="id1">
+<h3>Python Interactive Shell<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ctrl</span><span class="o">+</span><span class="n">D</span> <span class="p">(</span><span class="n">Linux</span><span class="o">/</span><span class="n">macOS</span><span class="p">)</span> <span class="n">oder</span> <span class="n">Ctrl</span><span class="o">+</span><span class="n">Z</span> <span class="p">(</span><span class="n">Windows</span><span class="p">)</span> <span class="o">-</span> <span class="n">Shell</span> <span class="n">beenden</span>
+<span class="n">Ctrl</span><span class="o">+</span><span class="n">C</span> <span class="o">-</span> <span class="n">Aktuellen</span> <span class="n">Befehl</span> <span class="n">abbrechen</span>
+<span class="n">Pfeil</span> <span class="n">hoch</span><span class="o">/</span><span class="n">runter</span> <span class="o">-</span> <span class="n">Befehlshistorie</span> <span class="n">durchsuchen</span>
+<span class="n">Tab</span> <span class="o">-</span> <span class="n">Auto</span><span class="o">-</span><span class="n">Vervollständigung</span>
+<span class="n">Ctrl</span><span class="o">+</span><span class="n">L</span> <span class="o">-</span> <span class="n">Bildschirm</span> <span class="n">löschen</span>
+</pre></div>
+</div>
+</section>
+<section id="windows-cmd">
+<h3>Windows CMD<a class="headerlink" href="#windows-cmd" title="Permalink to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Tab</span> <span class="o">-</span> <span class="n">Dateinamen</span><span class="o">-</span><span class="n">Vervollständigung</span>
+<span class="n">F7</span> <span class="o">-</span> <span class="n">Befehlshistorie</span> <span class="n">anzeigen</span>
+<span class="n">Pfeil</span> <span class="n">hoch</span><span class="o">/</span><span class="n">runter</span> <span class="o">-</span> <span class="n">Vorherige</span> <span class="n">Befehle</span>
+<span class="n">Ctrl</span><span class="o">+</span><span class="n">C</span> <span class="o">-</span> <span class="n">Prozess</span> <span class="n">abbrechen</span>
+</pre></div>
+</div>
+</section>
+<section id="editoren">
+<h3>Editoren<a class="headerlink" href="#editoren" title="Permalink to this heading">#</a></h3>
+<p><strong>VS Code:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Ctrl+Space - Auto-Vervollständigung
+F5 - Debugger starten
+Ctrl+/ - Zeile kommentieren
+Shift+Alt+F - Code formatieren
+Ctrl+` - Terminal öffnen/schließen
+</pre></div>
+</div>
+<p><strong>IDLE (Python IDE):</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F5</span> <span class="o">-</span> <span class="n">Skript</span> <span class="n">ausführen</span>
+<span class="n">Alt</span><span class="o">+</span><span class="n">P</span> <span class="o">-</span> <span class="n">Vorheriger</span> <span class="n">Befehl</span>
+<span class="n">Alt</span><span class="o">+</span><span class="n">N</span> <span class="o">-</span> <span class="n">Nächster</span> <span class="n">Befehl</span>
+<span class="n">Ctrl</span><span class="o">+</span><span class="n">C</span> <span class="o">-</span> <span class="n">Kopieren</span>
+<span class="n">Ctrl</span><span class="o">+</span><span class="n">V</span> <span class="o">-</span> <span class="n">Einfügen</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="e-haufige-fehler-und-losungen">
+<h2>E. Häufige Fehler und Lösungen<a class="headerlink" href="#e-haufige-fehler-und-losungen" title="Permalink to this heading">#</a></h2>
+<section id="importerror-modulenotfounderror">
+<h3>ImportError / ModuleNotFoundError<a class="headerlink" href="#importerror-modulenotfounderror" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fehler:</span>
+<span class="c1"># ModuleNotFoundError: No module named &#39;requests&#39;</span>
+
+<span class="c1"># Lösung:</span>
+<span class="c1"># pip install requests</span>
+</pre></div>
+</div>
+</section>
+<section id="syntaxerror-invalid-syntax">
+<h3>SyntaxError: invalid syntax<a class="headerlink" href="#syntaxerror-invalid-syntax" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Häufige Ursachen:</span>
+<span class="c1"># - Fehlende Klammern: print &quot;Hallo&quot;  # Falsch</span>
+<span class="c1"># - Fehlende Doppelpunkte: if x &gt; 5  # Falsch</span>
+<span class="c1"># - Falsche Einrückung</span>
+
+<span class="c1"># Korrekt:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hallo&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Größer als 5&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="indentationerror">
+<h3>IndentationError<a class="headerlink" href="#indentationerror" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fehler: Inkonsistente Einrückung (Tabs und Leerzeichen gemischt)</span>
+<span class="c1"># Lösung: Nur Leerzeichen verwenden (4 pro Ebene)</span>
+</pre></div>
+</div>
+</section>
+<section id="nameerror-name-x-is-not-defined">
+<h3>NameError: name ‘x’ is not defined<a class="headerlink" href="#nameerror-name-x-is-not-defined" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fehler: Variable vor Zuweisung verwendet</span>
+<span class="c1"># print(ergebnis)  # NameError</span>
+
+<span class="c1"># Lösung: Variable zuerst definieren</span>
+<span class="n">ergebnis</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ergebnis</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="filenotfounderror">
+<h3>FileNotFoundError<a class="headerlink" href="#filenotfounderror" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fehler: Datei nicht gefunden</span>
+<span class="c1"># with open(&quot;datei.txt&quot;) as f:  # FileNotFoundError</span>
+
+<span class="c1"># Lösungen:</span>
+<span class="c1"># 1. Pfad prüfen</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>  <span class="c1"># Aktuelles Verzeichnis</span>
+
+<span class="c1"># 2. Absoluten Pfad verwenden</span>
+<span class="c1"># with open(&quot;C:\\Users\\Name\\datei.txt&quot;) as f:</span>
+
+<span class="c1"># 3. Existenz prüfen</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="k">if</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;datei.txt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;datei.txt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><strong>Weitere Hilfe:</strong></p>
+<ul class="simple">
+<li><p>Python-FAQ: <a class="reference external" href="https://docs.python.org/de/3/faq/">https://docs.python.org/de/3/faq/</a></p></li>
+<li><p>Häufige Fehler: <a class="reference external" href="https://docs.python.org/de/3/faq/programming.html">https://docs.python.org/de/3/faq/programming.html</a></p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="08_dateioperationen.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">zurück</p>
+        <p class="prev-next-title">Dateioperationen</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhalt
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-kommandozeilen-befehle">A. Kommandozeilen-Befehle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-cmd-command-prompt">Windows CMD (Command Prompt)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#navigation-und-verzeichnisse">Navigation und Verzeichnisse</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dateiverwaltung">Dateiverwaltung</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#system-befehle">System-Befehle</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-powershell">Windows PowerShell</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-python-skripte-ausfuhren">B. Python-Skripte ausführen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-skript-erstellen-und-ausfuhren">Python-Skript erstellen und ausführen</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#skript-erstellen">1. Skript erstellen</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#skript-ausfuhren">2. Skript ausführen</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-interactive-shell">Python Interactive Shell</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pip-paketmanager">Pip - Paketmanager</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtuelle-umgebungen">Virtuelle Umgebungen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-skripte-mit-argumenten">Python-Skripte mit Argumenten</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-offizielle-python-dokumentation">C. Offizielle Python-Dokumentation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deutsche-ressourcen">Deutsche Ressourcen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#englische-ressourcen">Englische Ressourcen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zusatzliche-lernressourcen">Zusätzliche Lernressourcen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spezifische-module">Spezifische Module</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#package-index">Package Index</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-nutzliche-tastenkombinationen">D. Nützliche Tastenkombinationen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Python Interactive Shell</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-cmd">Windows CMD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#editoren">Editoren</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#e-haufige-fehler-und-losungen">E. Häufige Fehler und Lösungen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importerror-modulenotfounderror">ImportError / ModuleNotFoundError</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntaxerror-invalid-syntax">SyntaxError: invalid syntax</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indentationerror">IndentationError</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nameerror-name-x-is-not-defined">NameError: name ‘x’ is not defined</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filenotfounderror">FileNotFoundError</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Durch Python Dokumentation
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

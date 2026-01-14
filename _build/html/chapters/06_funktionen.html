@@ -177,6 +177,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Funktionen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="07_standard_library.html">Python Standard Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="08_dateioperationen.html">Dateioperationen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_anhang.html">Anhang</a></li>
 </ul>
 
     </div>
@@ -362,7 +363,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#praktische-beispiele">Praktische Beispiele</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-1-bmi-rechner-mit-funktionen">Beispiel 1: BMI-Rechner mit Funktionen</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-2-notenverwaltung">Beispiel 2: Notenverwaltung</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-3-einfacher-passwort-validator">Beispiel 3: Einfacher Passwort-Validator</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung">Zusammenfassung</a></li>
@@ -851,52 +851,6 @@ document.write(`
 </pre></div>
 </div>
 </section>
-<section id="beispiel-3-einfacher-passwort-validator">
-<h3>Beispiel 3: Einfacher Passwort-Validator<a class="headerlink" href="#beispiel-3-einfacher-passwort-validator" title="Permalink to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">hat_mindestlaenge</span><span class="p">(</span><span class="n">passwort</span><span class="p">,</span> <span class="n">laenge</span><span class="o">=</span><span class="mi">8</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Prüft Mindestlänge des Passworts.&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">passwort</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">laenge</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">hat_ziffer</span><span class="p">(</span><span class="n">passwort</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Prüft, ob Passwort eine Ziffer enthält.&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">char</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">passwort</span><span class="p">)</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">hat_grossbuchstaben</span><span class="p">(</span><span class="n">passwort</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Prüft, ob Passwort einen Großbuchstaben enthält.&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">char</span><span class="o">.</span><span class="n">isupper</span><span class="p">()</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">passwort</span><span class="p">)</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">hat_kleinbuchstaben</span><span class="p">(</span><span class="n">passwort</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Prüft, ob Passwort einen Kleinbuchstaben enthält.&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">char</span><span class="o">.</span><span class="n">islower</span><span class="p">()</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">passwort</span><span class="p">)</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">ist_passwort_sicher</span><span class="p">(</span><span class="n">passwort</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Prüft, ob Passwort alle Sicherheitskriterien erfüllt.&quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">hat_mindestlaenge</span><span class="p">(</span><span class="n">passwort</span><span class="p">):</span>
-        <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;Passwort zu kurz (mindestens 8 Zeichen)&quot;</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">hat_ziffer</span><span class="p">(</span><span class="n">passwort</span><span class="p">):</span>
-        <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;Passwort muss eine Ziffer enthalten&quot;</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">hat_grossbuchstaben</span><span class="p">(</span><span class="n">passwort</span><span class="p">):</span>
-        <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;Passwort muss einen Großbuchstaben enthalten&quot;</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">hat_kleinbuchstaben</span><span class="p">(</span><span class="n">passwort</span><span class="p">):</span>
-        <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;Passwort muss einen Kleinbuchstaben enthalten&quot;</span>
-
-    <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;Passwort ist sicher&quot;</span>
-
-<span class="c1"># Test:</span>
-<span class="n">testpasswoerter</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="s2">&quot;Test1234&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span> <span class="s2">&quot;Sicher123&quot;</span><span class="p">]</span>
-
-<span class="k">for</span> <span class="n">pw</span> <span class="ow">in</span> <span class="n">testpasswoerter</span><span class="p">:</span>
-    <span class="n">sicher</span><span class="p">,</span> <span class="n">meldung</span> <span class="o">=</span> <span class="n">ist_passwort_sicher</span><span class="p">(</span><span class="n">pw</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">pw</span><span class="si">}</span><span class="s2">&#39;: </span><span class="si">{</span><span class="n">meldung</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="c1"># Ausgabe:</span>
-<span class="c1"># &#39;test&#39;: Passwort zu kurz (mindestens 8 Zeichen)</span>
-<span class="c1"># &#39;Test1234&#39;: Passwort ist sicher</span>
-<span class="c1"># &#39;password&#39;: Passwort muss eine Ziffer enthalten</span>
-<span class="c1"># &#39;Sicher123&#39;: Passwort ist sicher</span>
-</pre></div>
-</div>
-</section>
 </section>
 <section id="zusammenfassung">
 <h2>Zusammenfassung<a class="headerlink" href="#zusammenfassung" title="Permalink to this heading">#</a></h2>
@@ -1014,7 +968,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#praktische-beispiele">Praktische Beispiele</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-1-bmi-rechner-mit-funktionen">Beispiel 1: BMI-Rechner mit Funktionen</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-2-notenverwaltung">Beispiel 2: Notenverwaltung</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-3-einfacher-passwort-validator">Beispiel 3: Einfacher Passwort-Validator</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung">Zusammenfassung</a></li>

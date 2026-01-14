@@ -66,6 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/08_dateioperationen';</script>
     <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
     <link rel="search" title="Suche" href="../search.html" />
+    <link rel="next" title="Anhang" href="09_anhang.html" />
     <link rel="prev" title="Python Standard Library" href="07_standard_library.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="de"/>
@@ -176,6 +177,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="06_funktionen.html">Funktionen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="07_standard_library.html">Python Standard Library</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Dateioperationen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_anhang.html">Anhang</a></li>
 </ul>
 
     </div>
@@ -346,14 +348,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#praktisches-beispiel-csv-statistik">Praktisches Beispiel: CSV-Statistik</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#praktische-beispiele">Praktische Beispiele</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-1-logbuch-system">Beispiel 1: Logbuch-System</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-2-kontaktliste">Beispiel 2: Kontaktliste</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-3-datei-verschlusselung-caesar-chiffre">Beispiel 3: Datei-Verschlüsselung (Caesar-Chiffre)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-4-datei-statistik">Beispiel 4: Datei-Statistik</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-5-todo-liste-mit-datei-speicherung">Beispiel 5: Todo-Liste mit Datei-Speicherung</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#praktisches-beispiel-einfaches-logbuch-system">Praktisches Beispiel: Einfaches Logbuch-System</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung">Zusammenfassung</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ausblick">Ausblick</a></li>
 </ul>
@@ -649,10 +644,9 @@ document.write(`
 </div>
 </section>
 </section>
-<section id="praktische-beispiele">
-<h2>Praktische Beispiele<a class="headerlink" href="#praktische-beispiele" title="Permalink to this heading">#</a></h2>
-<section id="beispiel-1-logbuch-system">
-<h3>Beispiel 1: Logbuch-System<a class="headerlink" href="#beispiel-1-logbuch-system" title="Permalink to this heading">#</a></h3>
+<section id="praktisches-beispiel-einfaches-logbuch-system">
+<h2>Praktisches Beispiel: Einfaches Logbuch-System<a class="headerlink" href="#praktisches-beispiel-einfaches-logbuch-system" title="Permalink to this heading">#</a></h2>
+<p>Ein kompaktes Beispiel für ein Logbuch mit verschiedenen Log-Levels:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">Logbuch</span><span class="p">:</span>
@@ -703,246 +697,6 @@ document.write(`
 <span class="n">log</span><span class="o">.</span><span class="n">anzeigen</span><span class="p">()</span>
 </pre></div>
 </div>
-</section>
-<section id="beispiel-2-kontaktliste">
-<h3>Beispiel 2: Kontaktliste<a class="headerlink" href="#beispiel-2-kontaktliste" title="Permalink to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">Kontaktliste</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Einfache Kontaktverwaltung mit CSV.&quot;&quot;&quot;</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dateiname</span><span class="o">=</span><span class="s2">&quot;kontakte.csv&quot;</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dateiname</span> <span class="o">=</span> <span class="n">dateiname</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">feldnamen</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="s2">&quot;Telefon&quot;</span><span class="p">,</span> <span class="s2">&quot;Email&quot;</span><span class="p">,</span> <span class="s2">&quot;Stadt&quot;</span><span class="p">]</span>
-
-        <span class="c1"># Datei erstellen, falls nicht vorhanden:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">Path</span><span class="p">(</span><span class="n">dateiname</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_erstelle_datei</span><span class="p">()</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">_erstelle_datei</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Erstellt eine leere CSV-Datei mit Header.&quot;&quot;&quot;</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dateiname</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">datei</span><span class="p">:</span>
-            <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictWriter</span><span class="p">(</span><span class="n">datei</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">feldnamen</span><span class="p">)</span>
-            <span class="n">writer</span><span class="o">.</span><span class="n">writeheader</span><span class="p">()</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">kontakt_hinzufuegen</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">telefon</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">stadt</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fügt einen neuen Kontakt hinzu.&quot;&quot;&quot;</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dateiname</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">datei</span><span class="p">:</span>
-            <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictWriter</span><span class="p">(</span><span class="n">datei</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">feldnamen</span><span class="p">)</span>
-            <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">({</span>
-                <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
-                <span class="s2">&quot;Telefon&quot;</span><span class="p">:</span> <span class="n">telefon</span><span class="p">,</span>
-                <span class="s2">&quot;Email&quot;</span><span class="p">:</span> <span class="n">email</span><span class="p">,</span>
-                <span class="s2">&quot;Stadt&quot;</span><span class="p">:</span> <span class="n">stadt</span>
-            <span class="p">})</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Kontakt &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; hinzugefügt.&quot;</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">alle_kontakte</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Zeigt alle Kontakte an.&quot;&quot;&quot;</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dateiname</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">datei</span><span class="p">:</span>
-            <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">datei</span><span class="p">)</span>
-
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Alle Kontakte ===&quot;</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">kontakt</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">reader</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
-                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">kontakt</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Telefon: </span><span class="si">{</span><span class="n">kontakt</span><span class="p">[</span><span class="s1">&#39;Telefon&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Email: </span><span class="si">{</span><span class="n">kontakt</span><span class="p">[</span><span class="s1">&#39;Email&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Stadt: </span><span class="si">{</span><span class="n">kontakt</span><span class="p">[</span><span class="s1">&#39;Stadt&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">suche</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">suchbegriff</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sucht Kontakte nach Name oder Stadt.&quot;&quot;&quot;</span>
-        <span class="n">gefunden</span> <span class="o">=</span> <span class="p">[]</span>
-
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dateiname</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">datei</span><span class="p">:</span>
-            <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">datei</span><span class="p">)</span>
-
-            <span class="k">for</span> <span class="n">kontakt</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
-                <span class="k">if</span> <span class="p">(</span><span class="n">suchbegriff</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">kontakt</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">or</span>
-                    <span class="n">suchbegriff</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">kontakt</span><span class="p">[</span><span class="s2">&quot;Stadt&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()):</span>
-                    <span class="n">gefunden</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kontakt</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">gefunden</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">gefunden</span><span class="p">)</span><span class="si">}</span><span class="s2"> Kontakt(e) gefunden ===&quot;</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">kontakt</span> <span class="ow">in</span> <span class="n">gefunden</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">kontakt</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">kontakt</span><span class="p">[</span><span class="s1">&#39;Stadt&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
-                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Telefon: </span><span class="si">{</span><span class="n">kontakt</span><span class="p">[</span><span class="s1">&#39;Telefon&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">, Email: </span><span class="si">{</span><span class="n">kontakt</span><span class="p">[</span><span class="s1">&#39;Email&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Keine Kontakte gefunden.&quot;</span><span class="p">)</span>
-
-<span class="c1"># Verwendung:</span>
-<span class="n">kontakte</span> <span class="o">=</span> <span class="n">Kontaktliste</span><span class="p">()</span>
-<span class="n">kontakte</span><span class="o">.</span><span class="n">kontakt_hinzufuegen</span><span class="p">(</span><span class="s2">&quot;Anna Müller&quot;</span><span class="p">,</span> <span class="s2">&quot;030-12345&quot;</span><span class="p">,</span> <span class="s2">&quot;anna@example.com&quot;</span><span class="p">,</span> <span class="s2">&quot;Berlin&quot;</span><span class="p">)</span>
-<span class="n">kontakte</span><span class="o">.</span><span class="n">kontakt_hinzufuegen</span><span class="p">(</span><span class="s2">&quot;Max Schmidt&quot;</span><span class="p">,</span> <span class="s2">&quot;089-67890&quot;</span><span class="p">,</span> <span class="s2">&quot;max@example.com&quot;</span><span class="p">,</span> <span class="s2">&quot;München&quot;</span><span class="p">)</span>
-<span class="n">kontakte</span><span class="o">.</span><span class="n">alle_kontakte</span><span class="p">()</span>
-<span class="n">kontakte</span><span class="o">.</span><span class="n">suche</span><span class="p">(</span><span class="s2">&quot;Berlin&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<section id="beispiel-3-datei-verschlusselung-caesar-chiffre">
-<h3>Beispiel 3: Datei-Verschlüsselung (Caesar-Chiffre)<a class="headerlink" href="#beispiel-3-datei-verschlusselung-caesar-chiffre" title="Permalink to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">caesar_verschluesseln</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">verschiebung</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Verschlüsselt Text mit Caesar-Chiffre.&quot;&quot;&quot;</span>
-    <span class="n">ergebnis</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="k">for</span> <span class="n">zeichen</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">zeichen</span><span class="o">.</span><span class="n">isalpha</span><span class="p">():</span>
-            <span class="c1"># ASCII-Wert verschieben:</span>
-            <span class="n">basis</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">zeichen</span><span class="o">.</span><span class="n">isupper</span><span class="p">()</span> <span class="k">else</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
-            <span class="n">verschoben</span> <span class="o">=</span> <span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">zeichen</span><span class="p">)</span> <span class="o">-</span> <span class="n">basis</span> <span class="o">+</span> <span class="n">verschiebung</span><span class="p">)</span> <span class="o">%</span> <span class="mi">26</span>
-            <span class="n">ergebnis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">basis</span> <span class="o">+</span> <span class="n">verschoben</span><span class="p">))</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="c1"># Nicht-Buchstaben unverändert lassen:</span>
-            <span class="n">ergebnis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">zeichen</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ergebnis</span><span class="p">)</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">caesar_entschluesseln</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">verschiebung</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Entschlüsselt Text mit Caesar-Chiffre.&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">caesar_verschluesseln</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="o">-</span><span class="n">verschiebung</span><span class="p">)</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">datei_verschluesseln</span><span class="p">(</span><span class="n">eingabe</span><span class="p">,</span> <span class="n">ausgabe</span><span class="p">,</span> <span class="n">verschiebung</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Verschlüsselt eine Datei.&quot;&quot;&quot;</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">eingabe</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">quelle</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="n">ausgabe</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ziel</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">zeile</span> <span class="ow">in</span> <span class="n">quelle</span><span class="p">:</span>
-            <span class="n">verschluesselt</span> <span class="o">=</span> <span class="n">caesar_verschluesseln</span><span class="p">(</span><span class="n">zeile</span><span class="p">,</span> <span class="n">verschiebung</span><span class="p">)</span>
-            <span class="n">ziel</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">verschluesselt</span><span class="p">)</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Datei verschlüsselt: </span><span class="si">{</span><span class="n">ausgabe</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">datei_entschluesseln</span><span class="p">(</span><span class="n">eingabe</span><span class="p">,</span> <span class="n">ausgabe</span><span class="p">,</span> <span class="n">verschiebung</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Entschlüsselt eine Datei.&quot;&quot;&quot;</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">eingabe</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">quelle</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="n">ausgabe</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ziel</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">zeile</span> <span class="ow">in</span> <span class="n">quelle</span><span class="p">:</span>
-            <span class="n">entschluesselt</span> <span class="o">=</span> <span class="n">caesar_entschluesseln</span><span class="p">(</span><span class="n">zeile</span><span class="p">,</span> <span class="n">verschiebung</span><span class="p">)</span>
-            <span class="n">ziel</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">entschluesselt</span><span class="p">)</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Datei entschlüsselt: </span><span class="si">{</span><span class="n">ausgabe</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="c1"># Test:</span>
-<span class="n">original</span> <span class="o">=</span> <span class="s2">&quot;Hallo Welt! Dies ist ein geheimer Text.&quot;</span>
-<span class="n">verschluesselt</span> <span class="o">=</span> <span class="n">caesar_verschluesseln</span><span class="p">(</span><span class="n">original</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Original: </span><span class="si">{</span><span class="n">original</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Verschlüsselt: </span><span class="si">{</span><span class="n">verschluesselt</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Entschlüsselt: </span><span class="si">{</span><span class="n">caesar_entschluesseln</span><span class="p">(</span><span class="n">verschluesselt</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="c1"># Dateien verschlüsseln:</span>
-<span class="c1"># datei_verschluesseln(&quot;geheim.txt&quot;, &quot;verschluesselt.txt&quot;, 5)</span>
-<span class="c1"># datei_entschluesseln(&quot;verschluesselt.txt&quot;, &quot;wiederhergestellt.txt&quot;, 5)</span>
-</pre></div>
-</div>
-</section>
-<section id="beispiel-4-datei-statistik">
-<h3>Beispiel 4: Datei-Statistik<a class="headerlink" href="#beispiel-4-datei-statistik" title="Permalink to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">datei_statistik</span><span class="p">(</span><span class="n">dateiname</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Erstellt eine Statistik über eine Textdatei.&quot;&quot;&quot;</span>
-    <span class="n">pfad</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">dateiname</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">pfad</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Datei &#39;</span><span class="si">{</span><span class="n">dateiname</span><span class="si">}</span><span class="s2">&#39; nicht gefunden!&quot;</span><span class="p">)</span>
-        <span class="k">return</span>
-
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">dateiname</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">datei</span><span class="p">:</span>
-        <span class="n">inhalt</span> <span class="o">=</span> <span class="n">datei</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-        <span class="n">zeilen</span> <span class="o">=</span> <span class="n">inhalt</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="n">woerter</span> <span class="o">=</span> <span class="n">inhalt</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-        <span class="n">zeichen</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">inhalt</span><span class="p">)</span>
-
-    <span class="c1"># Weitere Statistiken:</span>
-    <span class="n">zeichen_ohne_leerzeichen</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">inhalt</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
-    <span class="n">durchschnitt_woerter_pro_zeile</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">woerter</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">zeilen</span><span class="p">)</span> <span class="k">if</span> <span class="n">zeilen</span> <span class="k">else</span> <span class="mi">0</span>
-
-    <span class="c1"># Ausgabe:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;=== Dateistatistik: </span><span class="si">{</span><span class="n">dateiname</span><span class="si">}</span><span class="s2"> ===&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dateigröße: </span><span class="si">{</span><span class="n">pfad</span><span class="o">.</span><span class="n">stat</span><span class="p">()</span><span class="o">.</span><span class="n">st_size</span><span class="si">}</span><span class="s2"> Bytes&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Zeilen: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">zeilen</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Wörter: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">woerter</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Zeichen (gesamt): </span><span class="si">{</span><span class="n">zeichen</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Zeichen (ohne Leerzeichen): </span><span class="si">{</span><span class="n">zeichen_ohne_leerzeichen</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Durchschnitt Wörter/Zeile: </span><span class="si">{</span><span class="n">durchschnitt_woerter_pro_zeile</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="c1"># Verwendung:</span>
-<span class="c1"># datei_statistik(&quot;beispiel.txt&quot;)</span>
-</pre></div>
-</div>
-</section>
-<section id="beispiel-5-todo-liste-mit-datei-speicherung">
-<h3>Beispiel 5: Todo-Liste mit Datei-Speicherung<a class="headerlink" href="#beispiel-5-todo-liste-mit-datei-speicherung" title="Permalink to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">TodoListe</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Einfache Todo-Liste mit JSON-Speicherung.&quot;&quot;&quot;</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dateiname</span><span class="o">=</span><span class="s2">&quot;todos.json&quot;</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dateiname</span> <span class="o">=</span> <span class="n">dateiname</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">todos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_laden</span><span class="p">()</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">_laden</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Lädt Todos aus Datei.&quot;&quot;&quot;</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dateiname</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">datei</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">datei</span><span class="p">)</span>
-        <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">[]</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">_speichern</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Speichert Todos in Datei.&quot;&quot;&quot;</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dateiname</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">datei</span><span class="p">:</span>
-            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">todos</span><span class="p">,</span> <span class="n">datei</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">hinzufuegen</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aufgabe</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fügt eine neue Aufgabe hinzu.&quot;&quot;&quot;</span>
-        <span class="n">todo</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">todos</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
-            <span class="s2">&quot;aufgabe&quot;</span><span class="p">:</span> <span class="n">aufgabe</span><span class="p">,</span>
-            <span class="s2">&quot;erledigt&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-            <span class="s2">&quot;erstellt&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M:%S&quot;</span><span class="p">)</span>
-        <span class="p">}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">todos</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">todo</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_speichern</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Aufgabe hinzugefügt: </span><span class="si">{</span><span class="n">aufgabe</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">anzeigen</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Zeigt alle Todos an.&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">todos</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Keine Aufgaben vorhanden.&quot;</span><span class="p">)</span>
-            <span class="k">return</span>
-
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Todo-Liste ===&quot;</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">todo</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">todos</span><span class="p">:</span>
-            <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;✓&quot;</span> <span class="k">if</span> <span class="n">todo</span><span class="p">[</span><span class="s2">&quot;erledigt&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="s2">&quot;○&quot;</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">todo</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">todo</span><span class="p">[</span><span class="s1">&#39;aufgabe&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">erledigen</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">todo_id</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Markiert eine Aufgabe als erledigt.&quot;&quot;&quot;</span>
-        <span class="k">for</span> <span class="n">todo</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">todos</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">todo</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">todo_id</span><span class="p">:</span>
-                <span class="n">todo</span><span class="p">[</span><span class="s2">&quot;erledigt&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_speichern</span><span class="p">()</span>
-                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Aufgabe </span><span class="si">{</span><span class="n">todo_id</span><span class="si">}</span><span class="s2"> erledigt!&quot;</span><span class="p">)</span>
-                <span class="k">return</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Aufgabe </span><span class="si">{</span><span class="n">todo_id</span><span class="si">}</span><span class="s2"> nicht gefunden.&quot;</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">loeschen</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">todo_id</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Löscht eine Aufgabe.&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">todos</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">todos</span> <span class="k">if</span> <span class="n">t</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">todo_id</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_speichern</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Aufgabe </span><span class="si">{</span><span class="n">todo_id</span><span class="si">}</span><span class="s2"> gelöscht.&quot;</span><span class="p">)</span>
-
-<span class="c1"># Verwendung:</span>
-<span class="n">todos</span> <span class="o">=</span> <span class="n">TodoListe</span><span class="p">()</span>
-<span class="n">todos</span><span class="o">.</span><span class="n">hinzufuegen</span><span class="p">(</span><span class="s2">&quot;Python lernen&quot;</span><span class="p">)</span>
-<span class="n">todos</span><span class="o">.</span><span class="n">hinzufuegen</span><span class="p">(</span><span class="s2">&quot;Einkaufen gehen&quot;</span><span class="p">)</span>
-<span class="n">todos</span><span class="o">.</span><span class="n">hinzufuegen</span><span class="p">(</span><span class="s2">&quot;Sport machen&quot;</span><span class="p">)</span>
-<span class="n">todos</span><span class="o">.</span><span class="n">anzeigen</span><span class="p">()</span>
-<span class="n">todos</span><span class="o">.</span><span class="n">erledigen</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">todos</span><span class="o">.</span><span class="n">anzeigen</span><span class="p">()</span>
-</pre></div>
-</div>
-</section>
 </section>
 <section id="zusammenfassung">
 <h2>Zusammenfassung<a class="headerlink" href="#zusammenfassung" title="Permalink to this heading">#</a></h2>
@@ -1018,6 +772,15 @@ document.write(`
         <p class="prev-next-title">Python Standard Library</p>
       </div>
     </a>
+    <a class="right-next"
+       href="09_anhang.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">weiter</p>
+        <p class="prev-next-title">Anhang</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1056,14 +819,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#praktisches-beispiel-csv-statistik">Praktisches Beispiel: CSV-Statistik</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#praktische-beispiele">Praktische Beispiele</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-1-logbuch-system">Beispiel 1: Logbuch-System</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-2-kontaktliste">Beispiel 2: Kontaktliste</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-3-datei-verschlusselung-caesar-chiffre">Beispiel 3: Datei-Verschlüsselung (Caesar-Chiffre)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-4-datei-statistik">Beispiel 4: Datei-Statistik</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-5-todo-liste-mit-datei-speicherung">Beispiel 5: Todo-Liste mit Datei-Speicherung</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#praktisches-beispiel-einfaches-logbuch-system">Praktisches Beispiel: Einfaches Logbuch-System</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung">Zusammenfassung</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ausblick">Ausblick</a></li>
 </ul>

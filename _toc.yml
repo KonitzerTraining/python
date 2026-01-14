@@ -18,3 +18,5 @@ chapters:
     title: Python Standard Library
   - file: chapters/08_dateioperationen
     title: Dateioperationen
+  - file: chapters/09_anhang
+    title: Anhang
