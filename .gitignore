@@ -1,0 +1,31 @@
+# Jupyter Book build outputs
+_build/
+__pycache__/
+*.pyc
+*.pyo
+
+# Python
+*.py[cod]
+*$py.class
+__pycache__/
+.Python
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Build artifacts
+*.pdf
+*.tex
+!python-grundlagen.pdf

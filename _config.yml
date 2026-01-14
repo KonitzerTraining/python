@@ -1,0 +1,66 @@
+# Jupyter Book Konfiguration
+title: Python Grundlagen
+author: Python Dokumentation
+logo: ""
+only_build_toc_files: true
+
+# Exclude patterns
+exclude_patterns:
+  - .git
+  - .git/*
+  - _build
+  - _build/*
+  - .jupyterbook-ignore
+  - requirements.txt
+  - README.md
+
+# Force re-execution of notebooks on each build
+execute:
+  execute_notebooks: cache
+  timeout: 60
+
+# Add a bibtex file for citations
+bibtex_bibfiles: []
+
+# Information about where the book exists on the web
+repository:
+  url: https://github.com/KonitzerTraining/python
+  branch: main
+
+# Add GitHub buttons to your book
+html:
+  use_issues_button: false
+  use_repository_button: false
+  use_edit_page_button: false
+  extra_footer: ""
+  home_page_in_navbar: true
+  baseurl: ""
+
+# Configure LaTeX for PDF output
+latex:
+  latex_engine: pdflatex
+  latex_documents:
+    targetname: python-grundlagen.tex
+
+# Parse and render settings
+parse:
+  myst_enable_extensions:
+    - colon_fence
+    - deflist
+    - dollarmath
+    - html_image
+    - linkify
+    - replacements
+    - smartquotes
+    - substitution
+
+sphinx:
+  config:
+    language: de
+    latex_elements:
+      papersize: a4paper
+      pointsize: 11pt
+      preamble: |
+        \usepackage[utf8]{inputenc}
+        \usepackage[T1]{fontenc}
+        \usepackage[ngerman]{babel}

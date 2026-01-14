@@ -1,0 +1,20 @@
+# Table of Contents
+format: jb-book
+root: intro
+chapters:
+  - file: chapters/01_grundlagen
+    title: Python-Grundlagen
+  - file: chapters/02_input_output
+    title: Input/Output und Typumwandlung
+  - file: chapters/03_verzweigungen
+    title: Verzweigungen und Bedingungen
+  - file: chapters/04_schleifen
+    title: Schleifen
+  - file: chapters/05_datenstrukturen
+    title: Datenstrukturen
+  - file: chapters/06_funktionen
+    title: Funktionen
+  - file: chapters/07_standard_library
+    title: Python Standard Library
+  - file: chapters/08_dateioperationen
+    title: Dateioperationen
