@@ -1,5 +1,9 @@
-# Jupyter Book build outputs
-_build/
+# Jupyter Book build outputs - nur temporäre Dateien ausschließen, HTML behalten
+_build/.jupyter_cache/
+_build/logs/
+_build/.doctrees/
+_build/latex/
+_build/jupyter_execute/
 __pycache__/
 *.pyc
 *.pyo

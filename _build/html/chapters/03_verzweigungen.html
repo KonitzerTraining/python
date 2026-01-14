@@ -1,0 +1,929 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="de" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Verzweigungen und Bedingungen &#8212; Python Grundlagen</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/03_verzweigungen';</script>
+    <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
+    <link rel="search" title="Suche" href="../search.html" />
+    <link rel="next" title="Schleifen" href="04_schleifen.html" />
+    <link rel="prev" title="Input/Output und Typumwandlung" href="02_input_output.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="de"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Python Grundlagen</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Python Grundlagen Dokumentation
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_grundlagen.html">Python-Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_input_output.html">Input/Output und Typumwandlung</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Verzweigungen und Bedingungen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_schleifen.html">Schleifen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_datenstrukturen.html">Datenstrukturen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_funktionen.html">Funktionen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_standard_library.html">Python Standard Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_dateioperationen.html">Dateioperationen</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Laden Sie diese Seite herunter">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapters/03_verzweigungen.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Quelldatei herunterladen"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="In PDF drucken"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Vollbildmodus"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Verzweigungen und Bedingungen</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Inhalt </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-elif-else">if, elif, else</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#die-if-anweisung">Die if-Anweisung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-else">if-else</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">if-elif-else</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verschachtelte-if-anweisungen">Verschachtelte if-Anweisungen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vergleichsoperatoren-und-bedingungen">Vergleichsoperatoren und Bedingungen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#die-wichtigsten-vergleichsoperatoren">Die wichtigsten Vergleichsoperatoren</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vergleiche-mit-strings">Vergleiche mit Strings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mitgliedschaft-prufen-in-not-in">Mitgliedschaft prüfen (in, not in)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-einruckung-in-python">Code-Einrückung in Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#richtige-einruckung">Richtige Einrückung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#falsche-einruckung-fuhrt-zu-fehlern">Falsche Einrückung führt zu Fehlern</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#empfehlung-4-leerzeichen">Empfehlung: 4 Leerzeichen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logische-operatoren-and-or-not">Logische Operatoren (and, or, not)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#der-and-operator">Der and-Operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#der-or-operator">Der or-Operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#der-not-operator">Der not-Operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#komplexe-bedingungen">Komplexe Bedingungen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verschachtelte-bedingungen">Verschachtelte Bedingungen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mehrfach-verschachtelte-if-anweisungen">Mehrfach verschachtelte if-Anweisungen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vereinfachung-mit-logischen-operatoren">Vereinfachung mit logischen Operatoren</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#praktisches-beispiel-ticketpreis-berechnen">Praktisches Beispiel: Ticketpreis berechnen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung">Zusammenfassung</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="verzweigungen-und-bedingungen">
+<h1>Verzweigungen und Bedingungen<a class="headerlink" href="#verzweigungen-und-bedingungen" title="Permalink to this heading">#</a></h1>
+<p>Verzweigungen ermöglichen es Ihrem Programm, Entscheidungen zu treffen und unterschiedliche Code-Pfade basierend auf Bedingungen auszuführen.</p>
+<section id="if-elif-else">
+<h2>if, elif, else<a class="headerlink" href="#if-elif-else" title="Permalink to this heading">#</a></h2>
+<p>Die grundlegenden Kontrollstrukturen für Verzweigungen in Python sind <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">elif</span></code> (else if) und <code class="docutils literal notranslate"><span class="pre">else</span></code>.</p>
+<section id="die-if-anweisung">
+<h3>Die if-Anweisung<a class="headerlink" href="#die-if-anweisung" title="Permalink to this heading">#</a></h3>
+<p>Eine <code class="docutils literal notranslate"><span class="pre">if</span></code>-Anweisung führt Code nur aus, wenn eine Bedingung wahr (True) ist:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span> <span class="o">=</span> <span class="mi">18</span>
+
+<span class="k">if</span> <span class="n">alter</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sie sind volljährig.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sie dürfen wählen.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Ausgabe: Sie sind volljährig.</span>
+<span class="c1">#          Sie dürfen wählen.</span>
+</pre></div>
+</div>
+<p><strong>Wichtig:</strong> In Python wird die Einrückung verwendet, um Code-Blöcke zu definieren. Der eingerückte Code gehört zur if-Anweisung.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">temperatur</span> <span class="o">=</span> <span class="mi">25</span>
+
+<span class="k">if</span> <span class="n">temperatur</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Es ist warm draußen.&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dieser Code wird immer ausgeführt.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="if-else">
+<h3>if-else<a class="headerlink" href="#if-else" title="Permalink to this heading">#</a></h3>
+<p>Mit <code class="docutils literal notranslate"><span class="pre">else</span></code> definieren Sie einen alternativen Code-Pfad, der ausgeführt wird, wenn die Bedingung falsch ist:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span> <span class="o">=</span> <span class="mi">16</span>
+
+<span class="k">if</span> <span class="n">alter</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sie sind volljährig.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sie sind noch minderjährig.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Ausgabe: Sie sind noch minderjährig.</span>
+</pre></div>
+</div>
+<p>Praktisches Beispiel:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">temperatur</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Temperatur in °C: &quot;</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="n">temperatur</span> <span class="o">&gt;=</span> <span class="mi">25</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Es ist warm, tragen Sie leichte Kleidung.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Es ist kühl, nehmen Sie eine Jacke mit.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3>if-elif-else<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>Für mehrere Bedingungen verwenden Sie <code class="docutils literal notranslate"><span class="pre">elif</span></code> (else if):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">note</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="k">if</span> <span class="n">note</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sehr gut!&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">note</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gut!&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">note</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Befriedigend.&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">note</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ausreichend.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nicht bestanden.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Ausgabe: Gut!</span>
+</pre></div>
+</div>
+<p><strong>Mehrere Bedingungsbereiche:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">punkte</span> <span class="o">=</span> <span class="mi">85</span>
+
+<span class="k">if</span> <span class="n">punkte</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">:</span>
+    <span class="n">note</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">elif</span> <span class="n">punkte</span> <span class="o">&gt;=</span> <span class="mi">80</span><span class="p">:</span>
+    <span class="n">note</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="k">elif</span> <span class="n">punkte</span> <span class="o">&gt;=</span> <span class="mi">70</span><span class="p">:</span>
+    <span class="n">note</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="k">elif</span> <span class="n">punkte</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span>
+    <span class="n">note</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">note</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sie haben </span><span class="si">{</span><span class="n">punkte</span><span class="si">}</span><span class="s2"> Punkte erreicht: Note </span><span class="si">{</span><span class="n">note</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># Ausgabe: Sie haben 85 Punkte erreicht: Note 2</span>
+</pre></div>
+</div>
+</section>
+<section id="verschachtelte-if-anweisungen">
+<h3>Verschachtelte if-Anweisungen<a class="headerlink" href="#verschachtelte-if-anweisungen" title="Permalink to this heading">#</a></h3>
+<p>Sie können if-Anweisungen ineinander verschachteln:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">fuehrerschein</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="k">if</span> <span class="n">alter</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sie sind volljährig.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">fuehrerschein</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sie dürfen Auto fahren.&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sie benötigen einen Führerschein.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sie sind zu jung zum Autofahren.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="vergleichsoperatoren-und-bedingungen">
+<h2>Vergleichsoperatoren und Bedingungen<a class="headerlink" href="#vergleichsoperatoren-und-bedingungen" title="Permalink to this heading">#</a></h2>
+<p>Vergleichsoperatoren werden verwendet, um Werte zu vergleichen und Bedingungen zu formulieren.</p>
+<section id="die-wichtigsten-vergleichsoperatoren">
+<h3>Die wichtigsten Vergleichsoperatoren<a class="headerlink" href="#die-wichtigsten-vergleichsoperatoren" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="c1"># Gleichheit</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">)</span>   <span class="c1"># False (ist a gleich b?)</span>
+
+<span class="c1"># Ungleichheit</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">!=</span> <span class="n">b</span><span class="p">)</span>   <span class="c1"># True (ist a ungleich b?)</span>
+
+<span class="c1"># Größer als</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">)</span>    <span class="c1"># False (ist a größer als b?)</span>
+
+<span class="c1"># Kleiner als</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">)</span>    <span class="c1"># True (ist a kleiner als b?)</span>
+
+<span class="c1"># Größer oder gleich</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># True (ist a größer oder gleich 10?)</span>
+
+<span class="c1"># Kleiner oder gleich</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">)</span>  <span class="c1"># True (ist b kleiner oder gleich 20?)</span>
+</pre></div>
+</div>
+</section>
+<section id="vergleiche-mit-strings">
+<h3>Vergleiche mit Strings<a class="headerlink" href="#vergleiche-mit-strings" title="Permalink to this heading">#</a></h3>
+<p>Strings können ebenfalls verglichen werden:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Anna&quot;</span>
+
+<span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;Anna&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hallo Anna!&quot;</span><span class="p">)</span>
+
+<span class="c1"># Alphabetische Sortierung:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;apple&quot;</span> <span class="o">&lt;</span> <span class="s2">&quot;banana&quot;</span><span class="p">)</span>  <span class="c1"># True (a kommt vor b)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Anna&quot;</span> <span class="o">&lt;</span> <span class="s2">&quot;anna&quot;</span><span class="p">)</span>     <span class="c1"># True (Großbuchstaben vor Kleinbuchstaben)</span>
+
+<span class="c1"># Groß-/Kleinschreibung ignorieren:</span>
+<span class="n">eingabe</span> <span class="o">=</span> <span class="s2">&quot;PYTHON&quot;</span>
+<span class="k">if</span> <span class="n">eingabe</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;python&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Richtig!&quot;</span><span class="p">)</span>  <span class="c1"># Ausgabe: Richtig!</span>
+</pre></div>
+</div>
+</section>
+<section id="mitgliedschaft-prufen-in-not-in">
+<h3>Mitgliedschaft prüfen (in, not in)<a class="headerlink" href="#mitgliedschaft-prufen-in-not-in" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Python ist großartig&quot;</span>
+
+<span class="k">if</span> <span class="s2">&quot;Python&quot;</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Python wurde gefunden!&quot;</span><span class="p">)</span>  <span class="c1"># Ausgabe: Python wurde gefunden!</span>
+
+<span class="k">if</span> <span class="s2">&quot;Java&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Java wurde nicht gefunden!&quot;</span><span class="p">)</span>  <span class="c1"># Ausgabe: Java wurde nicht gefunden!</span>
+
+<span class="c1"># Mit Listen:</span>
+<span class="n">zahlen</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+<span class="k">if</span> <span class="mi">3</span> <span class="ow">in</span> <span class="n">zahlen</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;3 ist in der Liste&quot;</span><span class="p">)</span>  <span class="c1"># Ausgabe: 3 ist in der Liste</span>
+
+<span class="k">if</span> <span class="mi">10</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">zahlen</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;10 ist nicht in der Liste&quot;</span><span class="p">)</span>  <span class="c1"># Ausgabe: 10 ist nicht in der Liste</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="code-einruckung-in-python">
+<h2>Code-Einrückung in Python<a class="headerlink" href="#code-einruckung-in-python" title="Permalink to this heading">#</a></h2>
+<p>Python verwendet Einrückungen (Indentation), um Code-Blöcke zu definieren. Dies ist ein wichtiges Konzept!</p>
+<section id="richtige-einruckung">
+<h3>Richtige Einrückung<a class="headerlink" href="#richtige-einruckung" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span> <span class="o">=</span> <span class="mi">25</span>
+
+<span class="k">if</span> <span class="n">alter</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Volljährig&quot;</span><span class="p">)</span>          <span class="c1"># Gehört zu if</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Darf wählen&quot;</span><span class="p">)</span>         <span class="c1"># Gehört zu if</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Programm Ende&quot;</span><span class="p">)</span>           <span class="c1"># Gehört NICHT zu if</span>
+
+<span class="c1"># Ausgabe:</span>
+<span class="c1"># Volljährig</span>
+<span class="c1"># Darf wählen</span>
+<span class="c1"># Programm Ende</span>
+</pre></div>
+</div>
+</section>
+<section id="falsche-einruckung-fuhrt-zu-fehlern">
+<h3>Falsche Einrückung führt zu Fehlern<a class="headerlink" href="#falsche-einruckung-fuhrt-zu-fehlern" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fehler: Inkonsistente Einrückung</span>
+<span class="c1"># if alter &gt;= 18:</span>
+<span class="c1">#     print(&quot;Zeile 1&quot;)</span>
+<span class="c1">#       print(&quot;Zeile 2&quot;)  # Zu weit eingerückt!</span>
+
+<span class="c1"># Fehler: Fehlende Einrückung</span>
+<span class="c1"># if alter &gt;= 18:</span>
+<span class="c1"># print(&quot;Fehler&quot;)  # Muss eingerückt sein!</span>
+</pre></div>
+</div>
+</section>
+<section id="empfehlung-4-leerzeichen">
+<h3>Empfehlung: 4 Leerzeichen<a class="headerlink" href="#empfehlung-4-leerzeichen" title="Permalink to this heading">#</a></h3>
+<p>Der Python Style Guide (PEP 8) empfiehlt 4 Leerzeichen für jede Einrückungsebene:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ebene 1&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ebene 2&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ebene 3&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="logische-operatoren-and-or-not">
+<h2>Logische Operatoren (and, or, not)<a class="headerlink" href="#logische-operatoren-and-or-not" title="Permalink to this heading">#</a></h2>
+<p>Logische Operatoren ermöglichen es, mehrere Bedingungen zu kombinieren.</p>
+<section id="der-and-operator">
+<h3>Der and-Operator<a class="headerlink" href="#der-and-operator" title="Permalink to this heading">#</a></h3>
+<p>Beide Bedingungen müssen wahr sein:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">fuehrerschein</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="k">if</span> <span class="n">alter</span> <span class="o">&gt;=</span> <span class="mi">18</span> <span class="ow">and</span> <span class="n">fuehrerschein</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sie dürfen Auto fahren.&quot;</span><span class="p">)</span>
+<span class="c1"># Ausgabe: Sie dürfen Auto fahren.</span>
+
+<span class="c1"># Beispiel 2:</span>
+<span class="n">temperatur</span> <span class="o">=</span> <span class="mi">22</span>
+<span class="n">sonnig</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="k">if</span> <span class="n">temperatur</span> <span class="o">&gt;</span> <span class="mi">20</span> <span class="ow">and</span> <span class="n">sonnig</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Perfektes Wetter für einen Ausflug!&quot;</span><span class="p">)</span>
+<span class="c1"># Ausgabe: Perfektes Wetter für einen Ausflug!</span>
+</pre></div>
+</div>
+<p>Wahrheitstabelle für <code class="docutils literal notranslate"><span class="pre">and</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="kc">True</span> <span class="ow">and</span> <span class="kc">True</span><span class="p">)</span>    <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="kc">True</span> <span class="ow">and</span> <span class="kc">False</span><span class="p">)</span>   <span class="c1"># False</span>
+<span class="nb">print</span><span class="p">(</span><span class="kc">False</span> <span class="ow">and</span> <span class="kc">True</span><span class="p">)</span>   <span class="c1"># False</span>
+<span class="nb">print</span><span class="p">(</span><span class="kc">False</span> <span class="ow">and</span> <span class="kc">False</span><span class="p">)</span>  <span class="c1"># False</span>
+</pre></div>
+</div>
+</section>
+<section id="der-or-operator">
+<h3>Der or-Operator<a class="headerlink" href="#der-or-operator" title="Permalink to this heading">#</a></h3>
+<p>Mindestens eine Bedingung muss wahr sein:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tag</span> <span class="o">=</span> <span class="s2">&quot;Samstag&quot;</span>
+
+<span class="k">if</span> <span class="n">tag</span> <span class="o">==</span> <span class="s2">&quot;Samstag&quot;</span> <span class="ow">or</span> <span class="n">tag</span> <span class="o">==</span> <span class="s2">&quot;Sonntag&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Wochenende!&quot;</span><span class="p">)</span>
+<span class="c1"># Ausgabe: Wochenende!</span>
+
+<span class="c1"># Beispiel 2:</span>
+<span class="n">alter</span> <span class="o">=</span> <span class="mi">67</span>
+
+<span class="k">if</span> <span class="n">alter</span> <span class="o">&lt;</span> <span class="mi">18</span> <span class="ow">or</span> <span class="n">alter</span> <span class="o">&gt;=</span> <span class="mi">65</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ermäßigter Eintritt&quot;</span><span class="p">)</span>
+<span class="c1"># Ausgabe: Ermäßigter Eintritt</span>
+</pre></div>
+</div>
+<p>Wahrheitstabelle für <code class="docutils literal notranslate"><span class="pre">or</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="kc">True</span> <span class="ow">or</span> <span class="kc">True</span><span class="p">)</span>     <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="kc">True</span> <span class="ow">or</span> <span class="kc">False</span><span class="p">)</span>    <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="kc">False</span> <span class="ow">or</span> <span class="kc">True</span><span class="p">)</span>    <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="kc">False</span> <span class="ow">or</span> <span class="kc">False</span><span class="p">)</span>   <span class="c1"># False</span>
+</pre></div>
+</div>
+</section>
+<section id="der-not-operator">
+<h3>Der not-Operator<a class="headerlink" href="#der-not-operator" title="Permalink to this heading">#</a></h3>
+<p>Kehrt einen Wahrheitswert um:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">regen</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">regen</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kein Regen, gehen Sie spazieren!&quot;</span><span class="p">)</span>
+<span class="c1"># Ausgabe: Kein Regen, gehen Sie spazieren!</span>
+
+<span class="c1"># Beispiel 2:</span>
+<span class="n">ist_gesperrt</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">ist_gesperrt</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Zugang erlaubt&quot;</span><span class="p">)</span>
+<span class="c1"># Ausgabe: Zugang erlaubt</span>
+</pre></div>
+</div>
+<p>Wahrheitstabelle für <code class="docutils literal notranslate"><span class="pre">not</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="ow">not</span> <span class="kc">True</span><span class="p">)</span>   <span class="c1"># False</span>
+<span class="nb">print</span><span class="p">(</span><span class="ow">not</span> <span class="kc">False</span><span class="p">)</span>  <span class="c1"># True</span>
+</pre></div>
+</div>
+</section>
+<section id="komplexe-bedingungen">
+<h3>Komplexe Bedingungen<a class="headerlink" href="#komplexe-bedingungen" title="Permalink to this heading">#</a></h3>
+<p>Sie können mehrere logische Operatoren kombinieren:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">einkommen</span> <span class="o">=</span> <span class="mi">30000</span>
+<span class="n">kreditwuerdig</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="k">if</span> <span class="n">alter</span> <span class="o">&gt;=</span> <span class="mi">18</span> <span class="ow">and</span> <span class="n">einkommen</span> <span class="o">&gt;</span> <span class="mi">20000</span> <span class="ow">and</span> <span class="n">kreditwuerdig</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kreditantrag genehmigt&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kreditantrag abgelehnt&quot;</span><span class="p">)</span>
+<span class="c1"># Ausgabe: Kreditantrag genehmigt</span>
+
+<span class="c1"># Klammern für bessere Lesbarkeit:</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">15</span><span class="p">)</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bedingung erfüllt&quot;</span><span class="p">)</span>
+<span class="c1"># Ausgabe: Bedingung erfüllt</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="verschachtelte-bedingungen">
+<h2>Verschachtelte Bedingungen<a class="headerlink" href="#verschachtelte-bedingungen" title="Permalink to this heading">#</a></h2>
+<p>Manchmal müssen Entscheidungen von mehreren aufeinanderfolgenden Bedingungen abhängen.</p>
+<section id="mehrfach-verschachtelte-if-anweisungen">
+<h3>Mehrfach verschachtelte if-Anweisungen<a class="headerlink" href="#mehrfach-verschachtelte-if-anweisungen" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">benutzername</span> <span class="o">=</span> <span class="s2">&quot;admin&quot;</span>
+<span class="n">passwort</span> <span class="o">=</span> <span class="s2">&quot;geheim123&quot;</span>
+<span class="n">aktiv</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="k">if</span> <span class="n">benutzername</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">passwort</span> <span class="o">==</span> <span class="s2">&quot;geheim123&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">aktiv</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Login erfolgreich&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Account ist deaktiviert&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Falsches Passwort&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Benutzername nicht gefunden&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="vereinfachung-mit-logischen-operatoren">
+<h3>Vereinfachung mit logischen Operatoren<a class="headerlink" href="#vereinfachung-mit-logischen-operatoren" title="Permalink to this heading">#</a></h3>
+<p>Der obige Code kann vereinfacht werden:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">benutzername</span> <span class="o">=</span> <span class="s2">&quot;admin&quot;</span>
+<span class="n">passwort</span> <span class="o">=</span> <span class="s2">&quot;geheim123&quot;</span>
+<span class="n">aktiv</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="k">if</span> <span class="n">benutzername</span> <span class="o">==</span> <span class="s2">&quot;admin&quot;</span> <span class="ow">and</span> <span class="n">passwort</span> <span class="o">==</span> <span class="s2">&quot;geheim123&quot;</span> <span class="ow">and</span> <span class="n">aktiv</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Login erfolgreich&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">benutzername</span> <span class="o">!=</span> <span class="s2">&quot;admin&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Benutzername nicht gefunden&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">passwort</span> <span class="o">!=</span> <span class="s2">&quot;geheim123&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Falsches Passwort&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Account ist deaktiviert&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="praktisches-beispiel-ticketpreis-berechnen">
+<h3>Praktisches Beispiel: Ticketpreis berechnen<a class="headerlink" href="#praktisches-beispiel-ticketpreis-berechnen" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Ihr Alter: &quot;</span><span class="p">))</span>
+<span class="n">student</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Sind Sie Student? (ja/nein): &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;ja&quot;</span>
+<span class="n">wochentag</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Welcher Tag? (Mo-So): &quot;</span><span class="p">)</span>
+
+<span class="n">preis</span> <span class="o">=</span> <span class="mf">12.00</span>  <span class="c1"># Standardpreis</span>
+
+<span class="k">if</span> <span class="n">alter</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">:</span>
+    <span class="n">preis</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kinder unter 6: kostenlos&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">alter</span> <span class="o">&lt;</span> <span class="mi">18</span><span class="p">:</span>
+    <span class="n">preis</span> <span class="o">=</span> <span class="mf">8.00</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jugendliche: ermäßigt&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">alter</span> <span class="o">&gt;=</span> <span class="mi">65</span><span class="p">:</span>
+    <span class="n">preis</span> <span class="o">=</span> <span class="mf">9.00</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Senioren: ermäßigt&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">student</span><span class="p">:</span>
+    <span class="n">preis</span> <span class="o">=</span> <span class="mf">10.00</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Studenten: ermäßigt&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">wochentag</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Montag&quot;</span><span class="p">,</span> <span class="s2">&quot;Dienstag&quot;</span><span class="p">]:</span>
+    <span class="n">preis</span> <span class="o">=</span> <span class="n">preis</span> <span class="o">*</span> <span class="mf">0.8</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Wochentag-Rabatt: 20%&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Ihr Ticketpreis: </span><span class="si">{</span><span class="n">preis</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> Euro&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="zusammenfassung">
+<h2>Zusammenfassung<a class="headerlink" href="#zusammenfassung" title="Permalink to this heading">#</a></h2>
+<p>In diesem Kapitel haben Sie gelernt:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">elif</span></code> und <code class="docutils literal notranslate"><span class="pre">else</span></code> für Verzweigungen</p></li>
+<li><p>Vergleichsoperatoren: <code class="docutils literal notranslate"><span class="pre">==</span></code>, <code class="docutils literal notranslate"><span class="pre">!=</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p></li>
+<li><p>Die Bedeutung der Code-Einrückung in Python</p></li>
+<li><p>Logische Operatoren: <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code>, <code class="docutils literal notranslate"><span class="pre">not</span></code></p></li>
+<li><p>Verschachtelte Bedingungen und deren Vereinfachung</p></li>
+</ul>
+<p>Im nächsten Kapitel lernen Sie Schleifen kennen, um Code wiederholt auszuführen.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="02_input_output.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">zurück</p>
+        <p class="prev-next-title">Input/Output und Typumwandlung</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="04_schleifen.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">weiter</p>
+        <p class="prev-next-title">Schleifen</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhalt
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-elif-else">if, elif, else</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#die-if-anweisung">Die if-Anweisung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-else">if-else</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">if-elif-else</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verschachtelte-if-anweisungen">Verschachtelte if-Anweisungen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vergleichsoperatoren-und-bedingungen">Vergleichsoperatoren und Bedingungen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#die-wichtigsten-vergleichsoperatoren">Die wichtigsten Vergleichsoperatoren</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vergleiche-mit-strings">Vergleiche mit Strings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mitgliedschaft-prufen-in-not-in">Mitgliedschaft prüfen (in, not in)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-einruckung-in-python">Code-Einrückung in Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#richtige-einruckung">Richtige Einrückung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#falsche-einruckung-fuhrt-zu-fehlern">Falsche Einrückung führt zu Fehlern</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#empfehlung-4-leerzeichen">Empfehlung: 4 Leerzeichen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logische-operatoren-and-or-not">Logische Operatoren (and, or, not)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#der-and-operator">Der and-Operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#der-or-operator">Der or-Operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#der-not-operator">Der not-Operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#komplexe-bedingungen">Komplexe Bedingungen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verschachtelte-bedingungen">Verschachtelte Bedingungen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mehrfach-verschachtelte-if-anweisungen">Mehrfach verschachtelte if-Anweisungen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vereinfachung-mit-logischen-operatoren">Vereinfachung mit logischen Operatoren</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#praktisches-beispiel-ticketpreis-berechnen">Praktisches Beispiel: Ticketpreis berechnen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung">Zusammenfassung</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Durch Python Dokumentation
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

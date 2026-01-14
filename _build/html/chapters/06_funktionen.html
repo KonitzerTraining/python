@@ -1,0 +1,1075 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="de" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Funktionen &#8212; Python Grundlagen</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/06_funktionen';</script>
+    <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
+    <link rel="search" title="Suche" href="../search.html" />
+    <link rel="next" title="Python Standard Library" href="07_standard_library.html" />
+    <link rel="prev" title="Datenstrukturen" href="05_datenstrukturen.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="de"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Python Grundlagen</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Python Grundlagen Dokumentation
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_grundlagen.html">Python-Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_input_output.html">Input/Output und Typumwandlung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_verzweigungen.html">Verzweigungen und Bedingungen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_schleifen.html">Schleifen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_datenstrukturen.html">Datenstrukturen</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Funktionen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_standard_library.html">Python Standard Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_dateioperationen.html">Dateioperationen</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Laden Sie diese Seite herunter">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapters/06_funktionen.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Quelldatei herunterladen"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="In PDF drucken"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Vollbildmodus"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Funktionen</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Inhalt </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-sind-funktionen-und-warum-brauchen-wir-sie">Was sind Funktionen und warum brauchen wir sie?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vorteile-von-funktionen">Vorteile von Funktionen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vorteile-auf-einen-blick">Vorteile auf einen Blick</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-definieren-und-aufrufen">Funktionen definieren und aufrufen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#einfache-funktion-ohne-parameter">Einfache Funktion ohne Parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funktion-mit-einem-parameter">Funktion mit einem Parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funktion-mit-mehreren-parametern">Funktion mit mehreren Parametern</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funktion-mit-return-wert">Funktion mit return-Wert</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-und-ruckgabewerte">Parameter und Rückgabewerte</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positionsparameter">Positionsparameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schlusselwort-parameter-keyword-arguments">Schlüsselwort-Parameter (Keyword Arguments)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standardwerte-default-parameters">Standardwerte (Default Parameters)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mehrere-ruckgabewerte">Mehrere Rückgabewerte</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-ohne-ruckgabewert">Funktionen ohne Rückgabewert</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lokale-vs-globale-variablen">Lokale vs. globale Variablen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lokale-variablen">Lokale Variablen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#globale-variablen">Globale Variablen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lokale-variable-verdeckt-globale">Lokale Variable verdeckt globale</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#globale-variablen-andern-nicht-empfohlen">Globale Variablen ändern (nicht empfohlen)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practices-dry-prinzip-dont-repeat-yourself">Best Practices: DRY-Prinzip (Don’t Repeat Yourself)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schlechtes-beispiel-code-wiederholung">Schlechtes Beispiel (Code-Wiederholung)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gutes-beispiel-mit-funktion">Gutes Beispiel (mit Funktion)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-fur-komplexe-logik">Funktionen für komplexe Logik</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-zur-code-organisation">Funktionen zur Code-Organisation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#praktische-beispiele">Praktische Beispiele</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-1-bmi-rechner-mit-funktionen">Beispiel 1: BMI-Rechner mit Funktionen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-2-notenverwaltung">Beispiel 2: Notenverwaltung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-3-einfacher-passwort-validator">Beispiel 3: Einfacher Passwort-Validator</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung">Zusammenfassung</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="funktionen">
+<h1>Funktionen<a class="headerlink" href="#funktionen" title="Permalink to this heading">#</a></h1>
+<p>Funktionen sind wiederverwendbare Code-Blöcke, die eine bestimmte Aufgabe erfüllen. Sie machen Code übersichtlicher, wartbarer und vermeiden Wiederholungen.</p>
+<section id="was-sind-funktionen-und-warum-brauchen-wir-sie">
+<h2>Was sind Funktionen und warum brauchen wir sie?<a class="headerlink" href="#was-sind-funktionen-und-warum-brauchen-wir-sie" title="Permalink to this heading">#</a></h2>
+<p>Funktionen gruppieren zusammengehörigen Code unter einem Namen und ermöglichen es, diesen Code mehrfach aufzurufen, ohne ihn zu wiederholen.</p>
+<section id="vorteile-von-funktionen">
+<h3>Vorteile von Funktionen<a class="headerlink" href="#vorteile-von-funktionen" title="Permalink to this heading">#</a></h3>
+<p><strong>Ohne Funktionen (Code-Wiederholung):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Berechnung 1:</span>
+<span class="n">radius1</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">flaeche1</span> <span class="o">=</span> <span class="mf">3.14159</span> <span class="o">*</span> <span class="n">radius1</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fläche: </span><span class="si">{</span><span class="n">flaeche1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Berechnung 2:</span>
+<span class="n">radius2</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">flaeche2</span> <span class="o">=</span> <span class="mf">3.14159</span> <span class="o">*</span> <span class="n">radius2</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fläche: </span><span class="si">{</span><span class="n">flaeche2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Berechnung 3:</span>
+<span class="n">radius3</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">flaeche3</span> <span class="o">=</span> <span class="mf">3.14159</span> <span class="o">*</span> <span class="n">radius3</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fläche: </span><span class="si">{</span><span class="n">flaeche3</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Mit Funktion (DRY - Don’t Repeat Yourself):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">kreis_flaeche</span><span class="p">(</span><span class="n">radius</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Berechnet die Fläche eines Kreises.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mf">3.14159</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="c1"># Jetzt einfach mehrfach verwenden:</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fläche: </span><span class="si">{</span><span class="n">kreis_flaeche</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fläche: </span><span class="si">{</span><span class="n">kreis_flaeche</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fläche: </span><span class="si">{</span><span class="n">kreis_flaeche</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="vorteile-auf-einen-blick">
+<h3>Vorteile auf einen Blick<a class="headerlink" href="#vorteile-auf-einen-blick" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Wiederverwendbarkeit:</strong> Code einmal schreiben, mehrfach nutzen</p></li>
+<li><p><strong>Lesbarkeit:</strong> Aussagekräftige Namen dokumentieren, was der Code tut</p></li>
+<li><p><strong>Wartbarkeit:</strong> Änderungen nur an einer Stelle nötig</p></li>
+<li><p><strong>Testbarkeit:</strong> Funktionen können isoliert getestet werden</p></li>
+</ul>
+</section>
+</section>
+<section id="funktionen-definieren-und-aufrufen">
+<h2>Funktionen definieren und aufrufen<a class="headerlink" href="#funktionen-definieren-und-aufrufen" title="Permalink to this heading">#</a></h2>
+<p>Eine Funktion wird mit dem Schlüsselwort <code class="docutils literal notranslate"><span class="pre">def</span></code> definiert.</p>
+<section id="einfache-funktion-ohne-parameter">
+<h3>Einfache Funktion ohne Parameter<a class="headerlink" href="#einfache-funktion-ohne-parameter" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">begruessung</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gibt eine Begrüßung aus.&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hallo und willkommen!&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Schön, dass Sie da sind.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Funktion aufrufen:</span>
+<span class="n">begruessung</span><span class="p">()</span>
+<span class="c1"># Ausgabe:</span>
+<span class="c1"># Hallo und willkommen!</span>
+<span class="c1"># Schön, dass Sie da sind.</span>
+
+<span class="c1"># Funktion mehrfach aufrufen:</span>
+<span class="n">begruessung</span><span class="p">()</span>
+<span class="n">begruessung</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="funktion-mit-einem-parameter">
+<h3>Funktion mit einem Parameter<a class="headerlink" href="#funktion-mit-einem-parameter" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">begruesse</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Begrüßt eine Person mit ihrem Namen.&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hallo </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Schön, Sie zu sehen, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Funktionsaufrufe:</span>
+<span class="n">begruesse</span><span class="p">(</span><span class="s2">&quot;Anna&quot;</span><span class="p">)</span>
+<span class="n">begruesse</span><span class="p">(</span><span class="s2">&quot;Max&quot;</span><span class="p">)</span>
+<span class="n">begruesse</span><span class="p">(</span><span class="s2">&quot;Lisa&quot;</span><span class="p">)</span>
+
+<span class="c1"># Ausgabe:</span>
+<span class="c1"># Hallo Anna!</span>
+<span class="c1"># Schön, Sie zu sehen, Anna.</span>
+<span class="c1"># Hallo Max!</span>
+<span class="c1"># Schön, Sie zu sehen, Max.</span>
+<span class="c1"># ...</span>
+</pre></div>
+</div>
+</section>
+<section id="funktion-mit-mehreren-parametern">
+<h3>Funktion mit mehreren Parametern<a class="headerlink" href="#funktion-mit-mehreren-parametern" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">addiere</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Addiert zwei Zahlen und gibt das Ergebnis aus.&quot;&quot;&quot;</span>
+    <span class="n">summe</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">summe</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">addiere</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>      <span class="c1"># 5 + 3 = 8</span>
+<span class="n">addiere</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>    <span class="c1"># 10 + 20 = 30</span>
+<span class="n">addiere</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>     <span class="c1"># 7 + -2 = 5</span>
+</pre></div>
+</div>
+</section>
+<section id="funktion-mit-return-wert">
+<h3>Funktion mit return-Wert<a class="headerlink" href="#funktion-mit-return-wert" title="Permalink to this heading">#</a></h3>
+<p>Funktionen können Werte zurückgeben, die weiterverwendet werden können:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">multipliziere</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Multipliziert zwei Zahlen und gibt das Ergebnis zurück.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+
+<span class="c1"># Rückgabewert verwenden:</span>
+<span class="n">ergebnis</span> <span class="o">=</span> <span class="n">multipliziere</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ergebnis</span><span class="p">)</span>  <span class="c1"># 20</span>
+
+<span class="c1"># Direkt in Ausdrücken verwenden:</span>
+<span class="n">gesamt</span> <span class="o">=</span> <span class="n">multipliziere</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="n">multipliziere</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gesamt</span><span class="p">)</span>  <span class="c1"># 12 + 10 = 22</span>
+
+<span class="c1"># In Bedingungen verwenden:</span>
+<span class="k">if</span> <span class="n">multipliziere</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Größer als 5&quot;</span><span class="p">)</span>  <span class="c1"># Wird ausgegeben</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="parameter-und-ruckgabewerte">
+<h2>Parameter und Rückgabewerte<a class="headerlink" href="#parameter-und-ruckgabewerte" title="Permalink to this heading">#</a></h2>
+<p>Parameter ermöglichen es, Daten an Funktionen zu übergeben. Rückgabewerte ermöglichen es Funktionen, Ergebnisse zurückzugeben.</p>
+<section id="positionsparameter">
+<h3>Positionsparameter<a class="headerlink" href="#positionsparameter" title="Permalink to this heading">#</a></h3>
+<p>Die Reihenfolge der Argumente muss der Reihenfolge der Parameter entsprechen:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">vorstellen</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">alter</span><span class="p">,</span> <span class="n">stadt</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Stellt eine Person vor.&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ich bin </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">alter</span><span class="si">}</span><span class="s2"> Jahre alt und komme aus </span><span class="si">{</span><span class="n">stadt</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+<span class="n">vorstellen</span><span class="p">(</span><span class="s2">&quot;Anna&quot;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="s2">&quot;Berlin&quot;</span><span class="p">)</span>
+<span class="c1"># Ausgabe: Ich bin Anna, 25 Jahre alt und komme aus Berlin.</span>
+
+<span class="c1"># Falsche Reihenfolge führt zu falschem Ergebnis:</span>
+<span class="n">vorstellen</span><span class="p">(</span><span class="s2">&quot;Berlin&quot;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="s2">&quot;Anna&quot;</span><span class="p">)</span>
+<span class="c1"># Ausgabe: Ich bin Berlin, 25 Jahre alt und komme aus Anna.</span>
+</pre></div>
+</div>
+</section>
+<section id="schlusselwort-parameter-keyword-arguments">
+<h3>Schlüsselwort-Parameter (Keyword Arguments)<a class="headerlink" href="#schlusselwort-parameter-keyword-arguments" title="Permalink to this heading">#</a></h3>
+<p>Sie können Parameter explizit benennen:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">vorstellen</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">alter</span><span class="p">,</span> <span class="n">stadt</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ich bin </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">alter</span><span class="si">}</span><span class="s2"> Jahre alt und komme aus </span><span class="si">{</span><span class="n">stadt</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Mit Keyword Arguments (Reihenfolge egal):</span>
+<span class="n">vorstellen</span><span class="p">(</span><span class="n">alter</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Max&quot;</span><span class="p">,</span> <span class="n">stadt</span><span class="o">=</span><span class="s2">&quot;München&quot;</span><span class="p">)</span>
+<span class="n">vorstellen</span><span class="p">(</span><span class="n">stadt</span><span class="o">=</span><span class="s2">&quot;Hamburg&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Lisa&quot;</span><span class="p">,</span> <span class="n">alter</span><span class="o">=</span><span class="mi">28</span><span class="p">)</span>
+
+<span class="c1"># Mischung aus Positions- und Keyword-Argumenten:</span>
+<span class="n">vorstellen</span><span class="p">(</span><span class="s2">&quot;Tom&quot;</span><span class="p">,</span> <span class="n">stadt</span><span class="o">=</span><span class="s2">&quot;Köln&quot;</span><span class="p">,</span> <span class="n">alter</span><span class="o">=</span><span class="mi">35</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="standardwerte-default-parameters">
+<h3>Standardwerte (Default Parameters)<a class="headerlink" href="#standardwerte-default-parameters" title="Permalink to this heading">#</a></h3>
+<p>Parameter können Standardwerte haben:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">begruesse</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">gruß</span><span class="o">=</span><span class="s2">&quot;Hallo&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Begrüßt eine Person mit einem optionalen Gruß.&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">gruß</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+
+<span class="n">begruesse</span><span class="p">(</span><span class="s2">&quot;Anna&quot;</span><span class="p">)</span>                    <span class="c1"># Hallo, Anna!</span>
+<span class="n">begruesse</span><span class="p">(</span><span class="s2">&quot;Max&quot;</span><span class="p">,</span> <span class="s2">&quot;Guten Morgen&quot;</span><span class="p">)</span>     <span class="c1"># Guten Morgen, Max!</span>
+<span class="n">begruesse</span><span class="p">(</span><span class="s2">&quot;Lisa&quot;</span><span class="p">,</span> <span class="n">gruß</span><span class="o">=</span><span class="s2">&quot;Hi&quot;</span><span class="p">)</span>         <span class="c1"># Hi, Lisa!</span>
+</pre></div>
+</div>
+<p>Praktisches Beispiel:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">potenz</span><span class="p">(</span><span class="n">basis</span><span class="p">,</span> <span class="n">exponent</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Berechnet basis hoch exponent (Standard: Quadrat).&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">basis</span> <span class="o">**</span> <span class="n">exponent</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">potenz</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>       <span class="c1"># 25 (5²)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">potenz</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>    <span class="c1"># 125 (5³)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">potenz</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>   <span class="c1"># 1024 (2¹⁰)</span>
+</pre></div>
+</div>
+</section>
+<section id="mehrere-ruckgabewerte">
+<h3>Mehrere Rückgabewerte<a class="headerlink" href="#mehrere-ruckgabewerte" title="Permalink to this heading">#</a></h3>
+<p>Funktionen können mehrere Werte als Tuple zurückgeben:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">min_max</span><span class="p">(</span><span class="n">zahlen</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gibt das Minimum und Maximum einer Liste zurück.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">zahlen</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">zahlen</span><span class="p">)</span>
+
+<span class="c1"># Rückgabewerte entpacken:</span>
+<span class="n">minimum</span><span class="p">,</span> <span class="n">maximum</span> <span class="o">=</span> <span class="n">min_max</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Min: </span><span class="si">{</span><span class="n">minimum</span><span class="si">}</span><span class="s2">, Max: </span><span class="si">{</span><span class="n">maximum</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Min: 1, Max: 9</span>
+
+<span class="c1"># Oder als Tuple verwenden:</span>
+<span class="n">ergebnis</span> <span class="o">=</span> <span class="n">min_max</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ergebnis</span><span class="p">)</span>  <span class="c1"># (5, 20)</span>
+</pre></div>
+</div>
+<p>Weiteres Beispiel:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">kreisberechnung</span><span class="p">(</span><span class="n">radius</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Berechnet Umfang und Fläche eines Kreises.&quot;&quot;&quot;</span>
+    <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span>
+    <span class="n">umfang</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">radius</span>
+    <span class="n">flaeche</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">umfang</span><span class="p">,</span> <span class="n">flaeche</span>
+
+<span class="n">u</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="n">kreisberechnung</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Umfang: </span><span class="si">{</span><span class="n">u</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, Fläche: </span><span class="si">{</span><span class="n">f</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># Ausgabe: Umfang: 31.42, Fläche: 78.54</span>
+</pre></div>
+</div>
+</section>
+<section id="funktionen-ohne-ruckgabewert">
+<h3>Funktionen ohne Rückgabewert<a class="headerlink" href="#funktionen-ohne-ruckgabewert" title="Permalink to this heading">#</a></h3>
+<p>Funktionen ohne <code class="docutils literal notranslate"><span class="pre">return</span></code> geben implizit <code class="docutils literal notranslate"><span class="pre">None</span></code> zurück:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">ausgabe</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+<span class="n">ergebnis</span> <span class="o">=</span> <span class="n">ausgabe</span><span class="p">(</span><span class="s2">&quot;Hallo&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ergebnis</span><span class="p">)</span>  <span class="c1"># None</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="lokale-vs-globale-variablen">
+<h2>Lokale vs. globale Variablen<a class="headerlink" href="#lokale-vs-globale-variablen" title="Permalink to this heading">#</a></h2>
+<p>Variablen haben unterschiedliche Gültigkeitsbereiche (Scopes).</p>
+<section id="lokale-variablen">
+<h3>Lokale Variablen<a class="headerlink" href="#lokale-variablen" title="Permalink to this heading">#</a></h3>
+<p>Variablen, die innerhalb einer Funktion definiert werden, sind lokal:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">meine_funktion</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># Lokale Variable</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Innerhalb der Funktion: x = </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">meine_funktion</span><span class="p">()</span>  <span class="c1"># Innerhalb der Funktion: x = 10</span>
+
+<span class="c1"># print(x)  # Fehler: NameError - x existiert außerhalb nicht</span>
+</pre></div>
+</div>
+</section>
+<section id="globale-variablen">
+<h3>Globale Variablen<a class="headerlink" href="#globale-variablen" title="Permalink to this heading">#</a></h3>
+<p>Variablen, die außerhalb von Funktionen definiert werden, sind global:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># Globale Variable</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">zeige_global</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;y in Funktion: </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">zeige_global</span><span class="p">()</span>  <span class="c1"># y in Funktion: 20</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;y außerhalb: </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># y außerhalb: 20</span>
+</pre></div>
+</div>
+</section>
+<section id="lokale-variable-verdeckt-globale">
+<h3>Lokale Variable verdeckt globale<a class="headerlink" href="#lokale-variable-verdeckt-globale" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># Globale Variable</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">funktion</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># Lokale Variable (verdeckt globale)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Lokal: </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">funktion</span><span class="p">()</span>  <span class="c1"># Lokal: 50</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Global: </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Global: 100 (unverändert)</span>
+</pre></div>
+</div>
+</section>
+<section id="globale-variablen-andern-nicht-empfohlen">
+<h3>Globale Variablen ändern (nicht empfohlen)<a class="headerlink" href="#globale-variablen-andern-nicht-empfohlen" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Globale Variable</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">inkrementiere</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">counter</span>  <span class="c1"># Explizit als global deklarieren</span>
+    <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span>  <span class="c1"># 0</span>
+<span class="n">inkrementiere</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span>  <span class="c1"># 1</span>
+<span class="n">inkrementiere</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span>  <span class="c1"># 2</span>
+</pre></div>
+</div>
+<p><strong>Warnung:</strong> Die Verwendung von <code class="docutils literal notranslate"><span class="pre">global</span></code> sollte vermieden werden, da sie zu schwer nachvollziehbarem Code führt. Besser: Rückgabewerte verwenden.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Besser: Ohne global</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">inkrementiere</span><span class="p">(</span><span class="n">wert</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">wert</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">counter</span> <span class="o">=</span> <span class="n">inkrementiere</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span>  <span class="c1"># 1</span>
+<span class="n">counter</span> <span class="o">=</span> <span class="n">inkrementiere</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span>  <span class="c1"># 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span>  <span class="c1"># 2</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="best-practices-dry-prinzip-dont-repeat-yourself">
+<h2>Best Practices: DRY-Prinzip (Don’t Repeat Yourself)<a class="headerlink" href="#best-practices-dry-prinzip-dont-repeat-yourself" title="Permalink to this heading">#</a></h2>
+<p>Das DRY-Prinzip besagt: Schreiben Sie keinen Code mehrfach. Nutzen Sie stattdessen Funktionen.</p>
+<section id="schlechtes-beispiel-code-wiederholung">
+<h3>Schlechtes Beispiel (Code-Wiederholung)<a class="headerlink" href="#schlechtes-beispiel-code-wiederholung" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Preisberechnung für verschiedene Produkte:</span>
+<span class="n">preis1</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">rabatt1</span> <span class="o">=</span> <span class="n">preis1</span> <span class="o">*</span> <span class="mf">0.1</span>
+<span class="n">endpreis1</span> <span class="o">=</span> <span class="n">preis1</span> <span class="o">-</span> <span class="n">rabatt1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Endpreis: </span><span class="si">{</span><span class="n">endpreis1</span><span class="si">}</span><span class="s2"> Euro&quot;</span><span class="p">)</span>
+
+<span class="n">preis2</span> <span class="o">=</span> <span class="mi">250</span>
+<span class="n">rabatt2</span> <span class="o">=</span> <span class="n">preis2</span> <span class="o">*</span> <span class="mf">0.1</span>
+<span class="n">endpreis2</span> <span class="o">=</span> <span class="n">preis2</span> <span class="o">-</span> <span class="n">rabatt2</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Endpreis: </span><span class="si">{</span><span class="n">endpreis2</span><span class="si">}</span><span class="s2"> Euro&quot;</span><span class="p">)</span>
+
+<span class="n">preis3</span> <span class="o">=</span> <span class="mi">75</span>
+<span class="n">rabatt3</span> <span class="o">=</span> <span class="n">preis3</span> <span class="o">*</span> <span class="mf">0.1</span>
+<span class="n">endpreis3</span> <span class="o">=</span> <span class="n">preis3</span> <span class="o">-</span> <span class="n">rabatt3</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Endpreis: </span><span class="si">{</span><span class="n">endpreis3</span><span class="si">}</span><span class="s2"> Euro&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="gutes-beispiel-mit-funktion">
+<h3>Gutes Beispiel (mit Funktion)<a class="headerlink" href="#gutes-beispiel-mit-funktion" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">berechne_endpreis</span><span class="p">(</span><span class="n">preis</span><span class="p">,</span> <span class="n">rabatt_prozent</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Berechnet den Endpreis nach Rabattabzug.&quot;&quot;&quot;</span>
+    <span class="n">rabatt</span> <span class="o">=</span> <span class="n">preis</span> <span class="o">*</span> <span class="p">(</span><span class="n">rabatt_prozent</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">endpreis</span> <span class="o">=</span> <span class="n">preis</span> <span class="o">-</span> <span class="n">rabatt</span>
+    <span class="k">return</span> <span class="n">endpreis</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Endpreis: </span><span class="si">{</span><span class="n">berechne_endpreis</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="si">}</span><span class="s2"> Euro&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Endpreis: </span><span class="si">{</span><span class="n">berechne_endpreis</span><span class="p">(</span><span class="mi">250</span><span class="p">)</span><span class="si">}</span><span class="s2"> Euro&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Endpreis: </span><span class="si">{</span><span class="n">berechne_endpreis</span><span class="p">(</span><span class="mi">75</span><span class="p">)</span><span class="si">}</span><span class="s2"> Euro&quot;</span><span class="p">)</span>
+
+<span class="c1"># Oder mit unterschiedlichen Rabatten:</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Endpreis: </span><span class="si">{</span><span class="n">berechne_endpreis</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span><span class="si">}</span><span class="s2"> Euro&quot;</span><span class="p">)</span>  <span class="c1"># 20% Rabatt</span>
+</pre></div>
+</div>
+</section>
+<section id="funktionen-fur-komplexe-logik">
+<h3>Funktionen für komplexe Logik<a class="headerlink" href="#funktionen-fur-komplexe-logik" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">ist_schaltjahr</span><span class="p">(</span><span class="n">jahr</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Prüft, ob ein Jahr ein Schaltjahr ist.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">jahr</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">elif</span> <span class="n">jahr</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">elif</span> <span class="n">jahr</span> <span class="o">%</span> <span class="mi">400</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+<span class="c1"># Verwendung:</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ist_schaltjahr</span><span class="p">(</span><span class="mi">2024</span><span class="p">))</span>  <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ist_schaltjahr</span><span class="p">(</span><span class="mi">2100</span><span class="p">))</span>  <span class="c1"># False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ist_schaltjahr</span><span class="p">(</span><span class="mi">2000</span><span class="p">))</span>  <span class="c1"># True</span>
+
+<span class="c1"># Statt die Logik mehrfach zu schreiben:</span>
+<span class="n">jahre</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2021</span><span class="p">,</span> <span class="mi">2022</span><span class="p">,</span> <span class="mi">2023</span><span class="p">,</span> <span class="mi">2024</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">jahr</span> <span class="ow">in</span> <span class="n">jahre</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">ist_schaltjahr</span><span class="p">(</span><span class="n">jahr</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">jahr</span><span class="si">}</span><span class="s2"> ist ein Schaltjahr&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="funktionen-zur-code-organisation">
+<h3>Funktionen zur Code-Organisation<a class="headerlink" href="#funktionen-zur-code-organisation" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">eingabe_validieren</span><span class="p">(</span><span class="n">wert</span><span class="p">,</span> <span class="n">minimum</span><span class="p">,</span> <span class="n">maximum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Prüft, ob ein Wert im gültigen Bereich liegt.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">minimum</span> <span class="o">&lt;=</span> <span class="n">wert</span> <span class="o">&lt;=</span> <span class="n">maximum</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">temperatur_einlesen</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Liest eine gültige Temperatur ein.&quot;&quot;&quot;</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Temperatur (-50 bis 50°C): &quot;</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">eingabe_validieren</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">temp</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ungültiger Wert!&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">temperatur_bewerten</span><span class="p">(</span><span class="n">temp</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Bewertet eine Temperatur.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">temp</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Kalt&quot;</span>
+    <span class="k">elif</span> <span class="n">temp</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Kühl&quot;</span>
+    <span class="k">elif</span> <span class="n">temp</span> <span class="o">&lt;</span> <span class="mi">30</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Warm&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Heiß&quot;</span>
+
+<span class="c1"># Hauptprogramm:</span>
+<span class="n">temperatur</span> <span class="o">=</span> <span class="n">temperatur_einlesen</span><span class="p">()</span>
+<span class="n">bewertung</span> <span class="o">=</span> <span class="n">temperatur_bewerten</span><span class="p">(</span><span class="n">temperatur</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Es ist </span><span class="si">{</span><span class="n">bewertung</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="praktische-beispiele">
+<h2>Praktische Beispiele<a class="headerlink" href="#praktische-beispiele" title="Permalink to this heading">#</a></h2>
+<section id="beispiel-1-bmi-rechner-mit-funktionen">
+<h3>Beispiel 1: BMI-Rechner mit Funktionen<a class="headerlink" href="#beispiel-1-bmi-rechner-mit-funktionen" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">bmi_berechnen</span><span class="p">(</span><span class="n">gewicht</span><span class="p">,</span> <span class="n">groesse</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Berechnet den Body Mass Index.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        gewicht: Gewicht in kg</span>
+<span class="sd">        groesse: Größe in Metern</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        BMI als Float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">gewicht</span> <span class="o">/</span> <span class="p">(</span><span class="n">groesse</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">bmi_kategorie</span><span class="p">(</span><span class="n">bmi</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gibt die BMI-Kategorie zurück.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">bmi</span> <span class="o">&lt;</span> <span class="mf">18.5</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Untergewicht&quot;</span>
+    <span class="k">elif</span> <span class="n">bmi</span> <span class="o">&lt;</span> <span class="mi">25</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Normalgewicht&quot;</span>
+    <span class="k">elif</span> <span class="n">bmi</span> <span class="o">&lt;</span> <span class="mi">30</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Übergewicht&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Adipositas&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">bmi_programm</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Führt BMI-Berechnung durch.&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== BMI-Rechner ===&quot;</span><span class="p">)</span>
+    <span class="n">gewicht</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Gewicht in kg: &quot;</span><span class="p">))</span>
+    <span class="n">groesse</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Größe in m: &quot;</span><span class="p">))</span>
+
+    <span class="n">bmi</span> <span class="o">=</span> <span class="n">bmi_berechnen</span><span class="p">(</span><span class="n">gewicht</span><span class="p">,</span> <span class="n">groesse</span><span class="p">)</span>
+    <span class="n">kategorie</span> <span class="o">=</span> <span class="n">bmi_kategorie</span><span class="p">(</span><span class="n">bmi</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Ihr BMI: </span><span class="si">{</span><span class="n">bmi</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Kategorie: </span><span class="si">{</span><span class="n">kategorie</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Programm ausführen:</span>
+<span class="n">bmi_programm</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="beispiel-2-notenverwaltung">
+<h3>Beispiel 2: Notenverwaltung<a class="headerlink" href="#beispiel-2-notenverwaltung" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">durchschnitt_berechnen</span><span class="p">(</span><span class="n">noten</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Berechnet den Notendurchschnitt.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">noten</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">noten</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">noten</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">note_ist_bestanden</span><span class="p">(</span><span class="n">note</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Prüft, ob eine Note bestanden ist (Note &lt;= 4).&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">note</span> <span class="o">&lt;=</span> <span class="mi">4</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">notenstatistik</span><span class="p">(</span><span class="n">noten</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Erstellt eine Statistik über Noten.&quot;&quot;&quot;</span>
+    <span class="n">durchschnitt</span> <span class="o">=</span> <span class="n">durchschnitt_berechnen</span><span class="p">(</span><span class="n">noten</span><span class="p">)</span>
+    <span class="n">bestanden</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">note</span> <span class="ow">in</span> <span class="n">noten</span> <span class="k">if</span> <span class="n">note_ist_bestanden</span><span class="p">(</span><span class="n">note</span><span class="p">))</span>
+    <span class="n">nicht_bestanden</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">noten</span><span class="p">)</span> <span class="o">-</span> <span class="n">bestanden</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;durchschnitt&quot;</span><span class="p">:</span> <span class="n">durchschnitt</span><span class="p">,</span>
+        <span class="s2">&quot;bestanden&quot;</span><span class="p">:</span> <span class="n">bestanden</span><span class="p">,</span>
+        <span class="s2">&quot;nicht_bestanden&quot;</span><span class="p">:</span> <span class="n">nicht_bestanden</span><span class="p">,</span>
+        <span class="s2">&quot;anzahl&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">noten</span><span class="p">)</span>
+    <span class="p">}</span>
+
+<span class="c1"># Verwendung:</span>
+<span class="n">noten</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">statistik</span> <span class="o">=</span> <span class="n">notenstatistik</span><span class="p">(</span><span class="n">noten</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Anzahl Noten: </span><span class="si">{</span><span class="n">statistik</span><span class="p">[</span><span class="s1">&#39;anzahl&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Durchschnitt: </span><span class="si">{</span><span class="n">statistik</span><span class="p">[</span><span class="s1">&#39;durchschnitt&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bestanden: </span><span class="si">{</span><span class="n">statistik</span><span class="p">[</span><span class="s1">&#39;bestanden&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nicht bestanden: </span><span class="si">{</span><span class="n">statistik</span><span class="p">[</span><span class="s1">&#39;nicht_bestanden&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="beispiel-3-einfacher-passwort-validator">
+<h3>Beispiel 3: Einfacher Passwort-Validator<a class="headerlink" href="#beispiel-3-einfacher-passwort-validator" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">hat_mindestlaenge</span><span class="p">(</span><span class="n">passwort</span><span class="p">,</span> <span class="n">laenge</span><span class="o">=</span><span class="mi">8</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Prüft Mindestlänge des Passworts.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">passwort</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">laenge</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">hat_ziffer</span><span class="p">(</span><span class="n">passwort</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Prüft, ob Passwort eine Ziffer enthält.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">char</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">passwort</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">hat_grossbuchstaben</span><span class="p">(</span><span class="n">passwort</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Prüft, ob Passwort einen Großbuchstaben enthält.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">char</span><span class="o">.</span><span class="n">isupper</span><span class="p">()</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">passwort</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">hat_kleinbuchstaben</span><span class="p">(</span><span class="n">passwort</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Prüft, ob Passwort einen Kleinbuchstaben enthält.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">char</span><span class="o">.</span><span class="n">islower</span><span class="p">()</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">passwort</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">ist_passwort_sicher</span><span class="p">(</span><span class="n">passwort</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Prüft, ob Passwort alle Sicherheitskriterien erfüllt.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">hat_mindestlaenge</span><span class="p">(</span><span class="n">passwort</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;Passwort zu kurz (mindestens 8 Zeichen)&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">hat_ziffer</span><span class="p">(</span><span class="n">passwort</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;Passwort muss eine Ziffer enthalten&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">hat_grossbuchstaben</span><span class="p">(</span><span class="n">passwort</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;Passwort muss einen Großbuchstaben enthalten&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">hat_kleinbuchstaben</span><span class="p">(</span><span class="n">passwort</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;Passwort muss einen Kleinbuchstaben enthalten&quot;</span>
+
+    <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;Passwort ist sicher&quot;</span>
+
+<span class="c1"># Test:</span>
+<span class="n">testpasswoerter</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="s2">&quot;Test1234&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span> <span class="s2">&quot;Sicher123&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">pw</span> <span class="ow">in</span> <span class="n">testpasswoerter</span><span class="p">:</span>
+    <span class="n">sicher</span><span class="p">,</span> <span class="n">meldung</span> <span class="o">=</span> <span class="n">ist_passwort_sicher</span><span class="p">(</span><span class="n">pw</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">pw</span><span class="si">}</span><span class="s2">&#39;: </span><span class="si">{</span><span class="n">meldung</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Ausgabe:</span>
+<span class="c1"># &#39;test&#39;: Passwort zu kurz (mindestens 8 Zeichen)</span>
+<span class="c1"># &#39;Test1234&#39;: Passwort ist sicher</span>
+<span class="c1"># &#39;password&#39;: Passwort muss eine Ziffer enthalten</span>
+<span class="c1"># &#39;Sicher123&#39;: Passwort ist sicher</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="zusammenfassung">
+<h2>Zusammenfassung<a class="headerlink" href="#zusammenfassung" title="Permalink to this heading">#</a></h2>
+<p>In diesem Kapitel haben Sie gelernt:</p>
+<ul class="simple">
+<li><p>Funktionen mit <code class="docutils literal notranslate"><span class="pre">def</span></code> definieren und aufrufen</p></li>
+<li><p>Parameter übergeben (Positions- und Keyword-Parameter)</p></li>
+<li><p>Standardwerte für Parameter festlegen</p></li>
+<li><p>Werte mit <code class="docutils literal notranslate"><span class="pre">return</span></code> zurückgeben</p></li>
+<li><p>Den Unterschied zwischen lokalen und globalen Variablen</p></li>
+<li><p>Das DRY-Prinzip (Don’t Repeat Yourself) anwenden</p></li>
+</ul>
+<p>Im nächsten Kapitel lernen Sie die Python Standard Library kennen, die viele nützliche Module bereitstellt.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="05_datenstrukturen.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">zurück</p>
+        <p class="prev-next-title">Datenstrukturen</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="07_standard_library.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">weiter</p>
+        <p class="prev-next-title">Python Standard Library</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhalt
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-sind-funktionen-und-warum-brauchen-wir-sie">Was sind Funktionen und warum brauchen wir sie?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vorteile-von-funktionen">Vorteile von Funktionen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vorteile-auf-einen-blick">Vorteile auf einen Blick</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-definieren-und-aufrufen">Funktionen definieren und aufrufen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#einfache-funktion-ohne-parameter">Einfache Funktion ohne Parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funktion-mit-einem-parameter">Funktion mit einem Parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funktion-mit-mehreren-parametern">Funktion mit mehreren Parametern</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funktion-mit-return-wert">Funktion mit return-Wert</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-und-ruckgabewerte">Parameter und Rückgabewerte</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positionsparameter">Positionsparameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schlusselwort-parameter-keyword-arguments">Schlüsselwort-Parameter (Keyword Arguments)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standardwerte-default-parameters">Standardwerte (Default Parameters)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mehrere-ruckgabewerte">Mehrere Rückgabewerte</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-ohne-ruckgabewert">Funktionen ohne Rückgabewert</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lokale-vs-globale-variablen">Lokale vs. globale Variablen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lokale-variablen">Lokale Variablen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#globale-variablen">Globale Variablen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lokale-variable-verdeckt-globale">Lokale Variable verdeckt globale</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#globale-variablen-andern-nicht-empfohlen">Globale Variablen ändern (nicht empfohlen)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practices-dry-prinzip-dont-repeat-yourself">Best Practices: DRY-Prinzip (Don’t Repeat Yourself)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schlechtes-beispiel-code-wiederholung">Schlechtes Beispiel (Code-Wiederholung)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gutes-beispiel-mit-funktion">Gutes Beispiel (mit Funktion)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-fur-komplexe-logik">Funktionen für komplexe Logik</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-zur-code-organisation">Funktionen zur Code-Organisation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#praktische-beispiele">Praktische Beispiele</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-1-bmi-rechner-mit-funktionen">Beispiel 1: BMI-Rechner mit Funktionen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-2-notenverwaltung">Beispiel 2: Notenverwaltung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beispiel-3-einfacher-passwort-validator">Beispiel 3: Einfacher Passwort-Validator</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung">Zusammenfassung</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Durch Python Dokumentation
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

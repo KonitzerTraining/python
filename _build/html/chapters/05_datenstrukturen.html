@@ -1,0 +1,1046 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="de" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Datenstrukturen &#8212; Python Grundlagen</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/05_datenstrukturen';</script>
+    <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
+    <link rel="search" title="Suche" href="../search.html" />
+    <link rel="next" title="Funktionen" href="06_funktionen.html" />
+    <link rel="prev" title="Schleifen" href="04_schleifen.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="de"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Python Grundlagen</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Python Grundlagen Dokumentation
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_grundlagen.html">Python-Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_input_output.html">Input/Output und Typumwandlung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_verzweigungen.html">Verzweigungen und Bedingungen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_schleifen.html">Schleifen</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Datenstrukturen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_funktionen.html">Funktionen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_standard_library.html">Python Standard Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_dateioperationen.html">Dateioperationen</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Laden Sie diese Seite herunter">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapters/05_datenstrukturen.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Quelldatei herunterladen"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="In PDF drucken"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Vollbildmodus"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Datenstrukturen</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Inhalt </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listen-erstellen-und-verwenden">Listen erstellen und verwenden</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#listen-erstellen">Listen erstellen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#auf-listenelemente-zugreifen-indexierung">Auf Listenelemente zugreifen (Indexierung)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing-teillisten-extrahieren">Slicing - Teillisten extrahieren</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listen-operationen-append-remove-insert-sort">Listen-Operationen: append, remove, insert, sort</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elemente-hinzufugen">Elemente hinzufügen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elemente-entfernen">Elemente entfernen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#listen-sortieren-und-umkehren">Listen sortieren und umkehren</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weitere-nutzliche-listen-methoden">Weitere nützliche Listen-Methoden</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Auf Listenelemente zugreifen (Indexierung)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#negative-indizes">Negative Indizes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#listen-verschachteln">Listen verschachteln</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-comprehensions">List Comprehensions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listen-mit-schleifen-durchlaufen">Listen mit Schleifen durchlaufen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mit-for-schleife">Mit for-Schleife</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#liste-filtern-und-transformieren">Liste filtern und transformieren</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries-schlussel-wert-paare">Dictionaries (Schlüssel-Wert-Paare)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries-erstellen">Dictionaries erstellen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#auf-werte-zugreifen">Auf Werte zugreifen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#werte-andern-und-hinzufugen">Werte ändern und hinzufügen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Elemente entfernen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uber-dictionaries-iterieren">Über Dictionaries iterieren</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nutzliche-dictionary-methoden">Nützliche Dictionary-Methoden</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sets-und-tuples-uberblick">Sets und Tuples (Überblick)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sets-ungeordnete-mengen-ohne-duplikate">Sets - Ungeordnete Mengen ohne Duplikate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples-unveranderbare-sequenzen">Tuples - Unveränderbare Sequenzen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung">Zusammenfassung</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="datenstrukturen">
+<h1>Datenstrukturen<a class="headerlink" href="#datenstrukturen" title="Permalink to this heading">#</a></h1>
+<p>Datenstrukturen ermöglichen es, mehrere Werte in einer einzigen Variable zu speichern und effizient zu verwalten. Python bietet vier grundlegende Datenstrukturen: Listen, Dictionaries, Sets und Tuples.</p>
+<section id="listen-erstellen-und-verwenden">
+<h2>Listen erstellen und verwenden<a class="headerlink" href="#listen-erstellen-und-verwenden" title="Permalink to this heading">#</a></h2>
+<p>Listen sind geordnete, veränderbare Sammlungen von Elementen. Sie können Elemente unterschiedlicher Datentypen enthalten.</p>
+<section id="listen-erstellen">
+<h3>Listen erstellen<a class="headerlink" href="#listen-erstellen" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Leere Liste:</span>
+<span class="n">leere_liste</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Liste mit Zahlen:</span>
+<span class="n">zahlen</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+<span class="c1"># Liste mit Strings:</span>
+<span class="n">fruechte</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Apfel&quot;</span><span class="p">,</span> <span class="s2">&quot;Banane&quot;</span><span class="p">,</span> <span class="s2">&quot;Orange&quot;</span><span class="p">]</span>
+
+<span class="c1"># Gemischte Liste:</span>
+<span class="n">gemischt</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Text&quot;</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">zahlen</span><span class="p">)</span>      <span class="c1"># [1, 2, 3, 4, 5]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruechte</span><span class="p">)</span>    <span class="c1"># [&#39;Apfel&#39;, &#39;Banane&#39;, &#39;Orange&#39;]</span>
+</pre></div>
+</div>
+</section>
+<section id="auf-listenelemente-zugreifen-indexierung">
+<h3>Auf Listenelemente zugreifen (Indexierung)<a class="headerlink" href="#auf-listenelemente-zugreifen-indexierung" title="Permalink to this heading">#</a></h3>
+<p>Listen verwenden null-basierte Indexierung:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fruechte</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Apfel&quot;</span><span class="p">,</span> <span class="s2">&quot;Banane&quot;</span><span class="p">,</span> <span class="s2">&quot;Orange&quot;</span><span class="p">,</span> <span class="s2">&quot;Kiwi&quot;</span><span class="p">]</span>
+
+<span class="c1"># Erstes Element (Index 0):</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruechte</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>    <span class="c1"># Apfel</span>
+
+<span class="c1"># Zweites Element:</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruechte</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>    <span class="c1"># Banane</span>
+
+<span class="c1"># Letztes Element:</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruechte</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>   <span class="c1"># Kiwi</span>
+
+<span class="c1"># Vorletztes Element:</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruechte</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>   <span class="c1"># Orange</span>
+</pre></div>
+</div>
+</section>
+<section id="slicing-teillisten-extrahieren">
+<h3>Slicing - Teillisten extrahieren<a class="headerlink" href="#slicing-teillisten-extrahieren" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">zahlen</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+
+<span class="c1"># Von Index 2 bis 5 (exklusive):</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zahlen</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>     <span class="c1"># [2, 3, 4]</span>
+
+<span class="c1"># Von Anfang bis Index 4:</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zahlen</span><span class="p">[:</span><span class="mi">4</span><span class="p">])</span>      <span class="c1"># [0, 1, 2, 3]</span>
+
+<span class="c1"># Von Index 6 bis Ende:</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zahlen</span><span class="p">[</span><span class="mi">6</span><span class="p">:])</span>      <span class="c1"># [6, 7, 8, 9]</span>
+
+<span class="c1"># Jedes zweite Element:</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zahlen</span><span class="p">[::</span><span class="mi">2</span><span class="p">])</span>     <span class="c1"># [0, 2, 4, 6, 8]</span>
+
+<span class="c1"># Liste umkehren:</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zahlen</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>    <span class="c1"># [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="listen-operationen-append-remove-insert-sort">
+<h2>Listen-Operationen: append, remove, insert, sort<a class="headerlink" href="#listen-operationen-append-remove-insert-sort" title="Permalink to this heading">#</a></h2>
+<p>Listen sind veränderbar (mutable), d.h. Sie können Elemente hinzufügen, entfernen und ändern.</p>
+<section id="elemente-hinzufugen">
+<h3>Elemente hinzufügen<a class="headerlink" href="#elemente-hinzufugen" title="Permalink to this heading">#</a></h3>
+<p><strong>append() - Am Ende anfügen:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fruechte</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Apfel&quot;</span><span class="p">,</span> <span class="s2">&quot;Banane&quot;</span><span class="p">]</span>
+<span class="n">fruechte</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Orange&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruechte</span><span class="p">)</span>  <span class="c1"># [&#39;Apfel&#39;, &#39;Banane&#39;, &#39;Orange&#39;]</span>
+
+<span class="c1"># Mehrere Elemente hinzufügen:</span>
+<span class="n">zahlen</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">zahlen</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">zahlen</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zahlen</span><span class="p">)</span>  <span class="c1"># [1, 2, 3, 4, 5]</span>
+</pre></div>
+</div>
+<p><strong>insert() - An bestimmter Position einfügen:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fruechte</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Apfel&quot;</span><span class="p">,</span> <span class="s2">&quot;Orange&quot;</span><span class="p">]</span>
+<span class="n">fruechte</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Banane&quot;</span><span class="p">)</span>  <span class="c1"># An Index 1 einfügen</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruechte</span><span class="p">)</span>  <span class="c1"># [&#39;Apfel&#39;, &#39;Banane&#39;, &#39;Orange&#39;]</span>
+
+<span class="c1"># Am Anfang einfügen:</span>
+<span class="n">zahlen</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">zahlen</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zahlen</span><span class="p">)</span>  <span class="c1"># [1, 2, 3, 4]</span>
+</pre></div>
+</div>
+<p><strong>extend() - Mehrere Elemente anfügen:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">liste1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">liste2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">liste1</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">liste2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">liste1</span><span class="p">)</span>  <span class="c1"># [1, 2, 3, 4, 5, 6]</span>
+
+<span class="c1"># Alternative: + Operator</span>
+<span class="n">liste_a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">liste_b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">liste_c</span> <span class="o">=</span> <span class="n">liste_a</span> <span class="o">+</span> <span class="n">liste_b</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">liste_c</span><span class="p">)</span>  <span class="c1"># [1, 2, 3, 4]</span>
+</pre></div>
+</div>
+</section>
+<section id="elemente-entfernen">
+<h3>Elemente entfernen<a class="headerlink" href="#elemente-entfernen" title="Permalink to this heading">#</a></h3>
+<p><strong>remove() - Erstes Vorkommen entfernen:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fruechte</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Apfel&quot;</span><span class="p">,</span> <span class="s2">&quot;Banane&quot;</span><span class="p">,</span> <span class="s2">&quot;Orange&quot;</span><span class="p">,</span> <span class="s2">&quot;Banane&quot;</span><span class="p">]</span>
+<span class="n">fruechte</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;Banane&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruechte</span><span class="p">)</span>  <span class="c1"># [&#39;Apfel&#39;, &#39;Orange&#39;, &#39;Banane&#39;]</span>
+</pre></div>
+</div>
+<p><strong>pop() - Element an Index entfernen (und zurückgeben):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">zahlen</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+
+<span class="c1"># Letztes Element entfernen:</span>
+<span class="n">letztes</span> <span class="o">=</span> <span class="n">zahlen</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">letztes</span><span class="p">)</span>  <span class="c1"># 40</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zahlen</span><span class="p">)</span>   <span class="c1"># [10, 20, 30]</span>
+
+<span class="c1"># Element an Index 1 entfernen:</span>
+<span class="n">element</span> <span class="o">=</span> <span class="n">zahlen</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>  <span class="c1"># 20</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zahlen</span><span class="p">)</span>   <span class="c1"># [10, 30]</span>
+</pre></div>
+</div>
+<p><strong>clear() - Alle Elemente entfernen:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">liste</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>  <span class="c1"># []</span>
+</pre></div>
+</div>
+</section>
+<section id="listen-sortieren-und-umkehren">
+<h3>Listen sortieren und umkehren<a class="headerlink" href="#listen-sortieren-und-umkehren" title="Permalink to this heading">#</a></h3>
+<p><strong>sort() - Liste sortieren (in-place):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">zahlen</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">zahlen</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zahlen</span><span class="p">)</span>  <span class="c1"># [1, 1, 2, 3, 4, 5, 9]</span>
+
+<span class="c1"># Absteigend sortieren:</span>
+<span class="n">zahlen</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zahlen</span><span class="p">)</span>  <span class="c1"># [9, 5, 4, 3, 2, 1, 1]</span>
+
+<span class="c1"># Strings alphabetisch sortieren:</span>
+<span class="n">namen</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Zoe&quot;</span><span class="p">,</span> <span class="s2">&quot;Anna&quot;</span><span class="p">,</span> <span class="s2">&quot;Max&quot;</span><span class="p">,</span> <span class="s2">&quot;Ben&quot;</span><span class="p">]</span>
+<span class="n">namen</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">namen</span><span class="p">)</span>  <span class="c1"># [&#39;Anna&#39;, &#39;Ben&#39;, &#39;Max&#39;, &#39;Zoe&#39;]</span>
+</pre></div>
+</div>
+<p><strong>sorted() - Neue sortierte Liste erstellen:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">original</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">sortiert</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">original</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">original</span><span class="p">)</span>   <span class="c1"># [3, 1, 4, 1, 5] (unverändert)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sortiert</span><span class="p">)</span>   <span class="c1"># [1, 1, 3, 4, 5]</span>
+</pre></div>
+</div>
+<p><strong>reverse() - Liste umkehren:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">zahlen</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">zahlen</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zahlen</span><span class="p">)</span>  <span class="c1"># [5, 4, 3, 2, 1]</span>
+</pre></div>
+</div>
+</section>
+<section id="weitere-nutzliche-listen-methoden">
+<h3>Weitere nützliche Listen-Methoden<a class="headerlink" href="#weitere-nutzliche-listen-methoden" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fruechte</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Apfel&quot;</span><span class="p">,</span> <span class="s2">&quot;Banane&quot;</span><span class="p">,</span> <span class="s2">&quot;Orange&quot;</span><span class="p">,</span> <span class="s2">&quot;Banane&quot;</span><span class="p">]</span>
+
+<span class="c1"># Länge der Liste:</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fruechte</span><span class="p">))</span>  <span class="c1"># 4</span>
+
+<span class="c1"># Anzahl eines Elements:</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruechte</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;Banane&quot;</span><span class="p">))</span>  <span class="c1"># 2</span>
+
+<span class="c1"># Index eines Elements finden:</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruechte</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;Orange&quot;</span><span class="p">))</span>  <span class="c1"># 2</span>
+
+<span class="c1"># Prüfen, ob Element vorhanden:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Apfel&quot;</span> <span class="ow">in</span> <span class="n">fruechte</span><span class="p">)</span>  <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kiwi&quot;</span> <span class="ow">in</span> <span class="n">fruechte</span><span class="p">)</span>   <span class="c1"># False</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id1">
+<h2>Auf Listenelemente zugreifen (Indexierung)<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>Wir haben bereits Indexierung kennengelernt. Hier weitere wichtige Konzepte:</p>
+<section id="negative-indizes">
+<h3>Negative Indizes<a class="headerlink" href="#negative-indizes" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">zahlen</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">zahlen</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>   <span class="c1"># 50 (letztes Element)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zahlen</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>   <span class="c1"># 40 (vorletztes Element)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zahlen</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">])</span>   <span class="c1"># 10 (erstes Element)</span>
+</pre></div>
+</div>
+</section>
+<section id="listen-verschachteln">
+<h3>Listen verschachteln<a class="headerlink" href="#listen-verschachteln" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Matrix (2D-Liste):</span>
+<span class="n">matrix</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="c1"># Auf Elemente zugreifen:</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>        <span class="c1"># [1, 2, 3] (erste Zeile)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>     <span class="c1"># 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>     <span class="c1"># 6</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>     <span class="c1"># 8</span>
+
+<span class="c1"># Über Matrix iterieren:</span>
+<span class="k">for</span> <span class="n">zeile</span> <span class="ow">in</span> <span class="n">matrix</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">zeile</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+<span class="c1"># Ausgabe:</span>
+<span class="c1"># 1 2 3</span>
+<span class="c1"># 4 5 6</span>
+<span class="c1"># 7 8 9</span>
+</pre></div>
+</div>
+</section>
+<section id="list-comprehensions">
+<h3>List Comprehensions<a class="headerlink" href="#list-comprehensions" title="Permalink to this heading">#</a></h3>
+<p>Eine kompakte Methode, Listen zu erstellen:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Traditionell:</span>
+<span class="n">quadrate</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">quadrate</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">quadrate</span><span class="p">)</span>  <span class="c1"># [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</span>
+
+<span class="c1"># Mit List Comprehension:</span>
+<span class="n">quadrate</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">quadrate</span><span class="p">)</span>  <span class="c1"># [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</span>
+
+<span class="c1"># Mit Bedingung:</span>
+<span class="n">gerade</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gerade</span><span class="p">)</span>  <span class="c1"># [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="listen-mit-schleifen-durchlaufen">
+<h2>Listen mit Schleifen durchlaufen<a class="headerlink" href="#listen-mit-schleifen-durchlaufen" title="Permalink to this heading">#</a></h2>
+<section id="mit-for-schleife">
+<h3>Mit for-Schleife<a class="headerlink" href="#mit-for-schleife" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fruechte</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Apfel&quot;</span><span class="p">,</span> <span class="s2">&quot;Banane&quot;</span><span class="p">,</span> <span class="s2">&quot;Orange&quot;</span><span class="p">]</span>
+
+<span class="c1"># Über Elemente iterieren:</span>
+<span class="k">for</span> <span class="n">frucht</span> <span class="ow">in</span> <span class="n">fruechte</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ich mag </span><span class="si">{</span><span class="n">frucht</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Mit Index:</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fruechte</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">fruechte</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Mit enumerate (empfohlen):</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">frucht</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">fruechte</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">frucht</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="liste-filtern-und-transformieren">
+<h3>Liste filtern und transformieren<a class="headerlink" href="#liste-filtern-und-transformieren" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">zahlen</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+
+<span class="c1"># Nur positive Zahlen:</span>
+<span class="n">positive</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">zahl</span> <span class="ow">in</span> <span class="n">zahlen</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">zahl</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">positive</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">zahl</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">positive</span><span class="p">)</span>  <span class="c1"># [1, 3, 8, 4]</span>
+
+<span class="c1"># Oder mit List Comprehension:</span>
+<span class="n">positive</span> <span class="o">=</span> <span class="p">[</span><span class="n">zahl</span> <span class="k">for</span> <span class="n">zahl</span> <span class="ow">in</span> <span class="n">zahlen</span> <span class="k">if</span> <span class="n">zahl</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">positive</span><span class="p">)</span>  <span class="c1"># [1, 3, 8, 4]</span>
+
+<span class="c1"># Alle Werte verdoppeln:</span>
+<span class="n">verdoppelt</span> <span class="o">=</span> <span class="p">[</span><span class="n">zahl</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">zahl</span> <span class="ow">in</span> <span class="n">zahlen</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">verdoppelt</span><span class="p">)</span>  <span class="c1"># [2, -10, 6, -4, 16, -14, 8]</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="dictionaries-schlussel-wert-paare">
+<h2>Dictionaries (Schlüssel-Wert-Paare)<a class="headerlink" href="#dictionaries-schlussel-wert-paare" title="Permalink to this heading">#</a></h2>
+<p>Dictionaries speichern Daten als Schlüssel-Wert-Paare. Sie sind ungeordnet (ab Python 3.7 Einfügereihenfolge erhalten) und veränderbar.</p>
+<section id="dictionaries-erstellen">
+<h3>Dictionaries erstellen<a class="headerlink" href="#dictionaries-erstellen" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Leeres Dictionary:</span>
+<span class="n">leeres_dict</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># Dictionary mit Daten:</span>
+<span class="n">person</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Anna&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;alter&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+    <span class="s2">&quot;stadt&quot;</span><span class="p">:</span> <span class="s2">&quot;Berlin&quot;</span>
+<span class="p">}</span>
+
+<span class="c1"># Alternative Syntax:</span>
+<span class="n">produkt</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Laptop&quot;</span><span class="p">,</span> <span class="n">preis</span><span class="o">=</span><span class="mi">999</span><span class="p">,</span> <span class="n">lagerbestand</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>   <span class="c1"># {&#39;name&#39;: &#39;Anna&#39;, &#39;alter&#39;: 25, &#39;stadt&#39;: &#39;Berlin&#39;}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">produkt</span><span class="p">)</span>  <span class="c1"># {&#39;name&#39;: &#39;Laptop&#39;, &#39;preis&#39;: 999, &#39;lagerbestand&#39;: 50}</span>
+</pre></div>
+</div>
+</section>
+<section id="auf-werte-zugreifen">
+<h3>Auf Werte zugreifen<a class="headerlink" href="#auf-werte-zugreifen" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Max&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;alter&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="s2">&quot;beruf&quot;</span><span class="p">:</span> <span class="s2">&quot;Programmierer&quot;</span>
+<span class="p">}</span>
+
+<span class="c1"># Mit Schlüssel:</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>   <span class="c1"># Max</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="p">[</span><span class="s2">&quot;alter&quot;</span><span class="p">])</span>  <span class="c1"># 30</span>
+
+<span class="c1"># Mit get() (sicherer):</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;beruf&quot;</span><span class="p">))</span>        <span class="c1"># Programmierer</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;telefon&quot;</span><span class="p">))</span>      <span class="c1"># None (kein Fehler)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;telefon&quot;</span><span class="p">,</span> <span class="s2">&quot;Nicht vorhanden&quot;</span><span class="p">))</span>  <span class="c1"># Nicht vorhanden</span>
+</pre></div>
+</div>
+</section>
+<section id="werte-andern-und-hinzufugen">
+<h3>Werte ändern und hinzufügen<a class="headerlink" href="#werte-andern-und-hinzufugen" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Lisa&quot;</span><span class="p">,</span> <span class="s2">&quot;alter&quot;</span><span class="p">:</span> <span class="mi">28</span><span class="p">}</span>
+
+<span class="c1"># Wert ändern:</span>
+<span class="n">person</span><span class="p">[</span><span class="s2">&quot;alter&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">29</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>  <span class="c1"># {&#39;name&#39;: &#39;Lisa&#39;, &#39;alter&#39;: 29}</span>
+
+<span class="c1"># Neues Schlüssel-Wert-Paar hinzufügen:</span>
+<span class="n">person</span><span class="p">[</span><span class="s2">&quot;stadt&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;München&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>  <span class="c1"># {&#39;name&#39;: &#39;Lisa&#39;, &#39;alter&#39;: 29, &#39;stadt&#39;: &#39;München&#39;}</span>
+
+<span class="c1"># Mehrere Paare hinzufügen mit update():</span>
+<span class="n">person</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;beruf&quot;</span><span class="p">:</span> <span class="s2">&quot;Ärztin&quot;</span><span class="p">,</span> <span class="s2">&quot;hobby&quot;</span><span class="p">:</span> <span class="s2">&quot;Lesen&quot;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>
+<span class="c1"># {&#39;name&#39;: &#39;Lisa&#39;, &#39;alter&#39;: 29, &#39;stadt&#39;: &#39;München&#39;, &#39;beruf&#39;: &#39;Ärztin&#39;, &#39;hobby&#39;: &#39;Lesen&#39;}</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>Elemente entfernen<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Tom&quot;</span><span class="p">,</span> <span class="s2">&quot;alter&quot;</span><span class="p">:</span> <span class="mi">35</span><span class="p">,</span> <span class="s2">&quot;stadt&quot;</span><span class="p">:</span> <span class="s2">&quot;Hamburg&quot;</span><span class="p">}</span>
+
+<span class="c1"># Mit pop():</span>
+<span class="n">alter</span> <span class="o">=</span> <span class="n">person</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;alter&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">alter</span><span class="p">)</span>   <span class="c1"># 35</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>  <span class="c1"># {&#39;name&#39;: &#39;Tom&#39;, &#39;stadt&#39;: &#39;Hamburg&#39;}</span>
+
+<span class="c1"># Mit del:</span>
+<span class="k">del</span> <span class="n">person</span><span class="p">[</span><span class="s2">&quot;stadt&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>  <span class="c1"># {&#39;name&#39;: &#39;Tom&#39;}</span>
+
+<span class="c1"># Alle Elemente entfernen:</span>
+<span class="n">person</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>  <span class="c1"># {}</span>
+</pre></div>
+</div>
+</section>
+<section id="uber-dictionaries-iterieren">
+<h3>Über Dictionaries iterieren<a class="headerlink" href="#uber-dictionaries-iterieren" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">noten</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Anna&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Max&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Lisa&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Tom&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+
+<span class="c1"># Über Schlüssel iterieren:</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">noten</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="c1"># Über Schlüssel (explizit):</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">noten</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">noten</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
+
+<span class="c1"># Über Werte:</span>
+<span class="k">for</span> <span class="n">note</span> <span class="ow">in</span> <span class="n">noten</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">note</span><span class="p">)</span>
+
+<span class="c1"># Über Schlüssel und Werte:</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">note</span> <span class="ow">in</span> <span class="n">noten</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> hat Note </span><span class="si">{</span><span class="n">note</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># Ausgabe:</span>
+<span class="c1"># Anna hat Note 1</span>
+<span class="c1"># Max hat Note 2</span>
+<span class="c1"># Lisa hat Note 1</span>
+<span class="c1"># Tom hat Note 3</span>
+</pre></div>
+</div>
+</section>
+<section id="nutzliche-dictionary-methoden">
+<h3>Nützliche Dictionary-Methoden<a class="headerlink" href="#nutzliche-dictionary-methoden" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Eva&quot;</span><span class="p">,</span> <span class="s2">&quot;alter&quot;</span><span class="p">:</span> <span class="mi">27</span><span class="p">,</span> <span class="s2">&quot;stadt&quot;</span><span class="p">:</span> <span class="s2">&quot;Köln&quot;</span><span class="p">}</span>
+
+<span class="c1"># Alle Schlüssel:</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>    <span class="c1"># dict_keys([&#39;name&#39;, &#39;alter&#39;, &#39;stadt&#39;])</span>
+
+<span class="c1"># Alle Werte:</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>  <span class="c1"># dict_values([&#39;Eva&#39;, 27, &#39;Köln&#39;])</span>
+
+<span class="c1"># Alle Paare:</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>   <span class="c1"># dict_items([(&#39;name&#39;, &#39;Eva&#39;), (&#39;alter&#39;, 27), (&#39;stadt&#39;, &#39;Köln&#39;)])</span>
+
+<span class="c1"># Prüfen, ob Schlüssel existiert:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;name&quot;</span> <span class="ow">in</span> <span class="n">person</span><span class="p">)</span>      <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;telefon&quot;</span> <span class="ow">in</span> <span class="n">person</span><span class="p">)</span>   <span class="c1"># False</span>
+
+<span class="c1"># Anzahl der Einträge:</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">person</span><span class="p">))</span>  <span class="c1"># 3</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="sets-und-tuples-uberblick">
+<h2>Sets und Tuples (Überblick)<a class="headerlink" href="#sets-und-tuples-uberblick" title="Permalink to this heading">#</a></h2>
+<section id="sets-ungeordnete-mengen-ohne-duplikate">
+<h3>Sets - Ungeordnete Mengen ohne Duplikate<a class="headerlink" href="#sets-ungeordnete-mengen-ohne-duplikate" title="Permalink to this heading">#</a></h3>
+<p>Sets sind ungeordnete Sammlungen eindeutiger Elemente:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set erstellen:</span>
+<span class="n">fruechte</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Apfel&quot;</span><span class="p">,</span> <span class="s2">&quot;Banane&quot;</span><span class="p">,</span> <span class="s2">&quot;Orange&quot;</span><span class="p">}</span>
+<span class="n">zahlen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>  <span class="c1"># Duplikate werden entfernt</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zahlen</span><span class="p">)</span>  <span class="c1"># {1, 2, 3}</span>
+
+<span class="c1"># Element hinzufügen:</span>
+<span class="n">fruechte</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Kiwi&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruechte</span><span class="p">)</span>  <span class="c1"># {&#39;Apfel&#39;, &#39;Banane&#39;, &#39;Orange&#39;, &#39;Kiwi&#39;}</span>
+
+<span class="c1"># Element entfernen:</span>
+<span class="n">fruechte</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;Banane&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruechte</span><span class="p">)</span>  <span class="c1"># {&#39;Apfel&#39;, &#39;Orange&#39;, &#39;Kiwi&#39;}</span>
+
+<span class="c1"># Mengenoperationen:</span>
+<span class="n">set_a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+<span class="n">set_b</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">set_a</span> <span class="o">|</span> <span class="n">set_b</span><span class="p">)</span>  <span class="c1"># Vereinigung: {1, 2, 3, 4, 5, 6}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">set_a</span> <span class="o">&amp;</span> <span class="n">set_b</span><span class="p">)</span>  <span class="c1"># Schnittmenge: {3, 4}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">set_a</span> <span class="o">-</span> <span class="n">set_b</span><span class="p">)</span>  <span class="c1"># Differenz: {1, 2}</span>
+</pre></div>
+</div>
+<p><strong>Praktisches Beispiel - Duplikate entfernen:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">zahlen_mit_duplikaten</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">eindeutige_zahlen</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">zahlen_mit_duplikaten</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">eindeutige_zahlen</span><span class="p">)</span>  <span class="c1"># [1, 2, 3, 4, 5] (Reihenfolge kann variieren)</span>
+</pre></div>
+</div>
+</section>
+<section id="tuples-unveranderbare-sequenzen">
+<h3>Tuples - Unveränderbare Sequenzen<a class="headerlink" href="#tuples-unveranderbare-sequenzen" title="Permalink to this heading">#</a></h3>
+<p>Tuples sind wie Listen, aber unveränderbar (immutable):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tuple erstellen:</span>
+<span class="n">koordinaten</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">person</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;Anna&quot;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="s2">&quot;Berlin&quot;</span><span class="p">)</span>
+
+<span class="c1"># Auf Elemente zugreifen:</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">koordinaten</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># 10</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>       <span class="c1"># 25</span>
+
+<span class="c1"># Tuple Unpacking:</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">koordinaten</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x=</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">, y=</span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># x=10, y=20</span>
+
+<span class="n">name</span><span class="p">,</span> <span class="n">alter</span><span class="p">,</span> <span class="n">stadt</span> <span class="o">=</span> <span class="n">person</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> ist </span><span class="si">{</span><span class="n">alter</span><span class="si">}</span><span class="s2"> Jahre alt&quot;</span><span class="p">)</span>  <span class="c1"># Anna ist 25 Jahre alt</span>
+
+<span class="c1"># Tuples sind unveränderbar:</span>
+<span class="c1"># koordinaten[0] = 15  # Fehler: TypeError</span>
+</pre></div>
+</div>
+<p><strong>Wann Tuples verwenden?</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Für unveränderliche Daten:</span>
+<span class="n">rgb_farbe</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Als Dictionary-Schlüssel (Listen gehen nicht):</span>
+<span class="n">koordinaten_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span> <span class="s2">&quot;Ursprung&quot;</span><span class="p">,</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span> <span class="s2">&quot;X-Achse&quot;</span><span class="p">,</span>
+    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span> <span class="s2">&quot;Y-Achse&quot;</span>
+<span class="p">}</span>
+
+<span class="c1"># Mehrere Werte aus Funktion zurückgeben:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">min_max</span><span class="p">(</span><span class="n">zahlen</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">zahlen</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">zahlen</span><span class="p">)</span>
+
+<span class="n">minimum</span><span class="p">,</span> <span class="n">maximum</span> <span class="o">=</span> <span class="n">min_max</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Min: </span><span class="si">{</span><span class="n">minimum</span><span class="si">}</span><span class="s2">, Max: </span><span class="si">{</span><span class="n">maximum</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Min: 1, Max: 9</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="zusammenfassung">
+<h2>Zusammenfassung<a class="headerlink" href="#zusammenfassung" title="Permalink to this heading">#</a></h2>
+<p>In diesem Kapitel haben Sie gelernt:</p>
+<ul class="simple">
+<li><p><strong>Listen:</strong> Geordnete, veränderbare Sequenzen mit Methoden wie <code class="docutils literal notranslate"><span class="pre">append()</span></code>, <code class="docutils literal notranslate"><span class="pre">remove()</span></code>, <code class="docutils literal notranslate"><span class="pre">insert()</span></code>, <code class="docutils literal notranslate"><span class="pre">sort()</span></code></p></li>
+<li><p><strong>Indexierung und Slicing:</strong> Zugriff auf Elemente mit <code class="docutils literal notranslate"><span class="pre">[]</span></code>, negative Indizes, Slicing mit <code class="docutils literal notranslate"><span class="pre">[start:stop:step]</span></code></p></li>
+<li><p><strong>Dictionaries:</strong> Schlüssel-Wert-Paare mit Methoden wie <code class="docutils literal notranslate"><span class="pre">get()</span></code>, <code class="docutils literal notranslate"><span class="pre">keys()</span></code>, <code class="docutils literal notranslate"><span class="pre">values()</span></code>, <code class="docutils literal notranslate"><span class="pre">items()</span></code></p></li>
+<li><p><strong>Sets:</strong> Ungeordnete Mengen ohne Duplikate</p></li>
+<li><p><strong>Tuples:</strong> Unveränderbare Sequenzen</p></li>
+</ul>
+<p>Im nächsten Kapitel lernen Sie, wie Sie Funktionen definieren und verwenden, um Code wiederverwendbar zu machen.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="04_schleifen.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">zurück</p>
+        <p class="prev-next-title">Schleifen</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="06_funktionen.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">weiter</p>
+        <p class="prev-next-title">Funktionen</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhalt
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listen-erstellen-und-verwenden">Listen erstellen und verwenden</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#listen-erstellen">Listen erstellen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#auf-listenelemente-zugreifen-indexierung">Auf Listenelemente zugreifen (Indexierung)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing-teillisten-extrahieren">Slicing - Teillisten extrahieren</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listen-operationen-append-remove-insert-sort">Listen-Operationen: append, remove, insert, sort</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elemente-hinzufugen">Elemente hinzufügen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elemente-entfernen">Elemente entfernen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#listen-sortieren-und-umkehren">Listen sortieren und umkehren</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weitere-nutzliche-listen-methoden">Weitere nützliche Listen-Methoden</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Auf Listenelemente zugreifen (Indexierung)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#negative-indizes">Negative Indizes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#listen-verschachteln">Listen verschachteln</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-comprehensions">List Comprehensions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listen-mit-schleifen-durchlaufen">Listen mit Schleifen durchlaufen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mit-for-schleife">Mit for-Schleife</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#liste-filtern-und-transformieren">Liste filtern und transformieren</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries-schlussel-wert-paare">Dictionaries (Schlüssel-Wert-Paare)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries-erstellen">Dictionaries erstellen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#auf-werte-zugreifen">Auf Werte zugreifen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#werte-andern-und-hinzufugen">Werte ändern und hinzufügen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Elemente entfernen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uber-dictionaries-iterieren">Über Dictionaries iterieren</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nutzliche-dictionary-methoden">Nützliche Dictionary-Methoden</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sets-und-tuples-uberblick">Sets und Tuples (Überblick)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sets-ungeordnete-mengen-ohne-duplikate">Sets - Ungeordnete Mengen ohne Duplikate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples-unveranderbare-sequenzen">Tuples - Unveränderbare Sequenzen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung">Zusammenfassung</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Durch Python Dokumentation
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

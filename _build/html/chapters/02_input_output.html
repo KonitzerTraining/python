@@ -1,0 +1,810 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="de" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Input/Output und Typumwandlung &#8212; Python Grundlagen</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/02_input_output';</script>
+    <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
+    <link rel="search" title="Suche" href="../search.html" />
+    <link rel="next" title="Verzweigungen und Bedingungen" href="03_verzweigungen.html" />
+    <link rel="prev" title="Python-Grundlagen" href="01_grundlagen.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="de"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Python Grundlagen</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Python Grundlagen Dokumentation
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_grundlagen.html">Python-Grundlagen</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Input/Output und Typumwandlung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_verzweigungen.html">Verzweigungen und Bedingungen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_schleifen.html">Schleifen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_datenstrukturen.html">Datenstrukturen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_funktionen.html">Funktionen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_standard_library.html">Python Standard Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_dateioperationen.html">Dateioperationen</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Laden Sie diese Seite herunter">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapters/02_input_output.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Quelldatei herunterladen"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="In PDF drucken"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Vollbildmodus"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Input/Output und Typumwandlung</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Inhalt </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benutzereingaben-und-formatierte-ausgaben">Benutzereingaben und formatierte Ausgaben</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#die-input-funktion">Die input()-Funktion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mehrere-eingaben-verarbeiten">Mehrere Eingaben verarbeiten</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formatierte-ausgaben">Formatierte Ausgaben</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formatierung-von-zahlen">Formatierung von Zahlen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typumwandlung-type-conversion">Typumwandlung (Type Conversion)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#von-string-zu-zahl">Von String zu Zahl</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#von-zahl-zu-string">Von Zahl zu String</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zwischen-integer-und-float">Zwischen Integer und Float</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#string-zu-boolean">String zu Boolean</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#praktisches-beispiel-einfacher-rechner">Praktisches Beispiel: Einfacher Rechner</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#debugging-grundlagen-und-fehlerbehandlung">Debugging-Grundlagen und Fehlerbehandlung</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#haufige-fehler-bei-der-typkonvertierung">Häufige Fehler bei der Typkonvertierung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#einfaches-debugging-mit-print">Einfaches Debugging mit print()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#try-except-fur-fehlerbehandlung-vorschau">Try-Except für Fehlerbehandlung (Vorschau)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#praktisches-beispiel-robuste-benutzereingabe">Praktisches Beispiel: Robuste Benutzereingabe</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung">Zusammenfassung</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="input-output-und-typumwandlung">
+<h1>Input/Output und Typumwandlung<a class="headerlink" href="#input-output-und-typumwandlung" title="Permalink to this heading">#</a></h1>
+<p>In diesem Kapitel lernen Sie, wie Sie mit Benutzereingaben arbeiten, Ausgaben formatieren und zwischen verschiedenen Datentypen konvertieren.</p>
+<section id="benutzereingaben-und-formatierte-ausgaben">
+<h2>Benutzereingaben und formatierte Ausgaben<a class="headerlink" href="#benutzereingaben-und-formatierte-ausgaben" title="Permalink to this heading">#</a></h2>
+<p>Interaktive Programme benötigen die Möglichkeit, Daten vom Benutzer entgegenzunehmen und Ergebnisse ansprechend auszugeben.</p>
+<section id="die-input-funktion">
+<h3>Die input()-Funktion<a class="headerlink" href="#die-input-funktion" title="Permalink to this heading">#</a></h3>
+<p>Mit <code class="docutils literal notranslate"><span class="pre">input()</span></code> können Sie Benutzereingaben entgegennehmen. Die Funktion gibt immer einen String zurück:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Einfache Eingabe</span>
+<span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Wie heißen Sie? &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hallo&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+<span class="c1"># Beispiel-Interaktion:</span>
+<span class="c1"># Wie heißen Sie? Anna</span>
+<span class="c1"># Hallo Anna</span>
+</pre></div>
+</div>
+<p><strong>Wichtig:</strong> <code class="docutils literal notranslate"><span class="pre">input()</span></code> gibt immer einen String zurück, auch wenn der Benutzer eine Zahl eingibt:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">eingabe</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Geben Sie eine Zahl ein: &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">eingabe</span><span class="p">))</span>  <span class="c1"># &lt;class &#39;str&#39;&gt;</span>
+<span class="c1"># Auch bei Eingabe von &quot;42&quot; ist der Typ str!</span>
+</pre></div>
+</div>
+</section>
+<section id="mehrere-eingaben-verarbeiten">
+<h3>Mehrere Eingaben verarbeiten<a class="headerlink" href="#mehrere-eingaben-verarbeiten" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Persönliche Daten abfragen</span>
+<span class="n">vorname</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Vorname: &quot;</span><span class="p">)</span>
+<span class="n">nachname</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Nachname: &quot;</span><span class="p">)</span>
+<span class="n">alter</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Alter: &quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Willkommen,&quot;</span><span class="p">,</span> <span class="n">vorname</span><span class="p">,</span> <span class="n">nachname</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sie sind&quot;</span><span class="p">,</span> <span class="n">alter</span><span class="p">,</span> <span class="s2">&quot;Jahre alt.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="formatierte-ausgaben">
+<h3>Formatierte Ausgaben<a class="headerlink" href="#formatierte-ausgaben" title="Permalink to this heading">#</a></h3>
+<p>Python bietet verschiedene Möglichkeiten, Ausgaben zu formatieren:</p>
+<p><strong>String-Konkatenation:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Max&quot;</span>
+<span class="n">alter</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Name: &quot;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;, Alter: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">alter</span><span class="p">))</span>
+<span class="c1"># Achtung: alter muss zu String konvertiert werden!</span>
+</pre></div>
+</div>
+<p><strong>Format mit Komma-Separation:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Anna&quot;</span>
+<span class="n">punkte</span> <span class="o">=</span> <span class="mi">95</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Spieler:&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s2">&quot;- Punkte:&quot;</span><span class="p">,</span> <span class="n">punkte</span><span class="p">)</span>
+<span class="c1"># Ausgabe: Spieler: Anna - Punkte: 95</span>
+</pre></div>
+</div>
+<p><strong>F-Strings (empfohlen ab Python 3.6):</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Lisa&quot;</span>
+<span class="n">alter</span> <span class="o">=</span> <span class="mi">28</span>
+<span class="n">stadt</span> <span class="o">=</span> <span class="s2">&quot;Berlin&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mein Name ist </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">, ich bin </span><span class="si">{</span><span class="n">alter</span><span class="si">}</span><span class="s2"> Jahre alt und wohne in </span><span class="si">{</span><span class="n">stadt</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+<span class="c1"># Ausgabe: Mein Name ist Lisa, ich bin 28 Jahre alt und wohne in Berlin.</span>
+
+<span class="c1"># Mit Berechnungen:</span>
+<span class="n">preis</span> <span class="o">=</span> <span class="mf">19.99</span>
+<span class="n">menge</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gesamtpreis: </span><span class="si">{</span><span class="n">preis</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">menge</span><span class="si">}</span><span class="s2"> Euro&quot;</span><span class="p">)</span>
+<span class="c1"># Ausgabe: Gesamtpreis: 59.97 Euro</span>
+</pre></div>
+</div>
+<p><strong>Format-Methode:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Tom&quot;</span>
+<span class="n">note</span> <span class="o">=</span> <span class="mf">1.7</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Student: </span><span class="si">{}</span><span class="s2">, Note: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">note</span><span class="p">))</span>
+<span class="c1"># Ausgabe: Student: Tom, Note: 1.7</span>
+
+<span class="c1"># Mit benannten Platzhaltern:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Name: </span><span class="si">{n}</span><span class="s2">, Alter: </span><span class="si">{a}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="s2">&quot;Eva&quot;</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">25</span><span class="p">))</span>
+<span class="c1"># Ausgabe: Name: Eva, Alter: 25</span>
+</pre></div>
+</div>
+</section>
+<section id="formatierung-von-zahlen">
+<h3>Formatierung von Zahlen<a class="headerlink" href="#formatierung-von-zahlen" title="Permalink to this heading">#</a></h3>
+<p>F-Strings ermöglichen präzise Zahlenformatierung:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159265</span>
+
+<span class="c1"># Auf 2 Dezimalstellen runden:</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pi: </span><span class="si">{</span><span class="n">pi</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>        <span class="c1"># Pi: 3.14</span>
+
+<span class="c1"># Auf 4 Dezimalstellen:</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pi: </span><span class="si">{</span><span class="n">pi</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>        <span class="c1"># Pi: 3.1416</span>
+
+<span class="c1"># Prozentangaben:</span>
+<span class="n">anteil</span> <span class="o">=</span> <span class="mf">0.856</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Anteil: </span><span class="si">{</span><span class="n">anteil</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Anteil: 85.6%</span>
+
+<span class="c1"># Tausendertrennzeichen:</span>
+<span class="n">betrag</span> <span class="o">=</span> <span class="mf">1234567.89</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Betrag: </span><span class="si">{</span><span class="n">betrag</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2"> Euro&quot;</span><span class="p">)</span>  <span class="c1"># Betrag: 1,234,567.89 Euro</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="typumwandlung-type-conversion">
+<h2>Typumwandlung (Type Conversion)<a class="headerlink" href="#typumwandlung-type-conversion" title="Permalink to this heading">#</a></h2>
+<p>Oft müssen Daten von einem Typ in einen anderen konvertiert werden. Dies nennt man Type Casting oder Type Conversion.</p>
+<section id="von-string-zu-zahl">
+<h3>Von String zu Zahl<a class="headerlink" href="#von-string-zu-zahl" title="Permalink to this heading">#</a></h3>
+<p>Da <code class="docutils literal notranslate"><span class="pre">input()</span></code> immer Strings zurückgibt, ist die Konvertierung zu Zahlen besonders wichtig:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># String zu Integer:</span>
+<span class="n">alter_str</span> <span class="o">=</span> <span class="s2">&quot;25&quot;</span>
+<span class="n">alter_int</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">alter_str</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">alter_int</span><span class="p">))</span>  <span class="c1"># &lt;class &#39;int&#39;&gt;</span>
+
+<span class="c1"># Direkt bei der Eingabe konvertieren:</span>
+<span class="n">alter</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Ihr Alter: &quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;In 10 Jahren sind Sie&quot;</span><span class="p">,</span> <span class="n">alter</span> <span class="o">+</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;Jahre alt.&quot;</span><span class="p">)</span>
+
+<span class="c1"># String zu Float:</span>
+<span class="n">preis_str</span> <span class="o">=</span> <span class="s2">&quot;19.99&quot;</span>
+<span class="n">preis_float</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">preis_str</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">preis_float</span><span class="p">))</span>  <span class="c1"># &lt;class &#39;float&#39;&gt;</span>
+
+<span class="n">temperatur</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Temperatur in Celsius: &quot;</span><span class="p">))</span>
+<span class="n">fahrenheit</span> <span class="o">=</span> <span class="n">temperatur</span> <span class="o">*</span> <span class="mi">9</span><span class="o">/</span><span class="mi">5</span> <span class="o">+</span> <span class="mi">32</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">temperatur</span><span class="si">}</span><span class="s2">°C entspricht </span><span class="si">{</span><span class="n">fahrenheit</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°F&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="von-zahl-zu-string">
+<h3>Von Zahl zu String<a class="headerlink" href="#von-zahl-zu-string" title="Permalink to this heading">#</a></h3>
+<p>Um Zahlen mit Strings zu kombinieren, müssen sie oft zu Strings konvertiert werden:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Ich bin &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">alter</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; Jahre alt.&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>  <span class="c1"># Ich bin 30 Jahre alt.</span>
+
+<span class="c1"># Oder verwenden Sie f-Strings (einfacher):</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ich bin </span><span class="si">{</span><span class="n">alter</span><span class="si">}</span><span class="s2"> Jahre alt.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="zwischen-integer-und-float">
+<h3>Zwischen Integer und Float<a class="headerlink" href="#zwischen-integer-und-float" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Float zu Integer (Nachkommastellen werden abgeschnitten):</span>
+<span class="n">kommazahl</span> <span class="o">=</span> <span class="mf">3.99</span>
+<span class="n">ganzzahl</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">kommazahl</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ganzzahl</span><span class="p">)</span>  <span class="c1"># 3 (nicht gerundet!)</span>
+
+<span class="c1"># Integer zu Float:</span>
+<span class="n">zahl</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">gleitkomma</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">zahl</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gleitkomma</span><span class="p">)</span>  <span class="c1"># 5.0</span>
+</pre></div>
+</div>
+</section>
+<section id="string-zu-boolean">
+<h3>String zu Boolean<a class="headerlink" href="#string-zu-boolean" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Nicht-leere Strings sind True:</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Hallo&quot;</span>
+<span class="n">wahrheit</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">wahrheit</span><span class="p">)</span>  <span class="c1"># True</span>
+
+<span class="c1"># Leerer String ist False:</span>
+<span class="n">leer</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="n">leer</span><span class="p">))</span>  <span class="c1"># False</span>
+
+<span class="c1"># Achtung: String &quot;False&quot; ist True!</span>
+<span class="n">falsch</span> <span class="o">=</span> <span class="s2">&quot;False&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="n">falsch</span><span class="p">))</span>  <span class="c1"># True (weil nicht leer)</span>
+</pre></div>
+</div>
+</section>
+<section id="praktisches-beispiel-einfacher-rechner">
+<h3>Praktisches Beispiel: Einfacher Rechner<a class="headerlink" href="#praktisches-beispiel-einfacher-rechner" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Zwei Zahlen vom Benutzer einlesen:</span>
+<span class="n">zahl1</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Erste Zahl: &quot;</span><span class="p">))</span>
+<span class="n">zahl2</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Zweite Zahl: &quot;</span><span class="p">))</span>
+
+<span class="c1"># Berechnungen durchführen:</span>
+<span class="n">summe</span> <span class="o">=</span> <span class="n">zahl1</span> <span class="o">+</span> <span class="n">zahl2</span>
+<span class="n">differenz</span> <span class="o">=</span> <span class="n">zahl1</span> <span class="o">-</span> <span class="n">zahl2</span>
+<span class="n">produkt</span> <span class="o">=</span> <span class="n">zahl1</span> <span class="o">*</span> <span class="n">zahl2</span>
+<span class="n">quotient</span> <span class="o">=</span> <span class="n">zahl1</span> <span class="o">/</span> <span class="n">zahl2</span>
+
+<span class="c1"># Ergebnisse formatiert ausgeben:</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Ergebnisse:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">zahl1</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">zahl2</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">summe</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">zahl1</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">zahl2</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">differenz</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">zahl1</span><span class="si">}</span><span class="s2"> * </span><span class="si">{</span><span class="n">zahl2</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">produkt</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">zahl1</span><span class="si">}</span><span class="s2"> / </span><span class="si">{</span><span class="n">zahl2</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">quotient</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="debugging-grundlagen-und-fehlerbehandlung">
+<h2>Debugging-Grundlagen und Fehlerbehandlung<a class="headerlink" href="#debugging-grundlagen-und-fehlerbehandlung" title="Permalink to this heading">#</a></h2>
+<p>Beim Arbeiten mit Benutzereingaben und Typkonvertierungen können Fehler auftreten. Es ist wichtig, diese zu verstehen und zu behandeln.</p>
+<section id="haufige-fehler-bei-der-typkonvertierung">
+<h3>Häufige Fehler bei der Typkonvertierung<a class="headerlink" href="#haufige-fehler-bei-der-typkonvertierung" title="Permalink to this heading">#</a></h3>
+<p><strong>ValueError - Ungültige Konvertierung:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fehler: Kann &quot;abc&quot; nicht zu int konvertieren</span>
+<span class="c1"># zahl = int(&quot;abc&quot;)  # ValueError: invalid literal for int()</span>
+
+<span class="c1"># Fehler: Kann &quot;3.14&quot; nicht direkt zu int konvertieren</span>
+<span class="c1"># zahl = int(&quot;3.14&quot;)  # ValueError: invalid literal for int()</span>
+
+<span class="c1"># Lösung: Erst zu float, dann zu int:</span>
+<span class="n">zahl</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;3.14&quot;</span><span class="p">))</span>  <span class="c1"># Funktioniert: 3</span>
+</pre></div>
+</div>
+<p><strong>ZeroDivisionError - Division durch Null:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fehler bei Division durch Null:</span>
+<span class="c1"># ergebnis = 10 / 0  # ZeroDivisionError</span>
+
+<span class="c1"># Besser: Prüfen vor der Division</span>
+<span class="n">nenner</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">if</span> <span class="n">nenner</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">ergebnis</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">/</span> <span class="n">nenner</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fehler: Division durch Null nicht möglich!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="einfaches-debugging-mit-print">
+<h3>Einfaches Debugging mit print()<a class="headerlink" href="#einfaches-debugging-mit-print" title="Permalink to this heading">#</a></h3>
+<p>Die <code class="docutils literal notranslate"><span class="pre">print()</span></code>-Funktion ist das einfachste Debugging-Tool:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Variablenwerte ausgeben:</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Debug: x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;y =&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Typ einer Variable prüfen:</span>
+<span class="n">eingabe</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Zahl: &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Typ der Eingabe:&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">eingabe</span><span class="p">))</span>
+
+<span class="c1"># An verschiedenen Stellen Ausgaben einfügen:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vor der Berechnung&quot;</span><span class="p">)</span>
+<span class="n">ergebnis</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">10</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nach der Berechnung, Ergebnis:&quot;</span><span class="p">,</span> <span class="n">ergebnis</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="try-except-fur-fehlerbehandlung-vorschau">
+<h3>Try-Except für Fehlerbehandlung (Vorschau)<a class="headerlink" href="#try-except-fur-fehlerbehandlung-vorschau" title="Permalink to this heading">#</a></h3>
+<p>Ein kurzer Ausblick auf Fehlerbehandlung (wird später detailliert behandelt):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sichere Eingabe einer Zahl:</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">alter</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Ihr Alter: &quot;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sie sind </span><span class="si">{</span><span class="n">alter</span><span class="si">}</span><span class="s2"> Jahre alt.&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fehler: Bitte geben Sie eine gültige Zahl ein!&quot;</span><span class="p">)</span>
+
+<span class="c1"># Beispiel-Interaktionen:</span>
+<span class="c1"># Ihr Alter: 25</span>
+<span class="c1"># Sie sind 25 Jahre alt.</span>
+
+<span class="c1"># Ihr Alter: abc</span>
+<span class="c1"># Fehler: Bitte geben Sie eine gültige Zahl ein!</span>
+</pre></div>
+</div>
+</section>
+<section id="praktisches-beispiel-robuste-benutzereingabe">
+<h3>Praktisches Beispiel: Robuste Benutzereingabe<a class="headerlink" href="#praktisches-beispiel-robuste-benutzereingabe" title="Permalink to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Programm zur Berechnung des BMI (Body Mass Index)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== BMI-Rechner ===</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Größe eingeben:</span>
+<span class="n">groesse_cm</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Ihre Größe in cm: &quot;</span><span class="p">))</span>
+<span class="n">groesse_m</span> <span class="o">=</span> <span class="n">groesse_cm</span> <span class="o">/</span> <span class="mi">100</span>
+
+<span class="c1"># Gewicht eingeben:</span>
+<span class="n">gewicht</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Ihr Gewicht in kg: &quot;</span><span class="p">))</span>
+
+<span class="c1"># BMI berechnen:</span>
+<span class="n">bmi</span> <span class="o">=</span> <span class="n">gewicht</span> <span class="o">/</span> <span class="p">(</span><span class="n">groesse_m</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Ergebnis ausgeben:</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Ihr BMI: </span><span class="si">{</span><span class="n">bmi</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">bmi</span> <span class="o">&lt;</span> <span class="mf">18.5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kategorie: Untergewicht&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">bmi</span> <span class="o">&lt;</span> <span class="mi">25</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kategorie: Normalgewicht&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">bmi</span> <span class="o">&lt;</span> <span class="mi">30</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kategorie: Übergewicht&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kategorie: Starkes Übergewicht&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="zusammenfassung">
+<h2>Zusammenfassung<a class="headerlink" href="#zusammenfassung" title="Permalink to this heading">#</a></h2>
+<p>In diesem Kapitel haben Sie gelernt:</p>
+<ul class="simple">
+<li><p>Mit <code class="docutils literal notranslate"><span class="pre">input()</span></code> Benutzereingaben entgegenzunehmen</p></li>
+<li><p>Ausgaben mit f-Strings, format() und Komma-Separation zu formatieren</p></li>
+<li><p>Zwischen Datentypen zu konvertieren: <code class="docutils literal notranslate"><span class="pre">int()</span></code>, <code class="docutils literal notranslate"><span class="pre">float()</span></code>, <code class="docutils literal notranslate"><span class="pre">str()</span></code>, <code class="docutils literal notranslate"><span class="pre">bool()</span></code></p></li>
+<li><p>Häufige Fehler bei der Typkonvertierung zu erkennen</p></li>
+<li><p>Einfache Debugging-Techniken mit <code class="docutils literal notranslate"><span class="pre">print()</span></code></p></li>
+</ul>
+<p>Im nächsten Kapitel lernen Sie Verzweigungen und Bedingungen kennen, um Ihren Code entscheidungsfähig zu machen.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01_grundlagen.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">zurück</p>
+        <p class="prev-next-title">Python-Grundlagen</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="03_verzweigungen.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">weiter</p>
+        <p class="prev-next-title">Verzweigungen und Bedingungen</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhalt
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benutzereingaben-und-formatierte-ausgaben">Benutzereingaben und formatierte Ausgaben</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#die-input-funktion">Die input()-Funktion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mehrere-eingaben-verarbeiten">Mehrere Eingaben verarbeiten</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formatierte-ausgaben">Formatierte Ausgaben</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formatierung-von-zahlen">Formatierung von Zahlen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typumwandlung-type-conversion">Typumwandlung (Type Conversion)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#von-string-zu-zahl">Von String zu Zahl</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#von-zahl-zu-string">Von Zahl zu String</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zwischen-integer-und-float">Zwischen Integer und Float</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#string-zu-boolean">String zu Boolean</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#praktisches-beispiel-einfacher-rechner">Praktisches Beispiel: Einfacher Rechner</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#debugging-grundlagen-und-fehlerbehandlung">Debugging-Grundlagen und Fehlerbehandlung</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#haufige-fehler-bei-der-typkonvertierung">Häufige Fehler bei der Typkonvertierung</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#einfaches-debugging-mit-print">Einfaches Debugging mit print()</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#try-except-fur-fehlerbehandlung-vorschau">Try-Except für Fehlerbehandlung (Vorschau)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#praktisches-beispiel-robuste-benutzereingabe">Praktisches Beispiel: Robuste Benutzereingabe</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung">Zusammenfassung</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Durch Python Dokumentation
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
