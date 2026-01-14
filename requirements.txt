@@ -1,3 +1,4 @@
-jupyter-book>=0.15.0
+# Verwenden Sie Jupyter Book < 1.0 für Kompatibilität mit _config.yml/_toc.yml
+jupyter-book>=0.15.0,<1.0
 sphinx>=5.0.0
 myst-parser>=0.18.0

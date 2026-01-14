@@ -1,0 +1,44 @@
+Running Jupyter-Book v0.15.1
+Source Folder: /home/user/python
+Config Path: /home/user/python/_config.yml
+Output Path: /home/user/python/_build/html
+[01mRunning Sphinx v5.0.2[39;49;00m
+[01mloading translations [de]... [39;49;00mdone
+[91mWARNING: unknown config value 'bibtex_bibfiles' in override, ignoring[39;49;00m
+[etoc] Changing master_doc to 'intro'
+[etoc] Excluded 1 extra file(s) not in toc
+[01mmyst v0.18.1:[39;49;00m MdParserConfig(commonmark_only=False, gfm_only=False, enable_extensions=['colon_fence', 'deflist', 'dollarmath', 'html_image', 'linkify', 'replacements', 'smartquotes', 'substitution'], disable_syntax=[], all_links_external=False, url_schemes=['mailto', 'http', 'https'], ref_domains=None, highlight_code_blocks=True, number_code_blocks=[], title_to_header=False, heading_anchors=None, heading_slug_func=None, footnote_transition=True, words_per_minute=200, sub_delimiters=('{', '}'), linkify_fuzzy_links=True, dmath_allow_labels=True, dmath_allow_space=True, dmath_allow_digits=True, dmath_double_inline=False, update_mathjax=True, mathjax_classes='tex2jax_process|mathjax_process|math|output_area')
+[01mmyst-nb v0.17.2:[39;49;00m NbParserConfig(custom_formats={}, metadata_key='mystnb', cell_metadata_key='mystnb', kernel_rgx_aliases={}, execution_mode='cache', execution_cache_path='', execution_excludepatterns=[], execution_timeout=60, execution_in_temp=False, execution_allow_errors=False, execution_raise_on_error=False, execution_show_tb=False, merge_streams=False, render_plugin='default', remove_code_source=False, remove_code_outputs=False, code_prompt_show='Show code cell {type}', code_prompt_hide='Hide code cell {type}', number_source_lines=False, output_stderr='show', render_text_lexer='myst-ansi', render_error_lexer='ipythontb', render_image_options={}, render_figure_options={}, render_markdown_format='commonmark', output_folder='build', append_css=True, metadata_to_fm=False)
+Using jupyter-cache at: /home/user/python/_build/.jupyter_cache
+[01mbuilding [mo]: [39;49;00mtargets for 0 po files that are out of date
+[01mbuilding [html]: [39;49;00mtargets for 9 source files that are out of date
+[01mupdating environment: [39;49;00m[new config] 9 added, 0 changed, 0 removed
+[01mreading sources... [39;49;00m[ 11%] [35mchapters/01_grundlagen[39;49;00m                               [01mreading sources... [39;49;00m[ 22%] [35mchapters/02_input_output[39;49;00m                             [01mreading sources... [39;49;00m[ 33%] [35mchapters/03_verzweigungen[39;49;00m                            [01mreading sources... [39;49;00m[ 44%] [35mchapters/04_schleifen[39;49;00m                                [01mreading sources... [39;49;00m[ 55%] [35mchapters/05_datenstrukturen[39;49;00m                          [01mreading sources... [39;49;00m[ 66%] [35mchapters/06_funktionen[39;49;00m                               [01mreading sources... [39;49;00m[ 77%] [35mchapters/07_standard_library[39;49;00m                         [01mreading sources... [39;49;00m[ 88%] [35mchapters/08_dateioperationen[39;49;00m                         [01mreading sources... [39;49;00m[100%] [35mintro[39;49;00m                                                
+[01mlooking for now-outdated files... [39;49;00mnone found
+[01mpickling environment... [39;49;00mdone
+[01mchecking consistency... [39;49;00mdone
+[01mpreparing documents... [39;49;00mdone
+[01mwriting output... [39;49;00m[ 11%] [32mchapters/01_grundlagen[39;49;00m                                [01mwriting output... [39;49;00m[ 22%] [32mchapters/02_input_output[39;49;00m                              [01mwriting output... [39;49;00m[ 33%] [32mchapters/03_verzweigungen[39;49;00m                             [01mwriting output... [39;49;00m[ 44%] [32mchapters/04_schleifen[39;49;00m                                 [01mwriting output... [39;49;00m[ 55%] [32mchapters/05_datenstrukturen[39;49;00m                           [01mwriting output... [39;49;00m[ 66%] [32mchapters/06_funktionen[39;49;00m                                [01mwriting output... [39;49;00m[ 77%] [32mchapters/07_standard_library[39;49;00m                          [01mwriting output... [39;49;00m[ 88%] [32mchapters/08_dateioperationen[39;49;00m                          [01mwriting output... [39;49;00m[100%] [32mintro[39;49;00m                                                 
+[01mgenerating indices... [39;49;00mgenindex done
+[01mwriting additional pages... [39;49;00msearch done
+[01mcopying static files... [39;49;00mdone
+[01mcopying extra files... [39;49;00mdone
+[01mdumping search index in German (code: de)... [39;49;00mdone
+[01mdumping object inventory... [39;49;00mdone
+[etoc] missing index.html written as redirect to 'intro.html'
+[01mbuild succeeded, 1 warning.[39;49;00m
+
+The HTML pages are in _build/html.
+
+[92m===============================================================================[0m
+
+Finished generating HTML for book.
+Your book's HTML pages are here:
+    _build/html/
+You can look at your book by opening this file in a browser:
+    _build/html/index.html
+Or paste this line directly into your browser bar:
+    file:///home/user/python/_build/html/index.html            
+
+[92m===============================================================================[0m
+
