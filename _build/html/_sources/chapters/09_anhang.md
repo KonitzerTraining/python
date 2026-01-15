@@ -259,80 +259,20 @@ python args.py eins zwei drei
 
 ## C. Offizielle Python-Dokumentation
 
-### Deutsche Ressourcen
+### Wichtigste Ressourcen
 
-**Offizielle Python-Dokumentation (Deutsch):**
+**Deutsche Dokumentation:**
 - Hauptseite: https://docs.python.org/de/3/
-- Tutorial: https://docs.python.org/de/3/tutorial/index.html
-- Standardbibliothek: https://docs.python.org/de/3/library/index.html
-- Sprachreferenz: https://docs.python.org/de/3/reference/index.html
+- Tutorial: https://docs.python.org/de/3/tutorial/
+- Standardbibliothek: https://docs.python.org/de/3/library/
 
-**Wichtige Themen:**
-- Einführung: https://docs.python.org/de/3/tutorial/introduction.html
-- Datenstrukturen: https://docs.python.org/de/3/tutorial/datastructures.html
-- Module: https://docs.python.org/de/3/tutorial/modules.html
-- Ein- und Ausgabe: https://docs.python.org/de/3/tutorial/inputoutput.html
-- Fehler und Ausnahmen: https://docs.python.org/de/3/tutorial/errors.html
-- Klassen: https://docs.python.org/de/3/tutorial/classes.html
-
-### Englische Ressourcen
-
-**Offizielle Dokumentation:**
+**Englische Dokumentation:**
 - Python.org: https://www.python.org/
-- Dokumentation: https://docs.python.org/3/
-- Tutorial: https://docs.python.org/3/tutorial/
-- Library Reference: https://docs.python.org/3/library/
-- Language Reference: https://docs.python.org/3/reference/
-
-**PEP (Python Enhancement Proposals):**
-- PEP 8 - Style Guide: https://pep8.org/ oder https://www.python.org/dev/peps/pep-0008/
-- PEP 20 - The Zen of Python: https://www.python.org/dev/peps/pep-0020/
-- PEP Index: https://www.python.org/dev/peps/
-
-### Zusätzliche Lernressourcen
-
-**Interaktive Tutorials:**
-- Python Tutor (Code-Visualisierung): https://pythontutor.com/
-- Real Python: https://realpython.com/
-- W3Schools Python: https://www.w3schools.com/python/
-
-**Nachschlagewerke:**
-- Python Module of the Week: https://pymotw.com/3/
-- Python Cheatsheet: https://www.pythoncheatsheet.org/
-- DevDocs (API-Dokumentation): https://devdocs.io/python~3.11/
-
-**Community:**
-- Stack Overflow (Python): https://stackoverflow.com/questions/tagged/python
-- Reddit r/learnpython: https://www.reddit.com/r/learnpython/
-- Python Discord: https://pythondiscord.com/
-
-### Spezifische Module
-
-**Häufig verwendete Module:**
-- os: https://docs.python.org/de/3/library/os.html
-- sys: https://docs.python.org/de/3/library/sys.html
-- datetime: https://docs.python.org/de/3/library/datetime.html
-- pathlib: https://docs.python.org/de/3/library/pathlib.html
-- json: https://docs.python.org/de/3/library/json.html
-- re (Regular Expressions): https://docs.python.org/de/3/library/re.html
-- csv: https://docs.python.org/de/3/library/csv.html
-- collections: https://docs.python.org/de/3/library/collections.html
-- itertools: https://docs.python.org/de/3/library/itertools.html
-- functools: https://docs.python.org/de/3/library/functools.html
-
-### Package Index
+- Vollständige Dokumentation: https://docs.python.org/3/
+- PEP 8 Style Guide: https://pep8.org/
 
 **PyPI - Python Package Index:**
-- Suche nach Paketen: https://pypi.org/
-- Beliebte Pakete: https://pypi.org/search/?c=Development+Status+%3A%3A+5+-+Production%2FStable
-
-**Beliebte Drittanbieter-Bibliotheken:**
-- Requests (HTTP): https://requests.readthedocs.io/
-- NumPy (Numerik): https://numpy.org/doc/
-- Pandas (Datenanalyse): https://pandas.pydata.org/docs/
-- Matplotlib (Visualisierung): https://matplotlib.org/stable/index.html
-- Flask (Web-Framework): https://flask.palletsprojects.com/
-- Django (Web-Framework): https://docs.djangoproject.com/
+- Pakete suchen und installieren: https://pypi.org/
 
 ## D. Nützliche Tastenkombinationen
 

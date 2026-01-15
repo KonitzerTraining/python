@@ -1,4 +1,6 @@
-# Python Grundlagen Dokumentation
+# Python Grundlagen
+
+**Handout im Rahmen der Ausbildung DRV Bund**
 
 Willkommen zur deutschsprachigen Python-Dokumentation! Diese Dokumentation richtet sich an Einsteiger und vermittelt die grundlegenden Konzepte der Python-Programmierung.
 

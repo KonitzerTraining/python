@@ -1,6 +1,6 @@
 # Jupyter Book Konfiguration
 title: Python Grundlagen
-author: Python Dokumentation
+author: Handout im Rahmen der Ausbildung DRV Bund
 logo: ""
 only_build_toc_files: true
 

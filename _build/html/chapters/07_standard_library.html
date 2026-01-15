@@ -164,7 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    Python Grundlagen Dokumentation
+                    Python Grundlagen
                 </a>
             </li>
         </ul>
@@ -356,13 +356,15 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="python-standard-library">
 <h1>Python Standard Library<a class="headerlink" href="#python-standard-library" title="Permalink to this heading">#</a></h1>
-<p>Die Python Standard Library ist eine umfangreiche Sammlung von Modulen, die mit Python mitgeliefert werden. Sie müssen nicht separat installiert werden und bieten Funktionen für viele gängige Aufgaben.</p>
+<p>Die Python Standard Library ist eine umfangreiche Sammlung von Modulen, die mit Python mitgeliefert werden. Sie müssen nicht separat installiert werden und bieten Funktionen für viele gängige Aufgaben. Diese Module decken Bereiche wie Dateisystemoperationen, Zeitberechnungen, mathematische Funktionen, Zufallszahlen und vieles mehr ab.</p>
+<p>Die Verwendung der Standard Library hat mehrere Vorteile: Sie ist sofort verfügbar, gut dokumentiert, plattformübergreifend einsetzbar und von der Python-Community getestet. Anstatt eigene Lösungen für häufige Probleme zu entwickeln, können Sie auf bewährte Module zurückgreifen.</p>
 <section id="wichtige-module-os-sys-pathlib-datetime">
 <h2>Wichtige Module: os, sys, pathlib, datetime<a class="headerlink" href="#wichtige-module-os-sys-pathlib-datetime" title="Permalink to this heading">#</a></h2>
-<p>Python kommt mit einer Vielzahl nützlicher Module. Hier sind einige der wichtigsten.</p>
+<p>Python kommt mit einer Vielzahl nützlicher Module, die den Alltag eines Entwicklers erheblich erleichtern. In diesem Abschnitt lernen Sie die wichtigsten Module kennen, die für die Arbeit mit dem Betriebssystem, Dateipfaden und Zeitberechnungen unerlässlich sind.</p>
 <section id="das-os-modul">
 <h3>Das os-Modul<a class="headerlink" href="#das-os-modul" title="Permalink to this heading">#</a></h3>
-<p>Das <code class="docutils literal notranslate"><span class="pre">os</span></code>-Modul bietet Funktionen für die Interaktion mit dem Betriebssystem.</p>
+<p>Das <code class="docutils literal notranslate"><span class="pre">os</span></code>-Modul bietet Funktionen für die Interaktion mit dem Betriebssystem. Es ermöglicht Ihnen, plattformunabhängig auf Dateisysteme zuzugreifen, Verzeichnisse zu navigieren und Umgebungsvariablen auszulesen. Das Modul abstrahiert viele betriebssystemspezifische Details, sodass Ihr Code auf Windows, Linux und macOS funktioniert.</p>
+<p>Ein häufiger Anwendungsfall ist das Arbeiten mit Dateipfaden. Mit <code class="docutils literal notranslate"><span class="pre">os.path.join()</span></code> können Sie Pfade plattformunabhängig zusammensetzen - auf Windows werden Backslashes (<code class="docutils literal notranslate"><span class="pre">\</span></code>), auf Unix-Systemen Slashes (<code class="docutils literal notranslate"><span class="pre">/</span></code>) verwendet. Die Funktion <code class="docutils literal notranslate"><span class="pre">os.getcwd()</span></code> gibt das aktuelle Arbeitsverzeichnis zurück, was besonders nützlich ist, wenn Sie relative Pfade verwenden.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
 <span class="c1"># Aktuelles Arbeitsverzeichnis anzeigen:</span>
@@ -392,7 +394,9 @@ document.write(`
 <span class="nb">print</span><span class="p">(</span><span class="n">pfad</span><span class="p">)</span>  <span class="c1"># ordner/unterordner/datei.txt (oder ordner\unterordner\datei.txt auf Windows)</span>
 </pre></div>
 </div>
+<p>Die Funktionen <code class="docutils literal notranslate"><span class="pre">os.path.exists()</span></code>, <code class="docutils literal notranslate"><span class="pre">os.path.isfile()</span></code> und <code class="docutils literal notranslate"><span class="pre">os.path.isdir()</span></code> sind unverzichtbar, wenn Sie prüfen möchten, ob eine Datei oder ein Verzeichnis existiert, bevor Sie darauf zugreifen. Dies verhindert Fehler und macht Ihren Code robuster. Die Funktion <code class="docutils literal notranslate"><span class="pre">os.listdir()</span></code> gibt eine Liste aller Dateien und Ordner in einem Verzeichnis zurück, was für das Durchsuchen von Verzeichnissen nützlich ist.</p>
 <p><strong>Umgebungsvariablen:</strong></p>
+<p>Umgebungsvariablen sind systemweite Einstellungen, die Informationen wie Benutzernamen, Home-Verzeichnisse oder Konfigurationspfade speichern. Mit dem <code class="docutils literal notranslate"><span class="pre">os</span></code>-Modul können Sie diese Variablen auslesen, um systemspezifische Informationen zu erhalten oder Konfigurationen zu laden.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
 <span class="c1"># Umgebungsvariable lesen:</span>
@@ -404,10 +408,12 @@ document.write(`
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Die Methode <code class="docutils literal notranslate"><span class="pre">os.environ.get()</span></code> ist sicherer als direkter Zugriff, da sie <code class="docutils literal notranslate"><span class="pre">None</span></code> zurückgibt, wenn die Variable nicht existiert, anstatt einen Fehler zu werfen. Sie können auch einen Standardwert als zweiten Parameter angeben: <code class="docutils literal notranslate"><span class="pre">os.environ.get(&quot;MEINE_VAR&quot;,</span> <span class="pre">&quot;Standard&quot;)</span></code>.</p>
 </section>
 <section id="das-sys-modul">
 <h3>Das sys-Modul<a class="headerlink" href="#das-sys-modul" title="Permalink to this heading">#</a></h3>
-<p>Das <code class="docutils literal notranslate"><span class="pre">sys</span></code>-Modul bietet Zugriff auf systembezogene Funktionen und Parameter.</p>
+<p>Das <code class="docutils literal notranslate"><span class="pre">sys</span></code>-Modul bietet Zugriff auf systembezogene Funktionen und Parameter, die eng mit dem Python-Interpreter verbunden sind. Es ist besonders nützlich, wenn Sie Informationen über die Python-Laufzeitumgebung benötigen oder Ihr Programm gezielt beenden möchten.</p>
+<p>Mit <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code> können Sie Kommandozeilenargumente auslesen, die beim Aufruf eines Python-Skripts übergeben werden. Dies ist die Grundlage für einfache Kommandozeilenprogramme. Das erste Element <code class="docutils literal notranslate"><span class="pre">sys.argv[0]</span></code> enthält immer den Namen des Skripts selbst. Mit <code class="docutils literal notranslate"><span class="pre">sys.exit()</span></code> können Sie Ihr Programm mit einem bestimmten Exit-Code beenden - <code class="docutils literal notranslate"><span class="pre">0</span></code> bedeutet Erfolg, andere Werte signalisieren Fehler.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 
 <span class="c1"># Python-Version:</span>
@@ -426,10 +432,12 @@ document.write(`
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">pfad</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Die Liste <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> zeigt alle Verzeichnisse, in denen Python nach Modulen sucht, wenn Sie <code class="docutils literal notranslate"><span class="pre">import</span></code> verwenden. Dies ist hilfreich beim Debuggen von Import-Problemen. Die Plattform-Information (<code class="docutils literal notranslate"><span class="pre">sys.platform</span></code>) hilft Ihnen, plattformspezifischen Code zu schreiben, falls nötig.</p>
 </section>
 <section id="das-pathlib-modul-modern">
 <h3>Das pathlib-Modul (Modern)<a class="headerlink" href="#das-pathlib-modul-modern" title="Permalink to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">pathlib</span></code> ist die moderne, objektorientierte Alternative zu <code class="docutils literal notranslate"><span class="pre">os.path</span></code>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">pathlib</span></code> ist die moderne, objektorientierte Alternative zu <code class="docutils literal notranslate"><span class="pre">os.path</span></code> und wurde mit Python 3.4 eingeführt. Es bietet eine elegantere und intuitivere Syntax für die Arbeit mit Dateipfaden. Anstatt Funktionen wie <code class="docutils literal notranslate"><span class="pre">os.path.join()</span></code> zu verwenden, arbeiten Sie mit <code class="docutils literal notranslate"><span class="pre">Path</span></code>-Objekten, die mit dem <code class="docutils literal notranslate"><span class="pre">/</span></code>-Operator verkettet werden können.</p>
+<p>Die Objektorientierung macht den Code lesbarer: <code class="docutils literal notranslate"><span class="pre">pfad.exists()</span></code> ist selbsterklärender als <code class="docutils literal notranslate"><span class="pre">os.path.exists(pfad)</span></code>. Zudem bietet <code class="docutils literal notranslate"><span class="pre">pathlib</span></code> viele nützliche Methoden wie <code class="docutils literal notranslate"><span class="pre">.glob()</span></code> für das Suchen von Dateien mit Wildcards oder <code class="docutils literal notranslate"><span class="pre">.read_text()</span></code> für das direkte Lesen von Dateiinhalten. Für neue Projekte sollten Sie <code class="docutils literal notranslate"><span class="pre">pathlib</span></code> gegenüber <code class="docutils literal notranslate"><span class="pre">os.path</span></code> bevorzugen.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
 <span class="c1"># Aktuelles Verzeichnis:</span>
@@ -463,10 +471,12 @@ document.write(`
     <span class="nb">print</span><span class="p">(</span><span class="n">datei</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Die <code class="docutils literal notranslate"><span class="pre">.glob()</span></code>-Methode ist besonders praktisch für das Filtern von Dateien. Sie können Wildcards wie <code class="docutils literal notranslate"><span class="pre">*.py</span></code> (alle Python-Dateien) oder <code class="docutils literal notranslate"><span class="pre">**/*.txt</span></code> (alle Textdateien rekursiv) verwenden. Die Eigenschaften <code class="docutils literal notranslate"><span class="pre">.name</span></code>, <code class="docutils literal notranslate"><span class="pre">.stem</span></code>, <code class="docutils literal notranslate"><span class="pre">.suffix</span></code> und <code class="docutils literal notranslate"><span class="pre">.parent</span></code> machen es einfach, Dateinamen zu analysieren und zu manipulieren, ohne String-Operationen durchführen zu müssen.</p>
 </section>
 <section id="das-datetime-modul">
 <h3>Das datetime-Modul<a class="headerlink" href="#das-datetime-modul" title="Permalink to this heading">#</a></h3>
-<p>Das <code class="docutils literal notranslate"><span class="pre">datetime</span></code>-Modul ermöglicht die Arbeit mit Datum und Zeit.</p>
+<p>Das <code class="docutils literal notranslate"><span class="pre">datetime</span></code>-Modul ermöglicht die Arbeit mit Datum und Zeit. Es bietet Klassen für die Darstellung von Zeitpunkten, Datumsangaben und Zeitdifferenzen. Die Arbeit mit Datum und Zeit ist in vielen Anwendungen wichtig: von der Protokollierung von Ereignissen über die Berechnung von Fristen bis hin zur Planung von Aufgaben.</p>
+<p>Python unterscheidet zwischen <code class="docutils literal notranslate"><span class="pre">date</span></code> (nur Datum), <code class="docutils literal notranslate"><span class="pre">time</span></code> (nur Uhrzeit) und <code class="docutils literal notranslate"><span class="pre">datetime</span></code> (Datum und Uhrzeit kombiniert). Die Klasse <code class="docutils literal notranslate"><span class="pre">timedelta</span></code> repräsentiert Zeitdifferenzen und ermöglicht Berechnungen wie “3 Tage später” oder “2 Stunden früher”. Mit der <code class="docutils literal notranslate"><span class="pre">strftime()</span></code>-Methode können Sie Datumsangaben in verschiedenen Formaten ausgeben - zum Beispiel “14.01.2026” oder “Mittwoch, 14. Januar 2026”.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">date</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">timedelta</span>
 
 <span class="c1"># Aktuelles Datum und Zeit:</span>
@@ -502,7 +512,9 @@ document.write(`
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tage seit Geburtstag: </span><span class="si">{</span><span class="n">differenz</span><span class="o">.</span><span class="n">days</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Die Formatierungscodes für <code class="docutils literal notranslate"><span class="pre">strftime()</span></code> sind standardisiert: <code class="docutils literal notranslate"><span class="pre">%Y</span></code> für vierstelliges Jahr, <code class="docutils literal notranslate"><span class="pre">%m</span></code> für Monat, <code class="docutils literal notranslate"><span class="pre">%d</span></code> für Tag, <code class="docutils literal notranslate"><span class="pre">%H</span></code> für Stunde, <code class="docutils literal notranslate"><span class="pre">%M</span></code> für Minute, <code class="docutils literal notranslate"><span class="pre">%S</span></code> für Sekunde. Mit <code class="docutils literal notranslate"><span class="pre">%A</span></code> erhalten Sie den ausgeschriebenen Wochentag, mit <code class="docutils literal notranslate"><span class="pre">%B</span></code> den Monatsnamen. Zeitdifferenzen können Sie einfach mit <code class="docutils literal notranslate"><span class="pre">+</span></code> und <code class="docutils literal notranslate"><span class="pre">-</span></code> berechnen, was den Code sehr lesbar macht.</p>
 <p><strong>Praktisches Beispiel - Alter berechnen:</strong></p>
+<p>Das folgende Beispiel zeigt, wie Sie das Alter einer Person in Jahren berechnen. Die Herausforderung besteht darin, zu berücksichtigen, ob der Geburtstag im aktuellen Jahr bereits stattgefunden hat. Wenn nicht, müssen wir das Alter um eins reduzieren. Diese Art von Logik ist typisch für reale Anwendungen der datetime-Berechnungen.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">date</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">berechne_alter</span><span class="p">(</span><span class="n">geburtsdatum</span><span class="p">):</span>
@@ -525,10 +537,12 @@ document.write(`
 </section>
 <section id="module-importieren-und-verwenden">
 <h2>Module importieren und verwenden<a class="headerlink" href="#module-importieren-und-verwenden" title="Permalink to this heading">#</a></h2>
-<p>Python bietet verschiedene Möglichkeiten, Module zu importieren.</p>
+<p>Python bietet verschiedene Möglichkeiten, Module zu importieren. Die Wahl der richtigen Import-Methode beeinflusst die Lesbarkeit und Wartbarkeit Ihres Codes. Es ist wichtig zu verstehen, wann welche Import-Variante sinnvoll ist.</p>
 <section id="import-varianten">
 <h3>Import-Varianten<a class="headerlink" href="#import-varianten" title="Permalink to this heading">#</a></h3>
+<p>Es gibt vier Hauptmethoden, um Module zu importieren. Jede hat ihre Vor- und Nachteile, abhängig vom Anwendungsfall. Die Wahl der Import-Methode sollte immer dem Ziel dienen, den Code klar und verständlich zu halten.</p>
 <p><strong>Gesamtes Modul importieren:</strong></p>
+<p>Die Standard-Import-Methode importiert das gesamte Modul. Sie müssen dann den Modulnamen als Präfix verwenden, wenn Sie Funktionen aufrufen. Dies hat den Vorteil, dass immer klar ist, woher eine Funktion stammt, und verhindert Namenskonflikte.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>        <span class="c1"># 3.141592653589793</span>
@@ -537,6 +551,7 @@ document.write(`
 </pre></div>
 </div>
 <p><strong>Modul mit Alias importieren:</strong></p>
+<p>Wenn ein Modulname sehr lang ist oder oft verwendet wird, können Sie einen kürzeren Alias definieren. Dies ist besonders bei Modulen wie <code class="docutils literal notranslate"><span class="pre">numpy</span></code> (oft als <code class="docutils literal notranslate"><span class="pre">np</span></code> importiert) oder <code class="docutils literal notranslate"><span class="pre">pandas</span></code> (oft als <code class="docutils literal notranslate"><span class="pre">pd</span></code>) üblich. Der Alias sollte jedoch immer sinnvoll und in der Community etabliert sein, um die Lesbarkeit zu gewährleisten.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">m</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>           <span class="c1"># 3.141592653589793</span>
@@ -544,6 +559,7 @@ document.write(`
 </pre></div>
 </div>
 <p><strong>Bestimmte Funktionen importieren:</strong></p>
+<p>Wenn Sie nur wenige spezifische Funktionen aus einem Modul benötigen, können Sie diese direkt importieren. Der Vorteil ist kürzerer Code, da Sie den Modulnamen nicht als Präfix schreiben müssen. Verwenden Sie diese Methode jedoch nur, wenn klar ist, woher die Funktionen stammen, und wenn keine Namenskonflikte entstehen können.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">pi</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">cos</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>             <span class="c1"># 3.141592653589793</span>
@@ -552,6 +568,7 @@ document.write(`
 </pre></div>
 </div>
 <p><strong>Alles aus einem Modul importieren (nicht empfohlen):</strong></p>
+<p>Die <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">*</span></code>-Syntax importiert alle Funktionen und Variablen aus einem Modul. Dies wird jedoch nicht empfohlen, da es zu Namenskonflikten führen kann und nicht klar ist, welche Namen importiert wurden. Es erschwert die Wartung und das Debugging. Verwenden Sie diese Methode nur in Ausnahmefällen, etwa beim interaktiven Experimentieren in der Python-Shell.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>             <span class="c1"># 3.141592653589793</span>
@@ -562,7 +579,9 @@ document.write(`
 </section>
 <section id="wichtige-module-im-uberblick">
 <h3>Wichtige Module im Überblick<a class="headerlink" href="#wichtige-module-im-uberblick" title="Permalink to this heading">#</a></h3>
+<p>Die Standard Library enthält zahlreiche spezialisierte Module für verschiedene Aufgaben. Im Folgenden werden die am häufigsten verwendeten Module vorgestellt, die in fast jedem Python-Projekt nützlich sind.</p>
 <p><strong>math - Mathematische Funktionen:</strong></p>
+<p>Das <code class="docutils literal notranslate"><span class="pre">math</span></code>-Modul bietet mathematische Funktionen und Konstanten, die über die eingebauten Operatoren hinausgehen. Es enthält trigonometrische Funktionen, Logarithmen, Wurzeln und Konstanten wie Pi und Euler’s Zahl. Dieses Modul ist unverzichtbar für wissenschaftliche Berechnungen, Geometrie und statistische Analysen.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>      <span class="c1"># Quadratwurzel: 4.0</span>
@@ -573,7 +592,9 @@ document.write(`
 <span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>       <span class="c1"># Natürlicher Logarithmus: 2.302585092994046</span>
 </pre></div>
 </div>
+<p>Die Funktionen <code class="docutils literal notranslate"><span class="pre">floor()</span></code> und <code class="docutils literal notranslate"><span class="pre">ceil()</span></code> sind nützlich für das Auf- und Abrunden, während <code class="docutils literal notranslate"><span class="pre">pow()</span></code> eine Alternative zum <code class="docutils literal notranslate"><span class="pre">**</span></code>-Operator darstellt. Beachten Sie, dass <code class="docutils literal notranslate"><span class="pre">math</span></code> nur für reelle Zahlen funktioniert - für komplexe Zahlen verwenden Sie das <code class="docutils literal notranslate"><span class="pre">cmath</span></code>-Modul.</p>
 <p><strong>random - Zufallszahlen:</strong></p>
+<p>Das <code class="docutils literal notranslate"><span class="pre">random</span></code>-Modul erzeugt Pseudozufallszahlen für verschiedene Verteilungen. Es ist ideal für Simulationen, Spiele, zufällige Auswahlen oder das Mischen von Daten. Beachten Sie, dass die erzeugten Zahlen nicht für kryptographische Zwecke geeignet sind - verwenden Sie dafür das <code class="docutils literal notranslate"><span class="pre">secrets</span></code>-Modul.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
 
 <span class="c1"># Zufällige Ganzzahl:</span>
@@ -595,7 +616,9 @@ document.write(`
 <span class="nb">print</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="mi">3</span><span class="p">))</span>  <span class="c1"># z.B. [2, 5, 1]</span>
 </pre></div>
 </div>
+<p>Die Funktionen <code class="docutils literal notranslate"><span class="pre">choice()</span></code> und <code class="docutils literal notranslate"><span class="pre">sample()</span></code> unterscheiden sich darin, dass <code class="docutils literal notranslate"><span class="pre">choice()</span></code> ein einzelnes Element zurückgibt, während <code class="docutils literal notranslate"><span class="pre">sample()</span></code> mehrere Elemente ohne Zurücklegen auswählt. Die Funktion <code class="docutils literal notranslate"><span class="pre">shuffle()</span></code> verändert die ursprüngliche Liste direkt (in-place), während <code class="docutils literal notranslate"><span class="pre">sample()</span></code> eine neue Liste zurückgibt.</p>
 <p><strong>json - JSON-Daten verarbeiten:</strong></p>
+<p>JSON (JavaScript Object Notation) ist ein weit verbreitetes Datenaustauschformat, das in Webdiensten, APIs und Konfigurationsdateien verwendet wird. Das <code class="docutils literal notranslate"><span class="pre">json</span></code>-Modul ermöglicht die Konvertierung zwischen Python-Datenstrukturen (Dictionaries, Listen) und JSON-Strings. Dies ist essentiell für die Kommunikation mit Web-APIs oder das Speichern strukturierter Daten.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 
 <span class="c1"># Python-Dictionary zu JSON:</span>
@@ -619,7 +642,9 @@ document.write(`
 <span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>  <span class="c1"># Max</span>
 </pre></div>
 </div>
+<p>Die Funktion <code class="docutils literal notranslate"><span class="pre">json.dumps()</span></code> konvertiert Python-Objekte in JSON-Strings (Serialisierung), während <code class="docutils literal notranslate"><span class="pre">json.loads()</span></code> JSON-Strings in Python-Objekte umwandelt (Deserialisierung). Der Parameter <code class="docutils literal notranslate"><span class="pre">indent</span></code> bei <code class="docutils literal notranslate"><span class="pre">dumps()</span></code> macht die Ausgabe für Menschen lesbar. Für das direkte Lesen und Schreiben von JSON-Dateien verwenden Sie <code class="docutils literal notranslate"><span class="pre">json.dump()</span></code> und <code class="docutils literal notranslate"><span class="pre">json.load()</span></code> (ohne das “s”).</p>
 <p><strong>collections - Erweiterte Datenstrukturen:</strong></p>
+<p>Das <code class="docutils literal notranslate"><span class="pre">collections</span></code>-Modul bietet spezialisierte Container-Datentypen, die über die eingebauten <code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">dict</span></code>, <code class="docutils literal notranslate"><span class="pre">set</span></code> und <code class="docutils literal notranslate"><span class="pre">tuple</span></code> hinausgehen. Diese Datenstrukturen lösen häufige Programmierprobleme effizient und elegant. Der <code class="docutils literal notranslate"><span class="pre">Counter</span></code> ist besonders nützlich für Häufigkeitsanalysen, während <code class="docutils literal notranslate"><span class="pre">defaultdict</span></code> das Arbeiten mit verschachtelten Datenstrukturen vereinfacht.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span><span class="p">,</span> <span class="n">defaultdict</span>
 
 <span class="c1"># Counter - Elemente zählen:</span>
@@ -636,12 +661,14 @@ document.write(`
 <span class="nb">print</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">noten</span><span class="p">))</span>  <span class="c1"># {&#39;Anna&#39;: [1, 2], &#39;Max&#39;: [3]}</span>
 </pre></div>
 </div>
+<p>Der <code class="docutils literal notranslate"><span class="pre">Counter</span></code> zählt automatisch, wie oft jedes Element in einer Sequenz vorkommt. Die Methode <code class="docutils literal notranslate"><span class="pre">most_common(n)</span></code> gibt die n häufigsten Elemente zurück. Ein <code class="docutils literal notranslate"><span class="pre">defaultdict</span></code> vermeidet <code class="docutils literal notranslate"><span class="pre">KeyError</span></code>-Exceptions, indem es automatisch einen Standardwert für neue Schlüssel erstellt - im Beispiel eine leere Liste. Dies ist besonders praktisch beim Gruppieren von Daten.</p>
 </section>
 </section>
 <section id="praktisches-beispiel">
 <h2>Praktisches Beispiel<a class="headerlink" href="#praktisches-beispiel" title="Permalink to this heading">#</a></h2>
 <section id="datei-backup-mit-zeitstempel">
 <h3>Datei-Backup mit Zeitstempel<a class="headerlink" href="#datei-backup-mit-zeitstempel" title="Permalink to this heading">#</a></h3>
+<p>Das folgende praktische Beispiel kombiniert mehrere Module der Standard Library: <code class="docutils literal notranslate"><span class="pre">shutil</span></code> für Dateioperationen, <code class="docutils literal notranslate"><span class="pre">datetime</span></code> für Zeitstempel und <code class="docutils literal notranslate"><span class="pre">pathlib</span></code> für die Pfadverwaltung. Es zeigt, wie Sie ein automatisches Backup-System erstellen können, das Dateien mit einem Zeitstempel versieht. Dies ist ein typisches Beispiel für die Kombination verschiedener Module, um eine nützliche Funktionalität zu implementieren.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
@@ -670,6 +697,7 @@ document.write(`
 <span class="c1"># Erstellt z.B.: wichtige_datei_backup_20260114_153045.txt</span>
 </pre></div>
 </div>
+<p>Die Funktion prüft zunächst, ob die Quelldatei existiert, um Fehler zu vermeiden. Der Zeitstempel wird im Format <code class="docutils literal notranslate"><span class="pre">YYYYMMDD_HHMMSS</span></code> erstellt, was eine chronologische Sortierung ermöglicht. Mit <code class="docutils literal notranslate"><span class="pre">pathlib</span></code> wird der neue Dateiname elegant zusammengesetzt: <code class="docutils literal notranslate"><span class="pre">stem</span></code> gibt den Dateinamen ohne Erweiterung zurück, <code class="docutils literal notranslate"><span class="pre">suffix</span></code> die Erweiterung. Die Funktion <code class="docutils literal notranslate"><span class="pre">shutil.copy2()</span></code> kopiert die Datei inklusive Metadaten (Zeitstempel, Berechtigungen).</p>
 </section>
 </section>
 <section id="zusammenfassung">
@@ -780,7 +808,7 @@ document.write(`
   <div class="footer-item">
     
 <p class="component-author">
-Durch Python Dokumentation
+Durch Handout im Rahmen der Ausbildung DRV Bund
 </p>
 
   </div>
