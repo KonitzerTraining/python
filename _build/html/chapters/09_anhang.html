@@ -325,14 +325,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-kommandozeilen-befehle">A. Kommandozeilen-Befehle</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-cmd-command-prompt">Windows CMD (Command Prompt)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#navigation-und-verzeichnisse">Navigation und Verzeichnisse</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dateiverwaltung">Dateiverwaltung</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#system-befehle">System-Befehle</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-powershell">Windows PowerShell</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-grundlegende-kommandozeilen-befehle">A. Grundlegende Kommandozeilen-Befehle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aktuelles-verzeichnis-anzeigen">Aktuelles Verzeichnis anzeigen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verzeichnis-wechseln">Verzeichnis wechseln</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dateien-und-ordner-auflisten">Dateien und Ordner auflisten</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bildschirm-loschen">Bildschirm löschen</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-python-skripte-ausfuhren">B. Python-Skripte ausführen</a><ul class="nav section-nav flex-column">
@@ -378,119 +375,49 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="anhang">
 <h1>Anhang<a class="headerlink" href="#anhang" title="Permalink to this heading">#</a></h1>
-<section id="a-kommandozeilen-befehle">
-<h2>A. Kommandozeilen-Befehle<a class="headerlink" href="#a-kommandozeilen-befehle" title="Permalink to this heading">#</a></h2>
-<section id="windows-cmd-command-prompt">
-<h3>Windows CMD (Command Prompt)<a class="headerlink" href="#windows-cmd-command-prompt" title="Permalink to this heading">#</a></h3>
-<section id="navigation-und-verzeichnisse">
-<h4>Navigation und Verzeichnisse<a class="headerlink" href="#navigation-und-verzeichnisse" title="Permalink to this heading">#</a></h4>
-<div class="highlight-cmd notranslate"><div class="highlight"><pre><span></span># Aktuelles Verzeichnis anzeigen
-cd
+<section id="a-grundlegende-kommandozeilen-befehle">
+<h2>A. Grundlegende Kommandozeilen-Befehle<a class="headerlink" href="#a-grundlegende-kommandozeilen-befehle" title="Permalink to this heading">#</a></h2>
+<p>Diese Befehle funktionieren plattformübergreifend in Windows CMD, PowerShell und Unix-Shell (bash/zsh):</p>
+<section id="aktuelles-verzeichnis-anzeigen">
+<h3>Aktuelles Verzeichnis anzeigen<a class="headerlink" href="#aktuelles-verzeichnis-anzeigen" title="Permalink to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Windows CMD:</span>
+<span class="nb">cd</span>
 
-# Verzeichnis wechseln
-cd C:\Users\MeinName\Dokumente
-
-# Ein Verzeichnis nach oben
-cd ..
-
-# Zur Root des Laufwerks
-cd \
-
-# Laufwerk wechseln
-D:
-
-# Verzeichnis erstellen
-mkdir mein_projekt
-md mein_projekt
-
-# Verzeichnis löschen
-rmdir mein_projekt
-rd mein_projekt
-
-# Verzeichnis mit Inhalt löschen
-rmdir /s mein_projekt
+<span class="c1"># PowerShell, bash, zsh:</span>
+<span class="nb">pwd</span>
 </pre></div>
 </div>
 </section>
-<section id="dateiverwaltung">
-<h4>Dateiverwaltung<a class="headerlink" href="#dateiverwaltung" title="Permalink to this heading">#</a></h4>
-<div class="highlight-cmd notranslate"><div class="highlight"><pre><span></span># Dateien und Ordner auflisten
+<section id="verzeichnis-wechseln">
+<h3>Verzeichnis wechseln<a class="headerlink" href="#verzeichnis-wechseln" title="Permalink to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Funktioniert überall (Windows, Linux, macOS):</span>
+<span class="nb">cd</span><span class="w"> </span>Dokumente
+<span class="nb">cd</span><span class="w"> </span>..<span class="w">                    </span><span class="c1"># Ein Verzeichnis nach oben</span>
+<span class="nb">cd</span><span class="w"> </span>C:<span class="se">\P</span>fad<span class="se">\z</span>um<span class="se">\O</span>rdner<span class="w">   </span><span class="c1"># Windows: Absoluter Pfad</span>
+<span class="nb">cd</span><span class="w"> </span>/home/user/ordner<span class="w">    </span><span class="c1"># Linux/macOS: Absoluter Pfad</span>
+</pre></div>
+</div>
+</section>
+<section id="dateien-und-ordner-auflisten">
+<h3>Dateien und Ordner auflisten<a class="headerlink" href="#dateien-und-ordner-auflisten" title="Permalink to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Windows CMD:</span>
 dir
 
-# Detaillierte Ansicht
-dir /w
+<span class="c1"># PowerShell, bash, zsh:</span>
+ls
 
-# Datei anzeigen
-type datei.txt
-
-# Datei kopieren
-copy quelle.txt ziel.txt
-
-# Datei verschieben
-move quelle.txt neuer_ordner\
-
-# Datei löschen
-del datei.txt
-
-# Mehrere Dateien löschen
-del *.txt
+<span class="c1"># In PowerShell funktioniert auch:</span>
+dir
 </pre></div>
 </div>
 </section>
-<section id="system-befehle">
-<h4>System-Befehle<a class="headerlink" href="#system-befehle" title="Permalink to this heading">#</a></h4>
-<div class="highlight-cmd notranslate"><div class="highlight"><pre><span></span># Bildschirm löschen
+<section id="bildschirm-loschen">
+<h3>Bildschirm löschen<a class="headerlink" href="#bildschirm-loschen" title="Permalink to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Windows CMD und PowerShell:</span>
 cls
 
-# Aktuelles Datum/Zeit
-date
-time
-
-# Umgebungsvariablen anzeigen
-set
-
-# Bestimmte Variable anzeigen
-echo %PATH%
-
-# Hilfe zu einem Befehl
-help dir
-dir /?
-</pre></div>
-</div>
-</section>
-</section>
-<section id="windows-powershell">
-<h3>Windows PowerShell<a class="headerlink" href="#windows-powershell" title="Permalink to this heading">#</a></h3>
-<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="c"># Navigation</span>
-<span class="nb">Set-Location</span> <span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">MeinName</span>
-<span class="nb">cd </span><span class="n">C</span><span class="p">:\</span><span class="n">Users</span><span class="p">\</span><span class="n">MeinName</span>
-
-<span class="c"># Dateien auflisten</span>
-<span class="nb">Get-ChildItem</span>
-<span class="nb">ls</span>
-<span class="nb">dir</span>
-
-<span class="c"># Verzeichnis erstellen</span>
-<span class="nb">New-Item</span> <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="n">-Name</span> <span class="s2">&quot;mein_projekt&quot;</span>
-<span class="n">mkdir</span> <span class="n">mein_projekt</span>
-
-<span class="c"># Datei erstellen</span>
-<span class="nb">New-Item</span> <span class="n">-ItemType</span> <span class="n">File</span> <span class="n">-Name</span> <span class="s2">&quot;test.txt&quot;</span>
-
-<span class="c"># Datei löschen</span>
-<span class="nb">Remove-Item</span> <span class="n">test</span><span class="p">.</span><span class="n">txt</span>
-<span class="nb">rm </span><span class="n">test</span><span class="p">.</span><span class="n">txt</span>
-
-<span class="c"># Inhalt anzeigen</span>
-<span class="nb">Get-Content</span> <span class="n">datei</span><span class="p">.</span><span class="n">txt</span>
-<span class="nb">cat </span><span class="n">datei</span><span class="p">.</span><span class="n">txt</span>
-
-<span class="c"># Nach Dateien suchen</span>
-<span class="nb">Get-ChildItem</span> <span class="n">-Recurse</span> <span class="n">-Filter</span> <span class="p">*.</span><span class="n">py</span>
-
-<span class="c"># Bildschirm löschen</span>
-<span class="nb">Clear-Host</span>
-<span class="nb">cls</span>
+<span class="c1"># bash, zsh:</span>
+clear
 </pre></div>
 </div>
 </section>
@@ -827,14 +754,11 @@ Ctrl+` - Terminal öffnen/schließen
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-kommandozeilen-befehle">A. Kommandozeilen-Befehle</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-cmd-command-prompt">Windows CMD (Command Prompt)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#navigation-und-verzeichnisse">Navigation und Verzeichnisse</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dateiverwaltung">Dateiverwaltung</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#system-befehle">System-Befehle</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-powershell">Windows PowerShell</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-grundlegende-kommandozeilen-befehle">A. Grundlegende Kommandozeilen-Befehle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aktuelles-verzeichnis-anzeigen">Aktuelles Verzeichnis anzeigen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verzeichnis-wechseln">Verzeichnis wechseln</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dateien-und-ordner-auflisten">Dateien und Ordner auflisten</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bildschirm-loschen">Bildschirm löschen</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-python-skripte-ausfuhren">B. Python-Skripte ausführen</a><ul class="nav section-nav flex-column">

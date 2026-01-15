@@ -1,118 +1,50 @@
 # Anhang
 
-## A. Kommandozeilen-Befehle
+## A. Grundlegende Kommandozeilen-Befehle
 
-### Windows CMD (Command Prompt)
+Diese Befehle funktionieren plattformübergreifend in Windows CMD, PowerShell und Unix-Shell (bash/zsh):
 
-#### Navigation und Verzeichnisse
+### Aktuelles Verzeichnis anzeigen
 
-```cmd
-# Aktuelles Verzeichnis anzeigen
+```bash
+# Windows CMD:
 cd
 
-# Verzeichnis wechseln
-cd C:\Users\MeinName\Dokumente
-
-# Ein Verzeichnis nach oben
-cd ..
-
-# Zur Root des Laufwerks
-cd \
-
-# Laufwerk wechseln
-D:
-
-# Verzeichnis erstellen
-mkdir mein_projekt
-md mein_projekt
-
-# Verzeichnis löschen
-rmdir mein_projekt
-rd mein_projekt
-
-# Verzeichnis mit Inhalt löschen
-rmdir /s mein_projekt
+# PowerShell, bash, zsh:
+pwd
 ```
 
-#### Dateiverwaltung
+### Verzeichnis wechseln
 
-```cmd
-# Dateien und Ordner auflisten
+```bash
+# Funktioniert überall (Windows, Linux, macOS):
+cd Dokumente
+cd ..                    # Ein Verzeichnis nach oben
+cd C:\Pfad\zum\Ordner   # Windows: Absoluter Pfad
+cd /home/user/ordner    # Linux/macOS: Absoluter Pfad
+```
+
+### Dateien und Ordner auflisten
+
+```bash
+# Windows CMD:
 dir
 
-# Detaillierte Ansicht
-dir /w
-
-# Datei anzeigen
-type datei.txt
-
-# Datei kopieren
-copy quelle.txt ziel.txt
-
-# Datei verschieben
-move quelle.txt neuer_ordner\
-
-# Datei löschen
-del datei.txt
-
-# Mehrere Dateien löschen
-del *.txt
-```
-
-#### System-Befehle
-
-```cmd
-# Bildschirm löschen
-cls
-
-# Aktuelles Datum/Zeit
-date
-time
-
-# Umgebungsvariablen anzeigen
-set
-
-# Bestimmte Variable anzeigen
-echo %PATH%
-
-# Hilfe zu einem Befehl
-help dir
-dir /?
-```
-
-### Windows PowerShell
-
-```powershell
-# Navigation
-Set-Location C:\Users\MeinName
-cd C:\Users\MeinName
-
-# Dateien auflisten
-Get-ChildItem
+# PowerShell, bash, zsh:
 ls
+
+# In PowerShell funktioniert auch:
 dir
+```
 
-# Verzeichnis erstellen
-New-Item -ItemType Directory -Name "mein_projekt"
-mkdir mein_projekt
+### Bildschirm löschen
 
-# Datei erstellen
-New-Item -ItemType File -Name "test.txt"
-
-# Datei löschen
-Remove-Item test.txt
-rm test.txt
-
-# Inhalt anzeigen
-Get-Content datei.txt
-cat datei.txt
-
-# Nach Dateien suchen
-Get-ChildItem -Recurse -Filter *.py
-
-# Bildschirm löschen
-Clear-Host
+```bash
+# Windows CMD und PowerShell:
 cls
+
+# bash, zsh:
+clear
 ```
 
 ## B. Python-Skripte ausführen
